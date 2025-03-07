@@ -1,0 +1,123 @@
+\documentclass[14pt,aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimplePlus}
+\usepackage{booktabs}
+\usepackage{minted}
+
+\title[short title]{Clase 03 Demostraciones}
+\subtitle{}
+\author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
+\institute[UC|CMM] 
+{
+    Pontificia Universidad Católica de Chile \\
+    Centro de Modelamiento Matemático
+}
+
+\titlegraphic{
+    \vspace{-1.8cm}
+    \begin{flushright}
+      \includegraphics[height=2.5cm]{../images/puc.png} 
+    \end{flushright}
+}
+
+\date{16/10/2024}
+%\setbeamercovered{transparent}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\frametitle{Clase de hoy}
+    \begin{itemize}
+        \item Demostración directa
+        \item Demostración por contradicción
+        \item Contrarrecíproca
+    \end{itemize}
+
+    \newref{Secciones I.3 y I.4, Eccles}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Dem. directa}
+    $$ P \Rightarrow Q$$
+    \begin{columns}
+        \begin{column}{0.45\textwidth}
+            Tabla de verdad:
+            \begin{center}
+                \begin{tabular}{c c | c}
+                    \toprule P & Q & P $\Rightarrow$ Q \\\midrule
+                    V & V & V \\
+                    V & F & F \\
+                    F & V & \alert{V} \\
+                    F & F & V  \\ \bottomrule
+                \end{tabular}
+            \end{center}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item<2> Asumimos $P$ verdadero
+                \item<2> Verificamos $Q$
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejercicios}
+    \begin{center}
+        \idea{Si $a,b > 0$, luego $a < b$ implica que $a^2 < b^2$}
+
+        \idea{Si $a\in \mathbb R \setminus \{0\}$, luego $a^2 > 0$}
+    \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Demostrar $P$ por contradicción}
+    \begin{itemize}
+        \item<1-> Suponer que $P$ es falso
+        \item<2-> Llegar a una contradicción
+            \only<2>{
+            \begin{flushright}
+                \begin{tabular}{c | c}
+                    \toprule P & P $\wedge$ $(\neg P)$ \\\midrule
+                    V & F \\
+                    F & F  \\ \bottomrule
+                \end{tabular}
+            \end{flushright}
+            }
+        \item<3-> Tabla de verdad:
+    \end{itemize}
+        \only<3>{\begin{center}
+            \begin{tabular}{c c | c}
+                \toprule P & Q & $(\neg P) \Rightarrow Q$\\\midrule
+                V & V & V \\
+                V & F & \alert{V} \\
+                F & V & V \\
+                F & F & \alert{F}  \\ \bottomrule
+            \end{tabular}
+        \end{center}
+        \hfill \alertGreen{Si $\neg P \Rightarrow Q $ es V, como $Q$ es F, luego $P$ es V.}
+        }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejemplo}
+
+    \begin{center}
+        \idea{$\sqrt 2$ es irracional}
+    \end{center}
+
+    \pause A qué números podemos extender esta demostración? 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Contraproposición}
+    Verifiquemos que $P\Rightarrow Q \Leftrightarrow (\neg Q)\Rightarrow (\neg P)$ \pause
+    \begin{center}
+        \idea{Si $a>b$, luego $ac \leq bc \Rightarrow c<0$}
+    \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
