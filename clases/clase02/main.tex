@@ -1,0 +1,156 @@
+\documentclass[14pt,aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimplePlus}
+\usepackage{booktabs}
+\usepackage{minted}
+
+\title[short title]{Clase 03 Lógica Proposicional}
+\subtitle{}
+\author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
+\institute[UC|CMM] 
+{
+    Pontificia Universidad Católica de Chile \\
+    Centro de Modelamiento Matemático
+}
+
+\titlegraphic{
+    \vspace{-1.8cm}
+    \begin{flushright}
+      \includegraphics[height=2.5cm]{../images/puc.png} 
+    \end{flushright}
+}
+
+\date{16/10/2024}
+%\setbeamercovered{transparent}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\frametitle{Proposiciones y operaciones}
+    \begin{itemize}
+        \item Proposiciones tienen valores de verdad
+        \item 'y' (conjunción), 'o' (disjunción), 'no' (negación). 
+        \item  Tablas de verdad
+        \item Ejemplos: $\leq$, $x \in (1,2)$
+        \item Implicancias
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Objetos fundamentales de la matemática}
+    \begin{itemize}
+        \item Proposiciones $\to$ oraciones con valor de verdad (V$|$F)
+            \begin{itemize}
+                \item está lloviendo
+                \item $\pi=3$
+                \item $1+1=2$
+                \item $n^2 -2n >0$ (depende de $n$)
+            \end{itemize}
+        \item 
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Negación ($\neg$)}
+    $$ 1\neq 2 \Leftrightarrow  not( 1 = 2 )$$
+    Tabla de verdad:
+        \begin{center}
+            \begin{tabular}{c | c}
+                \toprule P & $\neg $ P  \\\midrule
+                V & F \\
+                F & V \\ \bottomrule
+            \end{tabular}
+        \end{center}
+    Precedencia: potencia
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Disjunción ('o', $\vee$)}
+    $$ ab = 0 \Leftrightarrow a=0 \text{ o } b=0 $$
+    Tabla de verdad:
+        \begin{center}
+            \begin{tabular}{c c | c}
+                \toprule P & Q & P $\vee$ Q \\\midrule
+                V & V & V \\
+                V & F & V \\
+                F & V & V \\
+                F & F & F  \\ \bottomrule
+            \end{tabular}
+        \end{center}
+
+    Precedencia: $+$
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunción ('y', $\wedge$)}
+    $$ 0<1<2 \Leftrightarrow 0<1 \text{ y } 1<2 $$
+    Tabla de verdad:
+        \begin{center}
+            \begin{tabular}{c c | c}
+                \toprule P & Q & P $\wedge$ Q \\\midrule
+                V & V & V \\
+                V & F & F \\
+                F & V & F \\
+                F & F & F  \\ \bottomrule
+            \end{tabular}
+        \end{center}
+
+    Precedencia: $*$
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejercicio}
+    \begin{center}
+        \idea{Tabla de verdad de: $ \neg P \vee Q$}
+        \idea{Tabla de verdad de: $ P \vee \neq Q \wedge R $}
+    \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejemplos}
+    \begin{itemize}
+        \item $x \leq 2$
+        \item $x \in (a,b)$
+        \item $x \in [a,b]$
+        \item $x\neq 1$
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Implicancias}
+    $$ n > 2 \Rightarrow n > 0 $$
+    \begin{columns}
+        \begin{column}{0.45\textwidth}
+            Tabla de verdad:
+            \begin{center}
+                \begin{tabular}{c c | c}
+                    \toprule P & Q & P $\Rightarrow$ Q \\\midrule
+                    V & V & V \\
+                    V & F & F \\
+                    F & V & \alert{V} \\
+                    F & F & V  \\ \bottomrule
+                \end{tabular}
+            \end{center}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item Si P, luego Q
+                \item P implica Q
+                \item Q si P
+                \item P solo si Q
+                \item \alert{P es suficiente para Q}
+                \item \alert{Q es necesaria para P}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejercicios}
+    \begin{itemize}
+        \item $\neg \Rightarrow$
+        \item $ P\Rightarrow Q$ equivale a $\neg P \vee Q$
+        \item $ \Leftrightarrow $  (si y solo si, ssi, iff)
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

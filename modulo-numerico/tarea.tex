@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{amsmath,amsfonts}
+
+\title{Tarea 2: Solución numérica de ecuaciones diferenciales}
+\author{Nicolás Barnafi (\texttt{nicolas.barnafi@uc.cl})}
+\date{\textbf{Fecha de entrega: 22/04/2024}}
+\begin{document}
+\maketitle
+
+Para el desarrollo de la tarea, se pueden usar todos los códigos que vimos durante el curso.
+
+\begin{enumerate}
+    \item Considere la siguiente ecuación diferencial: 
+        $$
+            \left\lbrace\begin{aligned}
+                - \mu u'' + b u' + c u &= 1 && \text{en $\Omega$}\\
+                u(L) = u(R) &= 0,
+            \end{aligned}\right.
+        $$
+        donde $\mu, b,c\in \mathbb R$ y el dominio $\Omega$ está dado por $\Omega = (L, R)$, para $ L < R$. 
+        \begin{enumerate}
+            \item (0.5 pts) Usar un cambio de varibales para reescribir el problema en el dominio $\Omega = (0,1)$.
+            \item (0.5 pts) Mostrar la matriz obtenida al discretizar la ecuación diferencial con diferencias finitas, usando un espaciado constante entre puntos de tamaño $h$, i.e. $x_{i+1} - x_i = h$.
+            \item (1.0 pts) Considere como condición de base $\mu=b=c=1$, $L=0, R=1$ y que el dominio está dividido en $N=10$ intervalos de igual medida. Grafique el condicionamiento de la matriz con respecto a (i) el número de subintervalos $N\in \{10,20,40,80\}$, (ii) al parámetro de advección $b \in\{1, 2, 4, 8, 16\}$ y (iii) al parámetro de reacción $c\in\{1, 2, 4, 8, 16\}$. Explicitar cómo se tratan las condiciones de borde.
+        \end{enumerate} 
+
+    \item En este punto estudiaremos los métodos iterativos vistos en el curso para resolver (de manera aproximada) el sistema lineal obtenido en el ejercicio anterior. Usaremos siempre una tolerancia relativa de $10^{-4}$ sobre la norma del residuo. Para entender esto mejor, dada una iteración $\vec z$, definimos el vector residual, o simplemente el residuo del sistema lineal $Ax = b$, como 
+            $$ r(z) := r = b - Az. $$
+    En general, la norma del residuo $|r|^2 = \sum_i r_i^2$ es una buena medida del error del método. Eso sí, a veces la norma inicial del residuo puede sesgar la convergencia, por lo que es más común usar como criterio de convergencia la norma relativa: 
+        $$ \|r\|_\text{absoluta} = |r|, \qquad \|r\|_\text{relativa} = \frac{|r|}{|r_0|}, $$
+    donde $r_0$ es el residuo asociado al vector inicial $x_0$, i.e. $r_0 = b - Ax_0$. 
+
+    \begin{enumerate}
+        \item (0.5 pts)  Considere como solución inicial un vector con 0 en todas sus componentes, y grafique el error en cada iteración del método de (i) Richardson, (ii) Jacobi y (iii) Gauss-Seidel.
+        \item (0.8 pts) Muestre cómo varía el número de iteraciones requeridas para converger al variar los parámetros $N$, $b$, y $c$.
+        \item (0.7 pts) Justifique teóricamente por qué Gauss-Seidel converge más rápido que Jacobi y Richardson, calcule numéricamente todas las cantidades involucradas.
+    \end{enumerate}
+
+\item Finalmente, consideraremos el sistema tiempo dependiente dado por
+        $$
+            \left\lbrace\begin{aligned}
+                \frac{d u}{d t}- \mu u'' + b u' + c u &= 0 && \text{en $\Omega$},\\
+                u(t, L) = u(t, R) &= 0 &&\forall t\in (0,T), \\ 
+                u(0, x) &= u_0 &&\forall x\in \Omega.
+            \end{aligned}\right.
+        $$
+Los parámetros que aparecen son: $\mu$ de difusión, $b$ de advección (o convección), y $c$ de reacción. La condición inicial $u_0$ está dada por    
+        $$ u_0(x) = \frac 1 2 \tanh (10x - 5) + 0.5 $$
+
+    \begin{enumerate}
+        \item (0.5 pts) Discretice el sistema en espacio y tiempo para algún ancho de malla $h$, tiempo final $T$ y paso temporal $\Delta t$ a elegir. Muestre el sistema lineal que se debe resolver con (i) una discretización explícita y (ii) una discretización implícita.
+        \item (1.0 pts) Resuelva el sistema para los siguientes conjuntos de parámetros: (a) $\mu=1$, $b=c=0$; (b) $\mu=c=0$, $b=1$; (c) $\mu=b=0$, $c=1$. Si ve inestabilidades, considere $h$ y $\Delta t$ pequeños.
+        \item (0.5 pts) Explique de manera intuitiva, según los resultados del punto anterior, el origen de los nombres de los parámetros $\mu,b,c$.
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
