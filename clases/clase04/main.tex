@@ -1,0 +1,107 @@
+\documentclass[14pt,aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimplePlus}
+\usepackage{booktabs}
+\usepackage{minted}
+
+\title[short title]{Clase 04: El principio de inducción}
+\subtitle{}
+\author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
+\institute[UC|CMM] 
+{
+    Pontificia Universidad Católica de Chile \\
+    Centro de Modelamiento Matemático
+}
+
+\titlegraphic{
+    \vspace{-1.8cm}
+    \begin{flushright}
+      \includegraphics[height=2.5cm]{../images/puc.png} 
+    \end{flushright}
+}
+
+\date{16/10/2024}
+%\setbeamercovered{transparent}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\frametitle{Motivación}
+    \begin{itemize}
+        \item Probar propiedades sobre números enteros
+        \item Naturales: $1$ + \emph{sucesor}
+        \item Extenderemos esta idea a demostraciones
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\frametitle{El principio}
+    \begin{block}{}
+        Suponer una afirmación $P(n)$ que depende de un número entero $n$. Esta afirmación es cierta para todo $n$ si las siguientes afirmaciones son ciertas:
+        \begin{itemize}
+            \item $P(1)$ es cierto 
+            \item $P(k) \Rightarrow P(k+1)$ es cierto para todo $k$ entero
+        \end{itemize}
+    \end{block}
+    \pause \idea{Demostrar que $n \leq 2^n$}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejercicio}
+    \begin{center}
+        \idea{Demostrar que $n^2+n$ es par para todo $n$ entero}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Variantes}
+    \begin{itemize}
+        \item Podemos cambiar $P(1)$ por  $P(n_0)$ (Demostrar)
+        \item Definición por inducción
+        \item Inducción fuerte
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Definición por inducción}
+    Considerar sucesión $a_1, a_2, \hdots$
+    \begin{itemize}
+        \item  $\sum_{i=1}^N a_i$
+        \item $ \prod_{i=1}^N a_i$
+        \item $x^n$
+        \item $x!$
+    \end{itemize}
+    \pause
+    \begin{center}
+    \begin{minipage}{0.6\textwidth}
+    \begin{block}{}
+        \begin{itemize}
+            \item Caso base: $\sum_{i=1}^1 = a_1$
+            \item Paso inductivo: $\sum_{i=1}^N = \sum_{i=1}^{N-1} + a_n$
+        \end{itemize}
+    \end{block}
+    \end{minipage}
+    \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Inducción fuerte}
+    \begin{block}{}
+        Suponer una afirmación $P(n)$ que depende de un número entero $n$. Esta afirmación es cierta para todo $n$ si las siguientes afirmaciones son ciertas:
+        \begin{itemize}
+            \item $P(1)$ es cierto 
+            \item \{$P(n)$ vale para $n\leq k$\} $\Rightarrow P(k+1)$ es cierto para todo $k$ entero
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

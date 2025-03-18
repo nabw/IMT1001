@@ -71,9 +71,9 @@
     \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Demostrar $P$ por contradicción}
+\begin{frame}{Demostrar $Q$ por contradicción}
     \begin{itemize}
-        \item<1-> Suponer que $P$ es falso
+        \item<1-> Suponer que $Q$ es falso
         \item<2-> Llegar a una contradicción
             \only<2>{
             \begin{flushright}
@@ -84,11 +84,11 @@
                 \end{tabular}
             \end{flushright}
             }
-        \item<3-> Tabla de verdad:
+        \item<3-> Tabla de verdad (\alert{sup. Q falso}):
     \end{itemize}
         \only<3>{\begin{center}
             \begin{tabular}{c c | c}
-                \toprule P & Q & $(\neg P) \Rightarrow Q$\\\midrule
+                \toprule P & Q & $(\neg Q) \Rightarrow P$\\\midrule
                 V & V & V \\
                 V & F & \alert{V} \\
                 F & V & V \\
@@ -111,7 +111,7 @@
 \begin{frame}{Contraproposición}
     Verifiquemos que $P\Rightarrow Q \Leftrightarrow (\neg Q)\Rightarrow (\neg P)$ \pause
     \begin{center}
-        \idea{Aplicación: Si $a>b$, luego $ac \leq bc \Rightarrow c<0$}
+        \idea{Aplicación: Si $a>b$, luego $ac \leq bc \Rightarrow c\leq 0$}
     \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
