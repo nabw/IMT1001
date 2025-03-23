@@ -1,0 +1,99 @@
+\documentclass[14pt,aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimplePlus}
+\usepackage{booktabs}
+
+\newcommand{\R}{\mathbb{R}}
+
+\title[short title]{Clase 06 Cuantificadores}
+\subtitle{}
+\author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
+\institute[UC|CMM] 
+{
+    Pontificia Universidad Católica de Chile \\
+    Centro de Modelamiento Matemático
+}
+
+\titlegraphic{
+    \vspace{-1.8cm}
+    \begin{flushright}
+      \includegraphics[height=2.5cm]{../images/puc.png} 
+    \end{flushright}
+}
+
+\date{26/03/2024}
+%\setbeamercovered{transparent}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Motivación}
+    \begin{itemize}
+        \item Afirmaciones existenciales 
+            \begin{flushright}
+                \emph{Existe un elemento en el conjunto tal que ...}
+            \end{flushright}
+        \item Afirmaciones universales
+            \begin{flushright}
+                \emph{Para todo elemento en el conjunto es cierto que ...}
+            \end{flushright}
+    \end{itemize}
+    \vspace{1cm}
+    \newref{Eccles, Cap. 7}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Cuantificador universal}
+    $$ \forall a \in A, P(a) \Leftrightarrow \{a \in A|P(a)\} $$
+    \emph{Para todo elemento $a$ en $A$, se tiene que $P(a)$}
+    \pause
+    \begin{itemize}
+        \item $\forall a \in \mathbb R - \{0\}, a^2>0$
+        \item $\{a\in \mathbb R | a^2 > 0 \} = \mathbb R - \{0\}$
+        \item $a\in \mathbb R - \{0\} \Rightarrow a^2>0$
+        \item $a$ es una variable \emph{muda}
+    \end{itemize}
+    \alert{Para demostrar estas propiedades se usa $a\in A\Rightarrow P(a)$}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Cuantificador existencial}
+    $$ \exists a \in A, P(a) \Leftrightarrow \{ a \in A | P(a) \} \neq \emptyset $$
+    \emph{Existe un $a$ en $A$ tal que $P(a)$}
+    \pause
+    \begin{itemize}
+        \item $\exists x \in \R, x^2-x=0$
+        \item $\{x\in \R: x^2 = x\} \neq \emptyset$
+    \end{itemize}
+    \alert{Para demostrar estas propiedades, se exhibe un ejemplo}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Notaciones}
+
+    \begin{itemize}
+        \item $\forall a \in A, \forall b \in A, P(a,b) \Leftrightarrow  \forall a,b \in A, P(a,b)$
+        \item $\exists a \in A, \exists b \in A, P(a,b) \Leftrightarrow  \exists a,b \in A, P(a,b)$
+            \idea{$\forall a,b \in \R, a<b \Rightarrow a^2 < b^2 $}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Negaciones}
+    La negación de un cuantificador universal es el complemento del otro cuantificador universal
+    \begin{itemize}
+        \item $\neg(\forall x \in X, P(x)) = \exists x \in X, \neg P(x)$
+        \item $\neg(\exists x \in X, P(x)) = \forall x \in X, \neg P(x)$
+
+    \end{itemize}
+    \pause
+            \begin{flushright}
+                \idea{Demostrar $\neg (\forall n\in \mathbb N, \exists p\in \mathbb N, n = 2p$)}
+            \end{flushright}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
