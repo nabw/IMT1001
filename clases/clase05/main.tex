@@ -1,0 +1,121 @@
+\documentclass[14pt,aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimplePlus}
+\usepackage{booktabs}
+
+\title[short title]{Clase 05 Conjuntos}
+\subtitle{}
+\author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
+\institute[UC|CMM] 
+{
+    Pontificia Universidad Católica de Chile \\
+    Centro de Modelamiento Matemático
+}
+
+\titlegraphic{
+    \vspace{-1.8cm}
+    \begin{flushright}
+      \includegraphics[height=2.5cm]{../images/puc.png} 
+    \end{flushright}
+}
+
+\date{24/03/2024}
+%\setbeamercovered{transparent}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\frametitle{Conjuntos}
+    \begin{itemize}
+        \item Caracterizaciones
+        \item Operaciones
+    \end{itemize}
+    \idea{Colección bien definida de elementos}\footnote{Algo más riguroso podría ser sorprendentemente complejo}
+
+    \vspace{1cm}
+    \newref{Eccles, Cap. 6}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Caracterización}
+    \begin{itemize}
+        \item Definición directa
+            \begin{itemize}
+                \item $A = \{1,3,7\}$ (conjunto finito)
+                \item $B = \{2n\}_{n=1}^\infty$ (conjunto infinito)  
+                \item $C = \{x \in \mathbb R: x < 2.5 \quad\text{y}\quad  \int_0^x \sqrt s \,ds \leq 10 \} $ 
+            \end{itemize}
+        \item Definición constructiva
+            \begin{itemize}
+                \item $\{ 2n : n \in \mathbb Z \}$ 
+                \item $\{p / q : p,q \in \mathbb Z\}$
+            \end{itemize}
+        \item Definición condicional
+            $$ \{\vec x \in \mathbb R^2 : |\vec x|\leq 2 \} $$
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Operaciones}
+    \begin{itemize}
+        \item Conjunto vacío $\emptyset$
+        \item Pertenencia: $ x \in A $
+        \item Subconjunto:
+            $$ A\subseteq B \Leftrightarrow a\in A \Rightarrow a \in B $$
+        \item Igualdad: 
+             $$ A = B  \Leftrightarrow  \left(x\in A \Leftrightarrow x\in B\right) $$
+    \end{itemize}
+    \pause
+    \idea{Demostrar transitividad: Si $A\subset B$ y $B\subset C$, luego $A\subset C$.} 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Operaciones II}
+    \begin{small}
+    \begin{itemize}
+        \item Intersección:  $ A \cap B = \{ x | x\in A \text{ y } x\in B\} $ \hfill \textcolor{gray}{(Si $A\cap B = \emptyset$, se llaman \emph{disjuntos})}
+        \item Unión: $ A \cup B = \{ x | x\in A \text{ o } x\in B\} $
+        \item Conjunto potencia de $A$: 
+            $$ \mathcal P(A) = \{ \text{Conjunto de todos los subconjuntos de $A$} \} $$
+        \item Complemento: Dado conjunto ambiente (o universal) $U$ tal que $A\in \mathcal P(U)$, 
+            $$ A^c = \underbrace{U - A}_\text{\alert{diferencia}} = \{x\in U | x \not\in A \} $$
+        \item Producto cartesiano: 
+            $$ A\times B = \{(a,b) | a \in A, b \in B \} $$
+    \end{itemize}
+    \end{small}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejemplos}
+    Considerar $A=\{1,2\}$, $B = \{2,3\}$ y calcular:
+    \begin{itemize}
+        \item $A\cup B$ \only<2>{\hfill\alertGreen{$\{1,2,3\}$}}
+        \item $A \cap B$  \only<2>{\hfill\alertGreen{$\{2\}$}}
+        \item $\mathcal P(A)$ \only<2>{\hfill\alertGreen{$\{\emptyset, \{1\}, \{2\}, \{1,2\}\}$}}
+        \item $A^c$ en el espacio ambiente $A\cup B$ \only<2>{\hfill\alertGreen{$\{3\}$}}
+        \item $A\times B$ \only<2>{\hfill\alertGreen{$\{(1,2),(1,3), (2,2), (2,3)\}$}}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Diagramas de Venn}
+    \idea{Pizarra}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Propiedades importantes}
+    \begin{small}
+        \begin{itemize}
+            \item Asociatividad: $A\cup(B\cup C) = (A\cup B)\cup C$, $A\cap(B\cap C) = (A\cap B) \cap C$
+            \item Conmutatividad: $A\cup B = B\cup A$, $A\cap B=B\cap A$
+            \item Distributividad: $A\cup(B\cap C) = (A\cup B)\cap (A\cup C)$, $A\cap(B\cup C) = (A\cap B)\cup (A\cap C)$ 
+            \item Leyes de De Morgan: $(A\cup B)^c=A^c\cap B^c$, $(A\cap B)^c = A^c\cup B^c$
+            \item Complementos: $A\cup A^c = X$ ambiente, $A\cap A^c = \emptyset$
+            \item Doble complemento: $(A^c)^c = A$
+        \end{itemize}
+    \end{small}
+    \idea{Demostrar la última}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
