@@ -1,0 +1,149 @@
+\documentclass[14pt,aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimplePlus}
+\usepackage{booktabs}
+\usepackage{minted}
+\newcommand{\R}{\mathbb{R}}
+
+\title[short title]{Clase 09: Acotamiento y axioma del supremo}
+\subtitle{}
+\author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
+\institute[UC|CMM] 
+{
+    Pontificia Universidad Católica de Chile \\
+    Centro de Modelamiento Matemático
+}
+
+\titlegraphic{
+    \vspace{-1.8cm}
+    \begin{flushright}
+      \includegraphics[height=2.5cm]{../images/puc.png} 
+    \end{flushright}
+}
+
+\date{07/04/2025}
+%\setbeamercovered{transparent}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\frametitle{Temas de hoy}
+    \begin{itemize}
+        \item Acotamiento superior
+        \item Acotamiento inferior
+        \item Axioma del supremo (e ínfimo)
+        \item Aplicaciones
+    \end{itemize}
+
+    \vspace{1cm}
+    *Veremos todo en $\R$, pero son conceptos simples de extender
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\frametitle{Acotamiento}
+    \only<1>{
+        \begin{block}{Cota superior}
+            Decimos que $A\subset \R$ es superiormente acotado si se cumple que
+                $$ \exists M\in \R, \forall x \in A, x\leq M. $$
+                Llamamos a $M$ la \emph{cota superior} de $A$.
+        \end{block}
+        \idea{Encontrar cota superior de $(0,1)$ y de $(-\infty, 2)$}
+    }
+    \only<2>{
+        \begin{block}{Cota inferior}
+            Decimos que $A\subset \R$ es inferior acotado si se cumple que
+                $$ \exists M\in \R, \forall x \in A, x\geq M. $$
+                Llamamos a $M$ la \emph{cota inferior} de $A$.
+        \end{block}
+    }
+    \only<3>{
+        \begin{block}{Acotado}
+            Si existe $M$ tal que $|x|\leq M$ para todo $x\in A\subset \R$, decimos que $A$ es \emph{acotado}.
+        \end{block}
+        \idea{Demostrar que acotado es equivalente a sup + inf acotado}
+    }
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Máximos y mínimos}
+    \begin{block}{Máximo}
+        $A$ posee un máximo si posee una cota superior que pertenece a $A$
+    \end{block}
+    \begin{block}{Mínimo}
+        $A$ posee un mínimo si posee una cota inferior que pertenece a $A$
+    \end{block}
+    \idea{Notar paralelo entre máximo/mínimo con intervalos abiertos/cerrados}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Supremo e ínfimo}
+    \only<1>{
+        \begin{block}{Supremo}
+            Dado $A\in\R$, $M$ es el supremo de $A$ si 
+            \begin{itemize}
+                \item $M$ es cota superior de $A$
+                \item $s>M$ para cualquier otra cota superior $s$ de $A$
+            \end{itemize}
+            O sea, la menor cota superior de $A$.
+        \end{block}
+        \idea{El máximo de $(0,1)$ no existe, pero su supremo si.}
+    }
+    \only<2>{
+        \begin{block}{Ínfimo}
+            Dado $A\in\R$, $m$ es el ínfimo de $A$ si 
+            \begin{itemize}
+                \item $m$ es cota inferior de $A$
+                \item $s<m$ para cualquier otra cota inferior $s$ de $A$
+            \end{itemize}
+            O sea, la mayor cota inferior de $A$.
+        \end{block}
+    }
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Propiedades}
+    Dados dos conjuntos $A, B$ en $\R$, definimos
+    $$ A+B = \{ x+y: x\in A, y \in B\} $$
+    $$ A\cdot B = \{xy: x\in A, y \in B \} $$
+    Luego:
+    \begin{enumerate}
+        \item $\sup(A+B) = \sup A + \sup B $
+        \item $\sup(A\cdot B) = \sup A \sup B$ si $A, B\subset [0,\infty)$
+    \end{enumerate}
+    \idea{Demostrar la primera (probar ambas desigualdades)}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Axioma del supremo}
+    La existencia del supremo no se deduce de las propiedades de $\R$. 
+    \begin{block}{Axioma del supremo}
+        Todo conjunto acotado y no vacío posee un supremo
+    \end{block}
+    \pause Notar que eso implica el ínfimo ya que $\inf A = - \sup -A$.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Aplicación: construcción de números}
+    Qué es la raíz cuadrada de un real? 
+    \pause en $\mathbb N$ y $\mathbb Q$ es claro. Demostración guiada:
+    \begin{enumerate}
+        \item Verificar que el conjunto $A=\{r\in \R: r^2\leq2\}$ tiene supremo, y definir $s = \sup A$. 
+        \item Demuestre por contradicción que $s^2\geq 2$ considerando una constante positiva $\epsilon$ tal que $(s+\epsilon)^2 < 2$.
+        \item Demuestre por contradicción que $s^2\leq 2$ análogamente con $2-\epsilon$
+        \item Concluya que $s$ es el número buscado.
+    \end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\frametitle{Temas de hoy}
+    \begin{itemize}
+        \item Acotamiento superior
+        \item Acotamiento inferior
+        \item Axioma del supremo (e ínfimo)
+        \item Aplicación
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
