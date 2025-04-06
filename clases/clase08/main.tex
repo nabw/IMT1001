@@ -1,0 +1,111 @@
+\documentclass[14pt,aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimplePlus}
+\usepackage{booktabs}
+\usepackage{minted}
+\newcommand{\R}{\mathbb{R}}
+
+\title[short title]{Clase 08 Inyección, Sobreyección, Biyección}
+\subtitle{}
+\author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
+\institute[UC|CMM] 
+{
+    Pontificia Universidad Católica de Chile \\
+    Centro de Modelamiento Matemático
+}
+
+\titlegraphic{
+    \vspace{-1.8cm}
+    \begin{flushright}
+      \includegraphics[height=2.5cm]{../images/puc.png} 
+    \end{flushright}
+}
+
+\date{16/10/2024}
+%\setbeamercovered{transparent}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\frametitle{Objetivos}
+    \begin{itemize}
+        \item Funciones pueden asignan un único elemento $f(x)$ a cada $x$
+        \item Si para dos $x_1,x_2$ obtenemos un mismo valor, no está bien definida la operación "inversa" 
+        \item Informalmente:
+            \begin{itemize}
+                \item Inyección: Cada $f(x)$ viene de un único $x$
+                \item Sobreyección: $f:X\to Y$ llega a todo el codominio  $(Im(f) = Y)$
+                \item Biyección: Inyección + Sobreyección
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Inyectividad}
+    \begin{block}{}
+        $f:X\to Y$ es inyectiva si toma valores distintos para cada punto del dominio.
+        $$ \forall x_1,x_2\in X: x_1\neq x_2 \Rightarrow f(x_1) \neq f(x_2)$$
+        O su contrapropositiva
+        $$ \forall x_1,x_2\in X:  f(x_1) = f(x_2) \Rightarrow x_1 = x_2$$
+    \end{block}
+    \idea{Demostrar que $f(x)=x$ es inyectiva. Ídem con $x^2$ en $\R_+$.}
+    \idea{Encuentre además una función que no lo sea.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sobreyectividad}
+    \begin{block}{}
+        $f:X\to Y$ es sobreyectiva si cada elemento de $Y$ se asigna a un $x$:
+            $$ \forall y \in Y, \exists x \in X: y=f(x) $$
+    \end{block}
+
+\idea{Demostrar que $f(x)=x$ es sobreyectiva. }
+\idea{Ídem con $f(x)=e^x$ dada por $f:\R \to \R_+$.}
+\idea{Encuentre una función que no lo sea.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Biyectividad}
+    \begin{block}{}
+        $f:X\to Y$ es biyectiva si es inyectiva y sobreyectiva. 
+    \end{block}
+    \idea{Construya una biyección entre: $\R_+$ y $(0,1)$, $\R$ y $(-1,1)$.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Pre-imagen}
+    \small
+    \begin{block}{}
+        Dada $f:X\to Y$, la preimagen de $y\in Y$ es el conjunto $C_y\subset X$ tal que 
+            $$ f(x) = y \quad\forall x \in C_y . $$
+    \end{block}
+    \begin{itemize}
+        \item<+-> $f$ es inyectiva ssi la pre-imagen de cada elemento en $Y$ continene a lo más un elemento.
+        \item<+-> $f$ es sobreyectiva ssi la pre-imagen de cada elemento en $Y$ continene al menos un elemento.
+        \item<+-> $f$ es biyectiva ssi la pre-imagen de cada elemento en $Y$ continene exactamente un elemento.
+    \end{itemize}
+\idea{Considere $f(x)=x^2$ en $\R$. Encuentre la preimagen de 2. }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Pre-imagen de un conjunto}
+    Podemos también considerar la preimagen de un conjunto, de modo que, denotando la preimagen de un conjunto con $f^{-1}$, se tiene que para $f(x)=x^2$:
+    $$ f^{-1}((1,2)) = (-\sqrt 2, -1) \cup (1, \sqrt 2) $$
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Inversas}
+    \begin{block}{}
+        $f:X\to Y$ es \emph{invertible} si existe una función $g:Y\to X$ tal que
+        $$ \forall x\in X, \forall y \in Y, f(x) = y \Leftrightarrow g(y) = x. $$
+        Llamamos a $g$ la inversa de $f$ y usamos el símbolo $g = f^{-1}$. 
+    \end{block}
+    \idea{Encuentre la inversa de $f(x) = x+1$.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejercicio}
+    Demostrar que si $f:X\to Y$ es invertible, entonces se tiene que $f^{-1}\circ f = I_X$ (identidad en $X$) y también que $f \circ f^{-1} = I_Y$.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
