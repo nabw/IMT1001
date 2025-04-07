@@ -4,7 +4,7 @@
 
 \newcommand{\R}{\mathbb{R}}
 
-\title[short title]{Clase 07 Funciones}
+\title[short title]{Clase 10 Procesos límite}
 \subtitle{}
 \author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
 \institute[UC|CMM] 
@@ -30,96 +30,10 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Motivación}
-    \begin{itemize}
-        \item La función es uno de los objetos más fundamentals de la matemática
-        \item Las empezamos a usar desde el día 0 
-        \item .... sin una definición rigurosa
-    \end{itemize}
-    \vspace{1cm}
-    \newref{Eccles, Cap. 8}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Función}
-    \begin{block}{}
-        Dados conjuntos $X, Y$, una \emph{función} de $X$ a $Y$ es la asignación de un único elemento en $Y$ para cada $X$.
-    \end{block}
-    \begin{itemize}
-        \item Al valor asignado a $x$ le llamamos $f(x)$ (\emph{valor de f en x})
-        \item Se escribe también como aplicación: $x\mapsto f(x)$
-        \item 
-            $$ f: \underbrace{X}_\text{dominio} \to \underbrace{Y}_\text{codominio} $$
-    \end{itemize}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ejemplos}
-    \begin{itemize}
-        \item $X=\{1,2\}, Y=\{2,3\}$, $f:X\to Y$ con $f(1)=2$, $f(2)=2$
-        \item $f:\mathbb R \to \mathbb R$, $f(x) = x^2$
-        \item $f:\mathbb R_+ \to \mathbb R$, $f(x) = x^2$
-        \item $f:\mathbb R_- \to \mathbb R$, $f(x) = x^2$
-        \item $f:(-1,2) \to \mathbb R$, $f(x) = x^2$
-    \end{itemize}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Funciones bien definidas}
-    Una función debe tener una definición coherente para todos los puntos en su dominio: Sea $f:[0,\infty) \to \mathbb R$ dada por
-    $$ f(x) = 
-    \begin{cases}
-        1/x & x\in (0,\infty) \\
-        12  & x = 0
-    \end{cases}
-    $$
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Notaciones}
-    \begin{small}
-    \begin{itemize}
-            \item<+-> Dos fnes son iguales ($f=g$) si toman el mismo valor en todo punto 
-                \begin{flushright}
-                    $f(x) = x^2-1, g(x) = (x+1)(x-1)$
-                \end{flushright}
-            \item<+-> Sean $f:X\to Y$, $A\subset X$. La \emph{restricción} de $f$ a $A$ se denota $f|_A$ y está dada por $f|_A:A\to Y$ con valores $f|_A(x)=f(x)$ para todo $x \in A$. 
-            \item<+-> Si $A\subset B$, $x\in B\mapsto x\in A$ se llama \emph{restricción}
-            \item<+-> Sean $f:X\to Y$, $g:Y\to Z$. Llamamos $g\circ f:X\to Z$ a la \emph{composición} de las funciones $f$ y $g$, dada por $g\circ f(x) = g(f(x))$. 
-                \begin{flushright}
-                    $f:(0,1)\to (1,2)$, $f(x) = x+1$, $g:(1,2)\to (1,4)$, $g(x) = x^2$
-                \end{flushright}
-            \item<+-> Si $A\subset B$, $x\in A\mapsto x\in B$ se llama \emph{inclusión}
-            \item<+-> $I_X:X \to X$, $I_X(x) = x$ se llama \emph{identidad}
-        \end{itemize}
-    \end{small}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Imagen de una función}
-    \begin{itemize}
-        \item Una función no tiene por qué llegar a todo su codominio:
-            $$f:(0,1)\to \mathbb R, f(x) = x^2, f(x) = 2, \text{etc}$$
-        \item El conjunto al que SI llega se llama imagen:
-            $$ Im(f) = \{ f(x) | x \in X \} $$
-        \item El grafo es "el dibujo" en el plano
-            $$ G(f) = \{(x,y) \in X\times Y: \exists x \in X, y = f(x)\} = \{(x, f(x)): x\in X \}$$
-    \end{itemize}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ejercicios}
-    \begin{enumerate}
-        \item Dadas $f:X\to Y$, $g:Y\to Z$, $h:Z\to W$:
-            \begin{itemize}
-                \item $(h\circ g)\circ f = h\circ (g\circ f):X \to W$
-                \item $f\circ I_X = f = I_Y\circ f: X\to Y$
-            \end{itemize}
-        \item Muestre que las siguientes funciones son iguales y encuentre su dominio y codominio
-                $$\begin{aligned}
-                    f(x,y) &= \frac 1 2 (x+y) + \frac 1 2 |x - y| \\
-                    g(x,y) &= \begin{cases}x & x\geq y \\ y & x < y \end{cases}
-                \end{aligned}$$
-    \end{enumerate}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \maketitle
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
