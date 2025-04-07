@@ -3,6 +3,7 @@
 \usepackage{booktabs}
 
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
 
 \title[short title]{Clase 10 Procesos límite}
 \subtitle{}
@@ -29,9 +30,129 @@
     \maketitle
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Clase de hoy}
+    \begin{itemize}
+        \item Sucesiones
+        \item Límites de sucesiones
+        \item Límites de funciones
+        \item Límite superior/inferior
+    \end{itemize}
+
+    \vspace{1cm}
+    \newref{Spivak, Cálculo.}
+    \newref{https://ocw.mit.edu/courses/18-100a-real-analysis-fall-2020/mit18\_100af20\_lec92.pdf}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sucesiones}
+    Una sucesión es una función $a:\mathbb N\to \R$, que podemos escribir $a(n)$ pero comúnmente denotamos $a_n$. Se definen casi siempre por recursión o por el símbolo de evaluación:
+    \begin{itemize}
+        \item $a_n = \frac{n}{n+1}$
+        \item $a_n = a_{n-1} + 1$ con $a_0 = 0$. 
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Límite de sucesión}
-    \begin{block}
+    \begin{block}{}
+        Una sucesión $a_n$ converge a $L$ si se cumple que
+            $$ \forall \epsilon > 0, \exists n_0\in N, \forall n\geq n_0, |a_n - L | < \epsilon, $$
+            y lo denotamos $\lim_{n\to\infty} a_n = L$. Al intervalo $(L-\epsilon, L+\epsilon)$ le llamamos una \emph{vecindad} de $L$.
     \end{block}
+    \idea{Demostrar por definición que $a_n = 1/n$ converge a 0}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{No-existencia del límite}
+    Podemos demostrar que un límite no existe usando la negación. Decimos que una sucesión \emph{no tiene límite} si se tiene que
+            $$ \neg(\forall \epsilon > 0, \exists n_0\in N, \forall n\geq n_0, |a_n - L | < \epsilon) $$
+            $$ =\exists \epsilon > 0, \forall n_0\in N, \exists n\geq n_0, |a_n - L | \geq \epsilon, $$
+            \idea{Demostrar que $a_n=(-1)^n$ no tiene límite}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sucesiones monótonas}
+    \begin{small} 
+        \begin{block}{Sucesión monótona}
+            Una sucesión $(a_n)_n$ es monótona (creciente) si se tiene que 
+                $$ a_{n+1} \geq a_n. $$
+                Decreciente se define análogamente.
+        \end{block}
+        \begin{block}{Teorema de sucesiones monótonas}
+            Se $(a_n)_n$ es una sucesión monótona creciente y acotada superiormente, entonces es convergente y 
+                $$ \lim_{n \to \infty}a_n = \sup_n a_n $$
+        \end{block}
+    *Se tiene además el análogo para decreciente y acotada inferiormente.
+    \end{small}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Demostración}
+    \begin{small}
+        \begin{block}{Teorema de sucesiones monótonas}
+            Se $(a_n)_n$ es una sucesión monótona creciente y acotada superiormente, entonces es convergente y $ \lim_{n \to \infty}a_n = \sup_n a_n $
+        \end{block}
+        \begin{enumerate}
+            \item<1-> La sucesión está acotada por su supremo $s$.
+
+                \only<1>{
+                    Como $(a_n)_n$ es acotada, por Axioma del Supremo existe $s = \sup_n\{ a_n: n \in \N \}$. 
+                }
+                \item<2-> $s$ es nuestro candidato a límite. Buscamos $n_0$ tal que $a_n$ con $n\geq n_0$ estén cerca.
+                    
+                    \only<2>{
+                        Como $s$ es supremo, $s-\epsilon$ \emph{no} es cota superior. Con esto, existe $n_0$ tal que 
+                            $$ a_{n_0} > s - \epsilon. $$
+                        La sucesión es creciente, luego 
+                        $$ s-\epsilon < a_{n_0} < a_n \leq s < s-\epsilon. $$
+                    }
+                \item<3-> Vimos que $\forall \epsilon>0$, hay un $n_0$ a partir del cual $a_n$ está en una vecindad de $s$ ($|a_n -s |<\epsilon$). QED.
+        \end{enumerate}
+        \only<4>{Aplicación: Existe $e = \lim_n (1 + 1/n)^n$.}
+    \end{small}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Límites de funciones}
+    \begin{small}
+        Decimos que una función converge a $L$ cuando $x$ va a $x_0$ cuando...\footnote{Ambas son equivalentes}
+        \begin{block}{Epsilon-delta ($\epsilon-\delta$)}
+            $$\forall \epsilon>0, \exists \delta >0, \forall x\in \text{Dom}(f), |x-x_0|<\delta \Rightarrow |f(x) - f(x_0)| < \epsilon $$
+        \end{block}
+
+        \begin{block}{Sucesiones}
+            $$\forall (x_n)_n \subset \text{Dom}(f)\setminus \{x_0\}, \lim_n x_n = x_0 \Rightarrow \lim_n f(x_m) = L $$
+        \end{block}
+        \idea{Demostrar con ambas definiciones que $\lim_{x\to 2}x^2=4$}
+    \end{small}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\darkSlide{En general, con sucesiones es más fácil.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Límite superior / inferior}
+    Dada sucesión $(x_n)_n$:
+    \begin{block}{Límite superior}
+        $$\limsup_{n\to\infty}x_n = \lim_{n\to\infty}\left(\sup_{k\geq n}x_n\right) $$
+    \end{block}
+
+    \begin{block}{Límite inferior}
+        $$\limsup_{n\to\infty}x_n = \lim_{n\to\infty}\left(\inf_{k\geq n}x_n\right)$$
+    \end{block}
+    \idea{Encuentre el liminf y el limsup de $a_n=(-1)^n$.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Ejercicio}
+    \begin{block}{Límite superior}
+        $$\limsup_{n\to\infty}x_n = \lim_{n\to\infty}\left(\sup_{k\geq n}x_n\right) $$
+    \end{block}
+    \begin{block}{Teorema de sucesiones monótonas}
+        Se $(a_n)_n$ es una sucesión monótona creciente y acotada superiormente, entonces es convergente y $ \lim_{n \to \infty}a_n = \sup_n a_n $
+    \end{block}
+    Demuestre usando el teorema de sucesiones monótonas que el limsup siempre existe. Extienda su conclusión para el liminf. 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Propiedades}
+    \begin{enumerate}
+        \item $\liminf_n a_n \leq \limsup_n a_n$
+        \item Relación entre límites: 
+            $$ \lim_n a_n = L \Leftrightarrow \liminf_n a_n = L = \limsup_n a_n $$
+    \end{enumerate}
+    \idea{Demostrar la primera}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
