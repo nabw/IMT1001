@@ -1,3 +1,3 @@
 all:
-	for N in $$(seq -w 1 10); do cd "clase$${N}"; make; cd ../; done
+	for N in $$(seq -w 1 12); do cd "clase$${N}"; make; cd ../; done
 

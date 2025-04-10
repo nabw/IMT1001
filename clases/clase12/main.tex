@@ -24,7 +24,7 @@
     \end{flushright}
 }
 
-\date{26/03/2024}
+\date{16/03/2024}
 %\setbeamercovered{transparent}
 
 \begin{document}
@@ -119,7 +119,7 @@ Quieren diseñar una plancha de cocina
             \begin{itemize}
                 \item<+-> Van de un espacio a otro
                     $$ f: \mathbb R^3 \mapsto \mathbb R, f(x,y,z) = x+y-z $$
-                \item<+-> Los espacios se pueden \emph{medir} (normados)
+                \item<+-> Los puntos se pueden \emph{medir} (normados)
                     $$ |(x,y)| \coloneqq \sqrt{x^2+y^2} $$
                 \item<+-> La norma permite medir distancias
                     $$ \text{dist}( \vec x_1, \vec x_2) \coloneqq |\vec x_1 - \vec x_2| $$
@@ -159,10 +159,10 @@ Quieren diseñar una plancha de cocina
     \begin{itemize}
         \item Vectores $\R^d$
         \item Matrices $\R^{n\times m}$
-        \item Sucesiones
-        \item Sucesiones convergentes
-        \item Funciones 
-        \item Funciones continuas
+        \item Sucesiones $a:\mathbb N\to \R$
+        \item Sucesiones $a:\mathbb N \to \R$ convergentes ($\lim_{n\to\infty} a_n < \infty$)
+        \item Funciones $f:\Omega_1 \subset \R^k \to \Omega_2\subset \R^l$
+        \item Funciones continuas ($\lim_{x\to x_0} f(x) = f(x_0)$)
     \end{itemize}
 
     \vspace{1cm}
@@ -181,12 +181,13 @@ Quieren diseñar una plancha de cocina
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]\frametitle{Espacios funcionales}
+    \begin{footnotesize}
     \begin{itemize}
         \item<+-> Podemos interpretar las funciones como puntos en estos espacios
             \begin{exampleblock}{}
                 Sean $f_1, f_2$ dos funciones y $g = f_1 + f_2$. 
 
-                Si $f_1(x) = x^2, f_2(x) = \sin(x), \quad\Rightarrow\quad g(x) = f_1(x)+f_2(x) = x^2+\sin(x)$
+                Si $f_1(x) = x^2, f_2(x) = \sin(x), \quad\Rightarrow\quad g(x) = (f_1+f_2)(x) = f_1(x)+f_2(x) = x^2+\sin(x)$
             \end{exampleblock}
         \item<+-> Los espacios funcionales tienen \emph{normas} para cuantificar elementos\footnote{Contenido de Análisis Real}
             \begin{itemize}
@@ -196,6 +197,7 @@ Quieren diseñar una plancha de cocina
                     $$ \| f \|_{L^2((0,1), \R)} \coloneqq \left[ \int_0^1|f(x)|^2\,dx \right]^{1/2} $$
             \end{itemize}
     \end{itemize}
+    \end{footnotesize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Ejemplos}
@@ -222,6 +224,11 @@ Quieren diseñar una plancha de cocina
         \item<+-> La derivada: $D: C^k(\R^n, \R) \to C^{k-1}(\R^n, \R^n)$
             $$ Df \coloneqq \nabla f, \quad [Df(x)]_i = \frac{\partial f}{\partial x_i}(x) $$
     \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Pregunta abierta}
+        $$ T:X\to Y $$
+    Cómo se mide la continuidad de un operador...?
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
