@@ -5,7 +5,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 
-\title[short title]{Clase 10 Procesos límite}
+\title[short title]{Clase 10 Procesos límite: Sucesiones}
 \subtitle{}
 \author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
 \institute[UC|CMM] 
@@ -34,8 +34,6 @@
     \begin{itemize}
         \item Sucesiones
         \item Límites de sucesiones
-        \item Límites de funciones
-        \item Límite superior/inferior
     \end{itemize}
 
     \vspace{1cm}
@@ -106,53 +104,6 @@
         \end{enumerate}
         \only<4>{Aplicación: Existe $e = \lim_n (1 + 1/n)^n$.}
     \end{small}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Límites de funciones}
-    \begin{small}
-        Decimos que una función converge a $L$ cuando $x$ va a $x_0$ cuando...\footnote{Ambas son equivalentes}
-        \begin{block}{Epsilon-delta ($\epsilon-\delta$)}
-            $$\forall \epsilon>0, \exists \delta >0, \forall x\in \text{Dom}(f), |x-x_0|<\delta \Rightarrow |f(x) - f(x_0)| < \epsilon $$
-        \end{block}
-
-        \begin{block}{Sucesiones}
-            $$\forall (x_n)_n \subset \text{Dom}(f)\setminus \{x_0\}, \lim_n x_n = x_0 \Rightarrow \lim_n f(x_m) = L $$
-        \end{block}
-        \idea{Demostrar con ambas definiciones que $\lim_{x\to 2}x^2=4$}
-    \end{small}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\darkSlide{En general, con sucesiones es más fácil.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Límite superior / inferior}
-    Dada sucesión $(x_n)_n$:
-    \begin{block}{Límite superior}
-        $$\limsup_{n\to\infty}x_n = \lim_{n\to\infty}\left(\sup_{k\geq n}x_n\right) $$
-    \end{block}
-
-    \begin{block}{Límite inferior}
-        $$\limsup_{n\to\infty}x_n = \lim_{n\to\infty}\left(\inf_{k\geq n}x_n\right)$$
-    \end{block}
-    \idea{Encuentre el liminf y el limsup de $a_n=(-1)^n$.}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[t]{Ejercicio}
-    \begin{block}{Límite superior}
-        $$\limsup_{n\to\infty}x_n = \lim_{n\to\infty}\left(\sup_{k\geq n}x_n\right) $$
-    \end{block}
-    \begin{block}{Teorema de sucesiones monótonas}
-        Se $(a_n)_n$ es una sucesión monótona creciente y acotada superiormente, entonces es convergente y $ \lim_{n \to \infty}a_n = \sup_n a_n $
-    \end{block}
-    Demuestre usando el teorema de sucesiones monótonas que el limsup siempre existe. Extienda su conclusión para el liminf. 
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Propiedades}
-    \begin{enumerate}
-        \item $\liminf_n a_n \leq \limsup_n a_n$
-        \item Relación entre límites: 
-            $$ \lim_n a_n = L \Leftrightarrow \liminf_n a_n = L = \limsup_n a_n $$
-    \end{enumerate}
-    \idea{Demostrar la primera}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
