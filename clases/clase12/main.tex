@@ -119,7 +119,7 @@ Quieren diseñar una plancha de cocina
             \begin{itemize}
                 \item<+-> Van de un espacio a otro
                     $$ f: \mathbb R^3 \mapsto \mathbb R, f(x,y,z) = x+y-z $$
-                \item<+-> Los puntos se pueden \emph{medir} (normados)
+                \item<+-> Los puntos se pueden \emph{medir} (espacios normados)
                     $$ |(x,y)| \coloneqq \sqrt{x^2+y^2} $$
                 \item<+-> La norma permite medir distancias
                     $$ \text{dist}( \vec x_1, \vec x_2) \coloneqq |\vec x_1 - \vec x_2| $$
@@ -141,7 +141,7 @@ Quieren diseñar una plancha de cocina
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Espacios vectoriales}
-    Un espacio vectorial (real) $V$ es un espacio con una operación \emph{suma} $+:V\times V \to \R$ y una operación \emph{producto por escalar} $\cdot: \R\times V \to V$ tales que:
+    Un espacio vectorial (real) $V$ es un espacio con una operación \emph{suma} $+:V\times V \to V$ y una operación \emph{producto por escalar} $\cdot: \R\times V \to V$ tales que:
     \begin{itemize}
         \item Conmutatividad: $u+v=v+u$
         \item Asociatividad: $(u+v)+w =u+(v+w)$, $a\cdot(b\cdot v)=(a\cdot b)\cdot v$
@@ -172,7 +172,7 @@ Quieren diseñar una plancha de cocina
 \begin{frame}{Espacios funcionales}
     \begin{itemize}
         \item $\ell^p$ sucesiones $p$-sumables, i.e. $(a_n)_n$ tal que
-                $$ \sum_i a_i^p < \infty $$
+                $$ \sum_i |a_i|^p < \infty $$
         \item $C(\R,\R)$: funciones continuas de $\R$ a $\R$
         \item $C^1(\R, \R)$: funciones diferenciables de $\R$ a $\R$
         \item $L^p(\R,\R)$ funciones $p$-integrables:
@@ -192,7 +192,7 @@ Quieren diseñar una plancha de cocina
         \item<+-> Los espacios funcionales tienen \emph{normas} para cuantificar elementos\footnote{Contenido de Análisis Real}
             \begin{itemize}
                 \item<+-> Espacio de funciones continuas de $\R$ a $\R$, $C(\R, \R)$. Si $f\in C(\R, \R)$, 
-                    $$ \| f \|_{C(\R, \R)} \coloneqq \sup_{\vec x\in  \R^n}|f(x)|_{\R^m} $$
+                    $$ \| f \|_{C(\R, \R)} \coloneqq \sup_{ x\in  \R}|f(x)|_{\R} $$
                 \item<+-> Espacio de funciones cuadrado integrable\footnote{Por estudiar en Teoría de Integración} de $(0,1)$ a $\R$, $L^2((0,1), \R)$,
                     $$ \| f \|_{L^2((0,1), \R)} \coloneqq \left[ \int_0^1|f(x)|^2\,dx \right]^{1/2} $$
             \end{itemize}
