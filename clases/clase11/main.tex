@@ -32,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Clase de hoy}
     \begin{itemize}
-        \item Sucesiones
+        \item Límites de funciones
         \item Límite superior/inferior
     \end{itemize}
 
@@ -45,11 +45,11 @@
     \begin{small}
         Decimos que una función converge a $L$ cuando $x$ va a $x_0$ cuando...\footnote{Ambas son equivalentes}
         \begin{block}{Epsilon-delta ($\epsilon-\delta$)}
-            $$\forall \epsilon>0, \exists \delta >0, \forall x\in \text{Dom}(f), |x-x_0|<\delta \Rightarrow |f(x) - f(x_0)| < \epsilon $$
+            $$\forall \epsilon>0, \exists \delta >0, \forall x\in \text{Dom}(f), |x-x_0|<\delta \Rightarrow |f(x) - L| < \epsilon $$
         \end{block}
 
         \begin{block}{Sucesiones}
-            $$\forall (x_n)_n \subset \text{Dom}(f)\setminus \{x_0\}, \lim_n x_n = x_0 \Rightarrow \lim_n f(x_m) = L $$
+            $$\forall (x_n)_n \subset \text{Dom}(f)\setminus \{x_0\}, \lim_n x_n = x_0 \Rightarrow \lim_n f(x_n) = L $$
         \end{block}
         \idea{Demostrar con ambas definiciones que $\lim_{x\to 2}x^2=4$}
     \end{small}
@@ -57,14 +57,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \darkSlide{En general, las demostraciones con sucesiones son más fáciles.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Continuidad}
+    \begin{block}{}
+        Decimos que $f$ es continua en $x_0$ si $\lim_{x\to x_0}f(x) = f(x_0)$
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Límite superior / inferior}
     Dada sucesión $(x_n)_n$:
     \begin{block}{Límite superior}
-        $$\limsup_{n\to\infty}x_n = \lim_{n\to\infty}\left(\sup_{k\geq n}x_n\right) $$
+        $$\limsup_{n\to\infty}x_n = \lim_{n\to\infty}\left(\sup_{k\geq n}x_k\right) $$
     \end{block}
 
     \begin{block}{Límite inferior}
-        $$\limsup_{n\to\infty}x_n = \lim_{n\to\infty}\left(\inf_{k\geq n}x_n\right)$$
+        $$\liminf_{n\to\infty}x_n = \lim_{n\to\infty}\left(\inf_{k\geq n}x_k\right)$$
     \end{block}
     \idea{Encuentre el liminf y el limsup de $a_n=(-1)^n$.}
 \end{frame}
@@ -76,7 +82,7 @@
     \begin{block}{Teorema de sucesiones monótonas}
         Se $(a_n)_n$ es una sucesión monótona creciente y acotada superiormente, entonces es convergente y $ \lim_{n \to \infty}a_n = \sup_n a_n $
     \end{block}
-    Demuestre usando el teorema de sucesiones monótonas que el limsup siempre existe. Extienda su conclusión para el liminf. 
+    Demuestre usando el teorema de sucesiones monótonas que el limsup de sucesiones acotadas siempre existe. Extienda su conclusión para el liminf. 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Propiedades}
