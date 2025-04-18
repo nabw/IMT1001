@@ -1,0 +1,91 @@
+\documentclass[12pt,aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimplePlus}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{mathtools}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+
+\title[short title]{Clase 13 Normas, límites y puntos fijos}
+\subtitle{}
+\author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
+\institute[UC|CMM] 
+{
+    Pontificia Universidad Católica de Chile \\
+    Centro de Modelamiento Matemático
+}
+
+\titlegraphic{
+    \vspace{-1.8cm}
+    \begin{flushright}
+      \includegraphics[height=2.5cm]{../images/puc.png} 
+    \end{flushright}
+}
+
+\date{16/03/2024}
+%\setbeamercovered{transparent}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Clase de hoy}
+    \begin{itemize}
+        \item Espacios vectoriales normados
+        \item Ejemplos
+        \item Límites abstractos
+        \item Clase Lipschitz y operadores de punto fijo
+    \end{itemize}
+
+    \vspace{1cm}
+    \newref{Abbott, Understanding Analysis.}
+    \newref{Tao, Analysis I \& II}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\frametitle{Espacio vectorial normado}
+    Un espacio vectorial normado $V$ es un espacio vectorial que tiene además una función \emph{norma} $\|\cdot\|:V \to \R$ tal que: 
+    \begin{itemize}
+        \item Es no-negativa $\|x\|\geq 0\quad\forall x \in V$
+        \item Es definida positiva: $\|x\|=0$ ssi $x=0$ 
+        \item Es absolutamente homogénea: $\|\lambda x\| = |\lambda| \|x\|$, para $\lambda \in \R, x\in V$
+        \item Desigualdad triangular: $\|x+y\| \leq \|x\| + \|y \|$, $\forall x,y \in V$. 
+    \end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejemplos}
+    \begin{itemize}
+        \item $\R$ con la norma dada por el valor absoluto.
+        \item $\R^n$ con la norma dada por la norma de vector.
+        \item Espacio de funciones continuas $C(\R,\R)$ con norma del supremo: 
+            $$ \| f \|_{C(\R,\R)} = \sup_{x\in \R}|f(x)|. $$
+    \end{itemize}
+    \idea{Demostrar}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Límites}
+    \begin{block}{}
+        Sean $X,Y$ dos espacios vectoriales normados y un operador $T:X\to Y$. Decimos que el límite de $T$ cuando $x\in X$ va a $\bar x\in X$ es $L\in Y$ si :
+        $$ \forall \epsilon >0, \exists \delta>0: \|x- \bar x\|_X< \delta \Rightarrow \|T(x) - L\|_Y$$
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Continuidad Lipschitz}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    Ejemplos
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Punto fijo}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
