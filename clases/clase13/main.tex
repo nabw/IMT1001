@@ -67,21 +67,66 @@
     \idea{Demostrar}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Límites}
+\begin{frame}{Límites abstractos}
     \begin{block}{}
         Sean $X,Y$ dos espacios vectoriales normados y un operador $T:X\to Y$. Decimos que el límite de $T$ cuando $x\in X$ va a $\bar x\in X$ es $L\in Y$ si :
         $$ \forall \epsilon >0, \exists \delta>0: \|x- \bar x\|_X< \delta \Rightarrow \|T(x) - L\|_Y$$
     \end{block}
+    \idea{Si $f$ en $C(\R,\R)$ tiende a $g$ en $C(\R,\R)$, luego $T(f)=f^2$ tiende a $g^2$}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Continuidad Lipschitz}
+    \begin{block}{Continuidad Lipschitz}
+        $T:X\to Y$ es Lipschitz si existe $L>0$ tal que
+        $$ \| T(x) - T(y) \|_Y \leq L\|x-y\|_X \quad \forall x,y \in X$$
+    \end{block}
+    Si $L<1$, decimos que $T$ es una \emph{contracción}. 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-    Ejemplos
+\begin{frame}{Ejemplo: Funciones con derivada acotada}
+    Todas las funciones con derivada acotada $|f'(x)|<M$ son Lipschitz.
+    Usaremos Teorema del Valor Medio: Si $f$ es $C^1(\R,\R)$; 
+            $$ \exists \xi \in (a,b): \quad f(b) - f(a) = f'(\xi)(b-a) $$
+    \pause \begin{proof}
+        De la desigualdad de TVM, para todos $x,y$ en $\R$:
+        \begin{align*}
+            |f(x) - f(y)| &= |f'(\xi)(b-a)|, \quad \xi \in (x,y) \\
+                          &\leq |f'(\xi)| |x-y|, \quad \text{derivada acotada} \\
+                        &\leq M |x-y|.
+        \end{align*}
+    \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Punto fijo}
+\begin{frame}{Puntos fijos}
+    Dada una función $f:X\to X$, decimos que $x$ es punto fijo de $f$ si 
+        $$ x = f(x) $$
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejemplos}
+    Veamos si las siguientes funciones inducen puntos fijos:
+    \begin{itemize}
+        \item $f(x)=x^p$
+        \item $f(x)=\sin x$
+        \item $f(x) = e^{ax}$
+    \end{itemize}
+    \idea{Código}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejemplo notable: Función logística}
+    $$ f(x) = ax (1-x) $$
+    \idea{Código}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Teorema de punto fijo de Banach}
+    \begin{block}{}
+        Sea $T:X\to X$ una contracción continua. Luego, existe un único punto fijo de $T$. 
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Aplicación importantísima}
+    Si el lado derecho de la siguiente ecuación diferencial es suficientemente suave: 
+        $$ \frac{d f }{dt} = F(t, f), $$
+    entonces existe una única $f$ que satisface la ecuación dada una condición inicial. 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
