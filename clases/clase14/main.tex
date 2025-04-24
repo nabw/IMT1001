@@ -1,0 +1,96 @@
+\documentclass[12pt,aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimplePlus}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{mathtools}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+
+\title[short title]{Clase 14 Operadores de punto fijo}
+\subtitle{}
+\author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
+\institute[UC|CMM] 
+{
+    Pontificia Universidad Católica de Chile \\
+    Centro de Modelamiento Matemático
+}
+
+\titlegraphic{
+    \vspace{-1.8cm}
+    \begin{flushright}
+      \includegraphics[height=2.5cm]{../images/puc.png} 
+    \end{flushright}
+}
+
+\date{21/04/2025}
+%\setbeamercovered{transparent}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Clase de hoy}
+    \begin{itemize}
+        \item Definir operadores de punto fijo
+        \item Ver muchos ejemplos
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Problemas de punto fijo}
+    \begin{block}{Problema de punto fijo}
+        Dado $T:X\to X$, hallar $x$ en $X$ tal que
+            $$ x = T(x).$$
+        También se puede ver como verificar que es cierto que $\exists x\in X: x=T(x)$.
+    \end{block}
+
+    \pause \begin{block}{Problema de búsqueda de raíces}
+        Dado $T:X\to X$, hallar $x$ en $X$ tal que
+            $$ T(x)=0.$$
+    \end{block}
+    \idea{Demostrar que son equivalentes.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejemplos}
+    \begin{itemize}
+        \item<+-> Hallar punto fijo de $f(x) = x^2$
+        \item<+-> Hallar punto fijo de $f(x) = e^{-x}$
+        \item<+-> Hallar puntos fijos de operador derivada $D f= f'$
+        \item<+-> Hallar punto fijo de $f(x) = \sin x \cos (75 x) + e^{\tan x^2}$
+    \end{itemize}
+    \pause \idea{Idea: cuando el papel no funciona, probamos el computador.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Iteraciones de punto fijo}
+    \begin{block}{}
+        Dado un operador $T:X\to X$ y un punto inicial $x_0$, definimos una iteración de punto fijo como la sucesión dada por
+            $$ x^{k+1} = T(x^k)$$
+    \end{block}
+    Si la sucesión $(x^k)_k = (T(x^{k-1}))_k$ converge, entonces converge a un punto fijo de $T$.
+
+    \pause \alertGreen{Para verificar esto, usamos el Teorema de punto fijo de Banach.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejemplo}
+    $$f(x) = \omega \sin x $$
+    Por Teorema de valor medio, sabemos que $f(x) - f(y)=f'(\chi)(x-y)$, luego... 
+    \pause 
+    \begin{equation*}
+        \begin{aligned}
+            |f(x) - f(y)| &= |f'(\chi)||x-y| && \textcolor{gray}{[\text{usamos } \sin x \leq 1]}\\
+                        &\leq \omega |x-y|. 
+        \end{aligned}
+    \end{equation*}
+    Por lo tanto, es una contracción si $\omega<1$. Por TPF, entonces tiene \emph{un único} punto fijo.  \pause \alert{Y si $\omega\geq1$? }
+
+    \pause \idea{Código}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

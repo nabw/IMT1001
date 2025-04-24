@@ -47,12 +47,12 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\frametitle{Espacio vectorial normado}
-    Un espacio vectorial normado $V$ es un espacio vectorial que tiene además una función \emph{norma} $\|\cdot\|:V \to \R$ tal que: 
+    Un espacio vectorial normado $V$ es un espacio vectorial que tiene además una función \emph{norma} $\|\cdot\|_V:V \to \R$ tal que: 
     \begin{itemize}
-        \item Es no-negativa $\|x\|\geq 0\quad\forall x \in V$
-        \item Es definida positiva: $\|x\|=0$ ssi $x=0$ 
-        \item Es absolutamente homogénea: $\|\lambda x\| = |\lambda| \|x\|$, para $\lambda \in \R, x\in V$
-        \item Desigualdad triangular: $\|x+y\| \leq \|x\| + \|y \|$, $\forall x,y \in V$. 
+        \item Es no-negativa $\|x\|_V\geq 0\quad\forall x \in V$
+        \item Es definida positiva: $\|x\|_V=0$ ssi $x=0$ 
+        \item Es absolutamente homogénea: $\|\lambda x\|_V = |\lambda| \|x\|_V$, para $\lambda \in \R, x\in V$
+        \item Desigualdad triangular: $\|x+y\|_V \leq \|x\|_V + \|y \|_V$, $\forall x,y \in V$. 
     \end{itemize}
 
 \end{frame}
@@ -70,7 +70,7 @@
 \begin{frame}{Límites abstractos}
     \begin{block}{}
         Sean $X,Y$ dos espacios vectoriales normados y un operador $T:X\to Y$. Decimos que el límite de $T$ cuando $x\in X$ va a $\bar x\in X$ es $L\in Y$ si :
-        $$ \forall \epsilon >0, \exists \delta>0: \|x- \bar x\|_X< \delta \Rightarrow \|T(x) - L\|_Y$$
+        $$ \forall \epsilon >0, \exists \delta>0: \|x- \bar x\|_X< \delta \Rightarrow \|T(x) - L\|_Y< \epsilon$$
     \end{block}
     \idea{Si $f$ en $C(\R,\R)$ tiende a $g$ en $C(\R,\R)$, luego $T(f)=f^2$ tiende a $g^2$}
 \end{frame}
@@ -90,7 +90,7 @@
     \pause \begin{proof}
         De la desigualdad de TVM, para todos $x,y$ en $\R$:
         \begin{align*}
-            |f(x) - f(y)| &= |f'(\xi)(b-a)|, \quad \xi \in (x,y) \\
+            |f(x) - f(y)| &= |f'(\xi)(x-y)|, \quad \xi \in (x,y) \\
                           &\leq |f'(\xi)| |x-y|, \quad \text{derivada acotada} \\
                         &\leq M |x-y|.
         \end{align*}
