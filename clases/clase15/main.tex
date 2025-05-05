@@ -37,7 +37,7 @@
     \begin{itemize}
         \item Señales
         \item Espacios de Hilbert y sus propiedades
-        \item Ejemplos numéricos
+        \item Ejemplos
     \end{itemize}
 
     \vspace{1cm}
@@ -128,8 +128,8 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Espacios de Hilbert}
-    \begin{block}{Espacio de Hilbert\foonote{Definición incompleta}}
-        Espacio vectorial normado \textcolor{gray}{(completo)} $H$ con un producto interno $(\cdot,\cdot):H\times H\to \R$ tal que
+    \begin{block}{Espacio de Hilbert}
+        Espacio vectorial normado \textcolor{gray}{(completo)}\footnote{Análisis real} $H$ con un producto interno $(\cdot,\cdot):H\times H\to \R$ tal que
         \begin{itemize}
             \item Simétrico: $(x,y) = (y,x)$
             \item Lineal en primer argumento: $(ax + by, z) = a(x,z) + b(y,z)$
@@ -137,7 +137,7 @@
         \end{itemize}
         Notar que el producto interno define una norma $|x| = \sqrt{(x,x)}$. 
     \end{block}
-    \idea{Verificar que producto interno de vectores cumple estas propiedades}
+    \idea{Verificar que producto interno de vectores $x\cdot y=\sum x_iy_i$ las cumple}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Proyección y Ortogonalización}
@@ -150,9 +150,26 @@
         \item Proyección de $x$ en dirección $y$.
             $$P_y(x) = (x, \hat y)\hat y = \left(x, \frac{y}{|y|}\right)\frac{y}{|y|} = \hat y\hat y^T x $$
         \item Ortogonalización de $x$ con respecto a $y$
-            $$ x^\perp = x - P_y(x) = (\mat I - \hat y \hat y^T) x $$
+            $$ x^\perp = x - P_y(x) = (\mathbf I - \hat y \hat y^T) x $$
     \end{itemize}
     \idea{Qué relación tiene esto con la factorización QR?}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Construcción de producto interno en dim infinita}
+    Consideramos norma $L^2(0,1)$: $\| f \|^2 = \int_0^1 f^2(x)\,dx$
+    \begin{align*}
+        \| u + v \|^2 &= \int_0^1(u(x) + v(x))^2\,dx \\
+                    &= \int_0^1u^2(x)\,dx + 2\int_0^1u(x)v(x)\,dx + \int_0^1v^2(x)\,dx \\
+                    &= \| u \|^2 + 2\int_0^1u(x)v(x)\,dx  + \| v \|^2. 
+    \end{align*}
+    Definimos $(u,v) = \int_0^1uv\,dx$. 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Relación con Teo coseno}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{../images/teorema-coseno.png}\footnote{C Sing-Long}
+    \end{center}
+    \alert{Esto \emph{define} al producto interno vectorial!}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{En dimensión infinita}
