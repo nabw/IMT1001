@@ -1,41 +1,64 @@
-\documentclass[9pt]{extarticle}
+\documentclass[9pt]{article}
 \usepackage{fullpage}
 \usepackage{todonotes}
 \usepackage{mathpazo}
 \usepackage{amsmath}
 
+
 \newcommand{\note}[1]{\todo[inline,color=gray!20!white]{#1}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\pts}[1]{[{\bf #1 puntos}] }
+\newtheorem{theorem}{Theorem}
 
 \title{Tarea 4}
 \author{}
 \date{16/04/2025}
 
+\usepackage[spanish]{babel}
 \begin{document}
-%\fontsize{10}{10}
 \maketitle
-\note{Esta tarea es individual y se debe entregar en el buzón habilitado para eso en Canvas con plazo máximo de entrega el miércoles 07/05/2025 al inicio de la ayudantía (i.e. 3 semanas de plazo con receso en medio). Tareas entregadas en \LaTeX (que sean comprensibles) tendrán una bonificación de 5 décimas. 
+\note{Esta tarea es individual y se debe entregar en el buzón habilitado para eso en Canvas con plazo máximo de entrega el miércoles 21/05/2025 al inicio de la ayudantía (i.e. 2 semanas de plazo). Tareas entregadas en \LaTeX (que sean comprensibles) tendrán una bonificación de 5 décimas. 
 
 A menos que se indique lo contrario, todas las preguntas valen lo mismo. Para el desarrollo de los problemas, escriba el desarrollo en el mayor detalle posible, y defina todos los objetos matemáticos que use.
 
 La tarea tiene 14 puntos, pero el puntaje máximo será de 9 puntos. Si responde más, su nota será dada por las mejores 9 respuestas. En cada pregunta, el puntaje dado será: 1 punto si está bien, 0.5 puntos si tiene un desarrollo concluyente pero tiene errores, y 0.0 puntos si tiene poco o nada de desarrollo.}
 
 \begin{itemize}
-    \item\pts{2} Use el Teorema de sucesiones monótonas para demostrar que existe el límite de la sucesión $a_n = (1+1/n)^n$. Este límite es el número de Euler (o constante de Napier) $e$. 
-    \item\pts{2} Demuestre que la función $f(x) = \sin(1/x)$ no tiene límite en el punto $x_0 = 0$. 
+    \item\pts{2} Dado un espacio abstracto $X$, decimos que un operador $P:X\to X$ es una proyección si se cumple que $P^2 = P$. Demuestre que dado un vector $\vec v$ en $\R^n$, la proyección a lo largo de $\vec v$ y su complemento ortogonal, dados por
+            $$ P_v(\vec x) = \vec v\vec v^T \vec x, \qquad P_v^\perp(\vec x) = (I - P_v)\vec x$$
+            son efectivamente proyecciones en el sentido abstracto. 
 
-    \item\pts{2} Demuestre que la función $f(x)=\sin(1/x)$ tiene límite superior e inferior en $x\to 0$, y calcularlos. 
-
-    \item\pts{2} Demuestre que el espacio de funciones continuas reales es un espacio vectorial con las operaciones suma y producto estándar de los números reales.
-
-    \item Considere el operador integral $I(f) = \int_0^1 f(s)\, ds$. Usando que $\int f \leq \int |f|$:
+    \item El objetivo de esta pregunta es demostrar que el problema de Cauchy asociado a una EDO tiene garantías de que exista una solución bajo ciertas hipótesis. Para eso, consideramos una función $f:\R_+ \times \R \to \R$ continua y el rectángulo
+        $$ R = \{(t,x): t \in [0,T], x \in [u_0-L, u_0+L] \}. $$
+        El Teorema que queremos demostrar es el siguiente: 
+        \begin{theorem}
+            Si $f$ es de clase $C^1$ (continua y con derivada continua) en $R$, luego existe una única función $u=u(t)$ tal que 
+            \begin{equation}\label{eq:edo}
+                u'(t) = f(t, u) 
+            \end{equation}
+            que cumple la condición inicial $u(0)=u_0$, y que está definida en un intervalo $[0,t^*]\subset [0,T]$. 
+        \end{theorem}
+        Descompondremos su demostración en varios pasos. 
+        \begin{enumerate}
+            \item\pts{1} Demuestre con el Teorema Fundamental del Cálculo que $u$ es solución de \eqref{eq:edo} si y solo si cumple que
+                $$ u(t) = u_0 + \int_0^t f(s, u(s))\,ds. $$
+            \item\pts{1} Demuestre que como $f$ es $C^1$, se tiene que es Lipschitz en su segundo argumento, i.e. que para todo $t$ existe una constante positiva $C$ tal que 
+                    $$ |f(t, x_1) - f(t, x_2)|\leq C |x_1 - x_2|. $$
+            \item\pts{3} Considere el operador $T:C(\R,\R)\to C(\R,\R)$ definido como
+                        $$ T(y)(t) = u_0 + \int_0^t f(s, y(s))\,s. $$
+                    Muestre que este operador es una contracción para $t$ suficientemente cercano a $0$, i.e. que necesita que $t\leq t^*$ para algún $t^*$. 
+            \item\pts{2} A partir de los resultados anteriores, use el Teorema de Punto Fijo de Banach para mostrar que existe un punto fijo de $T$ que resuelve \eqref{eq:edo}. 
+        \end{enumerate}
+    \item Considere la función discontinua $f:[-1,1]\to \R$ dada por
+            $$ f(x) = I_{(-1/2,1/2)}. $$
             \begin{itemize}
-                \item\pts{2} Muestre que el operador está bien definido en $C([0,1], \R)$, i.e. que no existe ninguna $f$ en $C([0,1],\R)$ tal que $I(f)=\infty$. \emph{Hint: Demuestre por contradicción que las funciones continuas en un intervalo cerrado son acotadas y use esa cota.} 
-                \item\pts{1} Muestre que el operador no está bien definido en $C((0,1), \R)$.
-                \item\pts{2} Caracterice el dominio de $I$, i.e. el espacio de funciones donde la función está bien definida, en términos de los espacios funcionales que vimos en clases. 
-                \item\pts{1} Caracterice el codominio de $I$.
+                \item\pts{2} Encuentre los coeficientes de Fourier $a_0, \alpha_n, \beta_n$ tales que 
+                    $$ f(x) = a_0 + \sum_{n=1}^\infty \alpha_n \sin(n\pi x) + \beta_n \cos(n\pi x). $$
+                \item\pts{3} Para los coeficientes calculados, considere la serie truncada
+                    $$ f_N(x) = a_0 + \sum_{n=1}^N \alpha_n \sin(n\pi x) + \beta_n \cos(n\pi x). $$
+                    Programe esta serie y grafíquela para los valores $N\in \{1,5,10,50,100\}$.
+                \item\pts{2} Estudie el valor de la serie aproximante en los puntos $\{-1/2,1/2\}$ y comente el resultado en términos de la continuidad de las funciones $f$ y $f_N$. Elija un $N$ grande para que ambas funciones sean parecidas. 
             \end{itemize}
 \end{itemize} % preguntas
 
