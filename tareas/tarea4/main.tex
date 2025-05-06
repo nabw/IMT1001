@@ -13,7 +13,7 @@
 
 \title{Tarea 4}
 \author{}
-\date{16/04/2025}
+\date{07/05/2025}
 
 \usepackage[spanish]{babel}
 \begin{document}
@@ -22,10 +22,10 @@
 
 A menos que se indique lo contrario, todas las preguntas valen lo mismo. Para el desarrollo de los problemas, escriba el desarrollo en el mayor detalle posible, y defina todos los objetos matemáticos que use.
 
-La tarea tiene 14 puntos, pero el puntaje máximo será de 9 puntos. Si responde más, su nota será dada por las mejores 9 respuestas. En cada pregunta, el puntaje dado será: 1 punto si está bien, 0.5 puntos si tiene un desarrollo concluyente pero tiene errores, y 0.0 puntos si tiene poco o nada de desarrollo.}
+La tarea tiene 16 puntos, pero el puntaje máximo será de 12 puntos. Si responde más, su nota será dada por las mejores respuestas. En cada pregunta, el puntaje dado será: 1 punto si está bien, 0.5 puntos si tiene un desarrollo concluyente pero tiene errores, y 0.0 puntos si tiene poco o nada de desarrollo.}
 
 \begin{itemize}
-    \item\pts{2} Dado un espacio abstracto $X$, decimos que un operador $P:X\to X$ es una proyección si se cumple que $P^2 = P$. Demuestre que dado un vector $\vec v$ en $\R^n$, la proyección a lo largo de $\vec v$ y su complemento ortogonal, dados por
+    \item\pts{2} Dado un espacio abstracto $X$, decimos que un operador $P:X\to X$ es una proyección si se cumple que $P^2 = P$. Demuestre que dado un vector unitario $\vec v$ en $\R^n$, la proyección a lo largo de $\vec v$ y su complemento ortogonal, dados por
             $$ P_v(\vec x) = \vec v\vec v^T \vec x, \qquad P_v^\perp(\vec x) = (I - P_v)\vec x$$
             son efectivamente proyecciones en el sentido abstracto. 
 
@@ -55,6 +55,7 @@ La tarea tiene 14 puntos, pero el puntaje máximo será de 9 puntos. Si responde
             \begin{itemize}
                 \item\pts{2} Encuentre los coeficientes de Fourier $a_0, \alpha_n, \beta_n$ tales que 
                     $$ f(x) = a_0 + \sum_{n=1}^\infty \alpha_n \sin(n\pi x) + \beta_n \cos(n\pi x). $$
+                    Para hacerlo, demuestre que las funciones $1,\sin(k\pi x), \cos(k\pi x)$ son ortogonales en $L^2$ y luego calcule el producto entre dichas funciones y $f$.
                 \item\pts{3} Para los coeficientes calculados, considere la serie truncada
                     $$ f_N(x) = a_0 + \sum_{n=1}^N \alpha_n \sin(n\pi x) + \beta_n \cos(n\pi x). $$
                     Programe esta serie y grafíquela para los valores $N\in \{1,5,10,50,100\}$.
