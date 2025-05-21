@@ -16,7 +16,7 @@
 
 Para el desarrollo de los problemas, escriba el desarrollo en el mayor detalle posible, y defina todos los objetos matemáticos que use.
 
-La tarea tiene 13 puntos, pero el puntaje máximo será de 10 puntos. Si responde más, su nota será dada por las mejores respuestas. En cada pregunta, el puntaje dado será: 1 punto si está bien, 0.5 puntos si tiene un desarrollo concluyente pero tiene errores, y 0.0 puntos si tiene poco o nada de desarrollo.}
+La tarea tiene 13 puntos, pero el puntaje máximo será de 9 puntos. Si responde más, su nota será dada por las mejores 9 respuestas. En cada pregunta, el puntaje dado será: 1 punto si está bien, 0.5 puntos si tiene un desarrollo concluyente pero tiene errores, y 0.0 puntos si tiene poco o nada de desarrollo.}
 
 
 
@@ -32,7 +32,7 @@ La tarea tiene 13 puntos, pero el puntaje máximo será de 10 puntos. Si respond
                     $$ Tf(x) = \int_a^x f(s)\,ds. $$
 
         \begin{enumerate}
-            \item\pts{1} Considere una discretización del intervalo $I$ en $N$ intervalos $I^k$ con $I^k = (x^k, x^{k+1})$ y $|x^{k+1} - x^k| = \frac{b-a}{N}$, tal que la integral se puede aproximar con trapezios con
+            \item\pts{1} Considere una discretización del intervalo $I$ en $N$ intervalos $I^k$ con $I^k = (x^k, x^{k+1})$ y $|x^{k+1} - x^k| = \frac{b-a}{N}$, tal que la integral se puede aproximar con trapecios con
                 $$ \int_a^b f(s)\,ds \approx T^Nf(b) := \sum_{k=0}^N \frac h 2 \left( f(x^k) + f(x^{k+1})  \right). $$
                 Notar que esta es una definición para el operador $T^N$.  Considere la función exponencial y muestre que esta estrategia dada por la serie $T^Nf(b)$ converge al valor de la integral $Tf(b)$. Considere $a=0$, $b=1$.
             \item\pts{1} Adapte la aproximación de la pregunta anterior para escribir una matriz $\mathbf{T}$ tal que 
@@ -54,7 +54,7 @@ La tarea tiene 13 puntos, pero el puntaje máximo será de 10 puntos. Si respond
         $$
         donde $\mu, b,c\in \mathbb R$ y el dominio $\Omega$ está dado por $\Omega = (L, R)$, para $ L < R$. 
         \begin{enumerate}
-            \item\pts{1} Use un cambio de varibales para reescribir el problema en el dominio $\Omega = (0,1)$.
+            \item\pts{1} Use un cambio de variables para reescribir el problema en el dominio $\Omega = (0,1)$.
             \item\pts{1} Desde ahora en adelante, considere $\mu=0.1, b=c=1$, $L=-1$, $R=1$. Mostrar la matriz obtenida al discretizar la ecuación diferencial con diferencias finitas, usando un espaciado constante entre puntos de tamaño $h$, i.e. $x_{i+1} - x_i = h$.
             \item\pts{1} Considere $N$ el número de intervalos de su discretización. Con eso, grafique (en un mismo gráfico) la solución discreta del sistema lineal que aproxima la ecuación diferencial para $N\in\{4, 20, 1000\}$, e identifique claramente cada función. 
             \item\pts{1}  Considere como solución inicial un vector con 0 en todas sus componentes, y grafique el error en cada iteración del método de (i) Richardson, (ii) Jacobi y (iii) Gauss-Seidel. Use como criterio de parada la norma del error relativo, con una tolerancia de $10^{-5}$. Para calcular el error relativo en cada iteración, debe considerar el residuo $r^k$ de la iteración y el residuo del vector inicial $r^0$. Luego, el error relativo está dado por 
