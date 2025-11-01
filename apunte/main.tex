@@ -1,0 +1,2345 @@
+\documentclass[12pt]{book}
+\input{packages.tex}
+\input{commands.tex}
+
+
+\title{\textbf{Apuntes - IMT1001}}
+\author{Pablo Guzmán, Nicolás Barnafi}
+\date{\today}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{2cm}
+        
+        \includegraphics[width=0.2\textwidth]{images/logo-uc.jpg} % Ajusta el tamaño según necesites
+        
+        \vspace{1cm}
+        {\Huge Apuntes - IMT1001} \\
+        \vspace{0.5cm}
+        {\Large Introducción a la Ingeniería Matemática}\\
+        \vspace{0.5cm}
+        {\Large Pablo Guzmán, Nicolás Barnafi} \\
+        \vspace{2cm}
+        {\large Pontificia Universidad Católica de Chile} \\
+        {\large Facultad de Ingeniería} \\
+        \vfill
+        {{\today}}
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\chapter*{Introducción}
+Este apunte nació por la necesidad de tener material de apoyo para el curso de \emph{Introducción a la Ingeniería Matemática} en la Pontificia Universidad Católica de Chile. El objetivo de este curso es mostrarle a los estudiantes la forma en la que se debe pensar la matemática, y para eso hacemos una construcción introductoria pero rigurosa. Desde la lógica proposicional, que es la manera sistemática de combinar proposiciones con ciertos valores de verdad, armamos de a poco el lenguaje de funciones para luego construir dos clases de objetos fundamentales: los límites y los espacios funcionales.  Para mantener el tono introductorio, hemos intentado mantener una presentación transparente en la que no saltamos ningún paso.
+
+Este apunte no busca bajo ninguna circunstancia ser un nuevo libro de introducción al razonamiento matemático ni mucho menos. Para eso existe toda la maravillosa literatura que citamos con cuidado para mostrar la riqueza de conocimiento que ya existe. Más bien, con esto buscamos hacer un compendio de contenidos fundamentales que están organizados y seleccionados según lo que nos pareció más relevante enseñar. Es una presentación opinionada sobre qué se debe saber para poder tener una transición más suave desde los cursos de Ingeniería hacia los de Matemática.
+
+
+La existencia de este apunte fue posible gracias al financiamiento del Instituto de Ingeniería Matemática y Computacional (IMC), al aporte de Carlos Sing-Long por el material que nos compartió sobre la introducción al análisis de señales, y a la motivación de Pablo Guzmán Parra, que dentro de la motivación de haber tomado el curso, aprovechó de iniciar la construcción de este apunte. Esperamos que sea provechoso para quien lo lea, y en caso de dudas y/o errores, por favor contactarme a \texttt{nicolas.barnafi@uc.cl}.
+
+\chapter{Afirmaciones matemáticas y demostraciones}
+\noindent
+Las matemáticas son, ante todo, un lenguaje que nos permite expresar ideas complejas de forma precisa y clara, es por esto que es necesario entender este lenguaje antes de abordar los conceptos que veremos más adelante. En este capítulo introduciremos el lenguaje de la lógica, las afirmaciones, cómo determinamos cuando algo es verdadero o falso. Mostraremos símbolos que quizás hayamos usado antes pero no nos habíamos acercado a dar una definición como tal. También entenderemos qué es una demostración, y cómo demostrar un enunciado, para terminar con la inducción matemática, un principio que nos permitirá entender cómo se construyen los números naturales y cómo podemos demostrar afirmaciones que los involucren.  El material de este capítulo fue extraído principalmente del libro \cite{eccles2013introduction}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Lógica proposicional}
+\noindent
+En el lenguaje natural, con el cual nos comunicamos en el día a día, suele ser suficiente en la mayoría de los áreas de estudio. Sin embargo, para construir la matemática de forma precisa y sin ambigüedades es necesario definir un lenguaje más formal que carezca de estas ambigüedades\footnote{Para entender esto podría ayudar investigar sobre la Paradoja de Berry, que constituye uno de los ejemplos clásicos de las imprecisiones que pueden surgir en el lenguaje natural.}. Ese lenguaje es el de la lógica, que en principio establece ciertas reglas que nos permiten decidir cuando una afirmación es `cierta' o `falsa'. Para esto es necesario construir argumentos válidos que puedan dar como resultado la aprobación de ideas verdaderas o la refutación de ideas falsas. Esta sección se basa en \cite[Part I, Chapter 1]{eccles2013introduction} y \cite[Part I, Chapter 2]{eccles2013introduction}.
+
+\subsection{Proposiciones}\label{sec:proposiciones}
+\noindent
+Uno de los elementos más importantes en la formulación de ideas matemáticas son las \textit{proposiciones}, es decir, oraciones con algún valor de verdad. Esto significa que una proposición puede ser verdadera o falsa. Para más fácil comprensión se utilizará la notación \VV o \FF para denotar verdadero o falso respectivamente. A continuación se presentan algunos ejemplos. \\
+
+
+\begin{center}
+    \begin{minipage}{0.5\textwidth}
+        \begin{enumerate}[label=(\roman*)]
+            \item $\pi=3$.
+            \item $1+1=2$.
+            \item $12$ puede ser escrito como la suma de dos números primos.
+            \item Todo número entero par mayor que 2 puede ser escrito como la suma de dos números primos.
+            \item $n^2-2n>0$.
+            \item $n$ es un número primo.
+            \item $\pi$ es un número especial. \\
+        \end{enumerate}
+    \end{minipage}
+\end{center}
+
+De estos ejemplos podemos decir que los cuatro primeros son proposiciones. De hecho, podemos decir que (I) es falso y que (II) es verdadero. También podemos decir que (III) es verdadero porque $5+7=12$, mientras que (IV) es la Conjetura de Goldbach, y no ha podido ser probada como verdadera de forma general.\footnote{Si bien no se ha podido demostrar para todos los números pares, esta conjetura ha podido ser probada por computadores para número muy grandes, en particular, sabemos que es cierta para todos los números pares menores que $10^{18}$.}
+
+Las siguientes no son proposiciones. En este caso (V) y (VI) son \textit{predicados} que se vuelven proposiciones en el momento que se le asigna un valor o un conjunto de valores a la o las variables libres.
+
+Por último, si llamamos \textit{statements} o \textit{afirmaciones} a las proposiciones y predicados, entonces (VII) no es ni siquiera una afirmación hasta que se le de un significado concreto a `especial'.
+
+Podemos denotar proposiciones con letras como $P$ y $Q$, y a los predicados incluyendo la o las variables libres entre paréntesis como $P(n)$ o $Q(m,n)$.
+
+\begin{exampleenv}
+    Sea $P$: \textit{Ayer llovió}. Podemos decir que $P$ es una proposición, ya que esta tiene un significado concreto que puede ser verdadero o falso.
+    Por otro lado, sea $Q(n):$\textit{Hoy cayeron $n$ milímetros de lluvia.}, esta afirmación se trata de un predicado, por lo que solo adquirirá un valor de verdad cuando se le asigne un valor o un conjunto de valores a $n$.
+\end{exampleenv}
+
+\subsection{Conectivos lógicos}
+\noindent
+A veces una afirmación puede estar compuesta de varias afirmaciones más pequeñas. En estos casos, las afirmaciones pequeñas suelen estar unidas por \conceptT{conectivos lógicos} para formar las más grandes. El valor de verdad de la afirmación grande dependerá del valor de verdad de las afirmaciones más pequeñas, y la relación entre estas será determinada por los conectivos.
+
+\begin{center}
+    \textbf{Disyunción ($\vee$})
+\end{center}
+Podemos entender la disyunción como el `o'. Por ejemplo, $ab=0$ \textit{si y solo si} $a=0$ \textbf{o} $b=0$. Podemos definir más claramente este conectivo a partir de una \textit{tabla de verdad}:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cc|c}
+        P & Q & $P\vee Q$ \\
+        \hline
+        \VV   & \VV   & \VV   \\
+        \VV   & \FF   & \VV   \\
+        \FF   & \VV   & \VV   \\
+        \FF  & \FF  & \FF  \\
+    \end{tabular}
+    \caption{Tabla de verdad $P\vee Q$}
+    \label{tab:tabla_vdd_disyunción}
+\end{table}
+
+La lógica de la disyunción (y también del resto de conectivos) es equivalente a la vista en programación para condicionales como $\textit{or}$ statements, si una de las dos condiciones se cumple es suficiente para que el afirmación $P\vee Q$ sea verdadera. Un ejemplo concreto del uso de la disyunción sería al definir el símbolo $\leq$. Podemos decir $a\leq b$ es una afirmación equivalente a $a<b \vee a=b $.
+
+Un ejemplo que podría generar confusión es la proposición verdadera $1=\pm1$, ya que esto no significa que tanto $1=1$ como $1=-1$ son verdaderas, sino que al menos una de estas sí es verdadera.
+
+\begin{center}
+    \textbf{Conjunción ($\wedge$})
+\end{center}
+La conjunción es simplemente el `y'. Por ejemplo, $0<1<2$ \textit{es equivalente a} $(0<1) \wedge(1<2)$. Y su tabla de verdad sería:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cc|c}
+        P & Q & $P\wedge Q$ \\
+        \hline
+        \VV   & \VV   & \VV   \\
+        \VV   & \FF   & \FF   \\
+        \FF   & \VV   & \FF   \\
+        \FF  & \FF  & \FF  \\
+    \end{tabular}
+    \caption{Tabla de verdad $P\wedge Q$}
+    \label{tab:tabla_vdd_conjunción}
+\end{table}
+
+Notemos que en este caso, para que la proposición $P\wedge Q$ sea verdadera necesitamos que tanto $P$ como $Q$ sean verdaderas por separado.
+
+\begin{center}
+    \textbf{Negación ($\neg$})
+\end{center}
+La idea  es que la negación de un enunciado es verdadera cuando el enunciado original era falso, y la negación de un enunciado es falsa cuando el original era verdadero. Por ejemplo, $1\neq3$ significa $1\neg=3$. Por su tabla de verdad tenemos:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c}
+        $P$ & $\neg P$ \\
+        \hline
+        \VV  & \FF   \\
+        \FF  & \VV   \\
+    \end{tabular}
+    \caption{Tabla de verdad $\neg P$}
+    \label{tab:tabla_vdd_negación}
+\end{table}
+
+\begin{obsenv}
+Es importante añadir que estos conectores lógicos tienen cierto orden de precedencia a la hora de ser usados en su conjunto, de la misma forma que la división tiene mayor precedencia que la suma en aritmética. A continuación se muestra a que signos aritméticos se equipara cada conector.
+
+\begin{itemize}
+    \centering
+        \item $\vee \rightarrow +$
+        \item $\wedge \rightarrow \times$
+        \item $\neg \rightarrow ( )^n$
+\end{itemize}
+Por ejemplo, las afirmaciones $\neg(P\wedge Q)\vee (R\vee (\neg S))$ y $\neg(P\wedge Q) \vee R\vee \neg Q$ son equivalentes.
+\end{obsenv}
+
+\begin{exampleenv}
+    Construir la tabla de verdad de la afirmación $\neg P\vee Q$.
+
+    Para construir esta tabla consideramos cada unos de los 4 casos posibles, y verificamos la verdad de la afirmación \textit{(no $P$) o $Q$}. En este caso las dos sub-afirmaciones que tenemos son la proposición \textit{no $P$} y la proposición \textit{$Q$}, y solo basta con que una sea verdadera para que el enunciado completo sea verdadero gracias al conectivo $\vee$.
+    
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{cc|c|c}
+        $P$ & $Q$ & $\neg P$ & $\neg P\vee Q$ \\
+        \hline
+        \VV   & \VV & \FF & \VV   \\
+        \VV   & \FF  & \FF & \FF   \\
+        \FF   & \VV & \VV & \VV   \\
+        \FF  & \FF  & \VV & \VV  \\
+    \end{tabular}
+    \caption{Tabla de verdad $\neg P\vee Q$}
+    \label{tab:tabla_vdd_ejemplo}
+\end{table}
+Notemos que en esta tabla agregamos $\neg P$ como un paso intermedio para la expresión completa. En este ejemplo puede parecer trivial, pero para expresiones un poco más complejas puede ser útil agregar algunas columnas más de las estrictamente necesarias.
+\end{exampleenv}
+
+
+
+\begin{center}
+    \textbf{Implicancias ($\implies$})
+\end{center}
+Para establecer la verdad de una afirmación se requiere de una prueba o demostración, para esto las implicancias son un elemento fundamental ya que nos permiten inferir nuevas afirmaciones a partir de otras. Por ejemplo $n>2 \implies n>0$. En el lenguaje podemos leer $P\implies Q$ de varias formas:
+
+\begin{itemize}[label=$\bullet$, left=170pt]
+    \item Si P, luego Q.
+    \item Si P, entonces Q.
+    \item P implica Q.
+    \item Q solo si P.
+    \item P es suficiente para Q.
+    \item Q es necesaria para P.
+\end{itemize}
+La tabla de verdad para las implicancias se muestra en la Tabla~\ref{tab:tabla_vdd_implicancia}.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cc|c}
+        P & Q & $P\implies Q$ \\
+        \hline
+        \VV   & \VV   & \VV   \\
+        \VV   & \FF   & \FF   \\
+        \FF   & \VV   & \VV   \\
+        \FF  & \FF  & \VV \\
+    \end{tabular}
+    \caption{Tabla de verdad $P\implies Q$}
+    \label{tab:tabla_vdd_implicancia}
+\end{table}
+
+Quien observe la esta tabla se podría sorprender por el valor de verdad del caso de la tercera fila, con $P$ falso y $Q$ verdadero, ya que resulta en que $P$ de todas formas implica $Q$. Esto es una especie de convención matemática, sin embargo no es que carezca de lógica, pongamos un ejemplo: Sea $P$: \textit{Ha llovido} y $Q$: \textit{El pasto está mojado}, es evidente que $P\implies Q$ si ambos son verdaderos, pero que $P$ no sea verdadero no quita que $P$ implique $Q$, es decir, aunque no haya llovido y el pasto esté mojado, no significa que cuando llueva el pasto igual se va a mojar.
+
+ En una implicancia como $P\implies Q$, $P$ es llamada \textit{hipótesis} o \textit{antecedente} y $Q$ es la \textit{conclusión} o \textit{consecuente}. Así, si el antecedente es falso, siempre podemos estar seguros de que la implicancia completa es verdadera.
+
+ Por último, también podemos definir la doble implicancia de la siguiente manera: $P\iff Q$ significa $(P\implies Q)\wedge (Q\implies P)$. Que se puede leer de las siguientes formas:
+
+\begin{itemize}[label=$\bullet$, left=150pt]
+    \item P es equivalente a Q
+    \item P es necesario y suficiente para Q
+    \item P si y sólo si Q
+    \item P precisamente cuando Q
+\end{itemize}
+
+Como curiosidad, las tablas de verdad de \hyperref[tab:tabla_vdd_implicancia]{$P\implies Q$ } y \hyperref[tab:tabla_vdd_ejemplo]{$\neg P\vee Q$} son equivalentes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Demostraciones}
+\noindent
+Una demostración matemática es un argumento lógico, construido a partir de una serie de implicaciones lógicas, que establece de manera irrevocable la veracidad de una afirmación. Su valor fundamental reside en que, cuando está correctamente elaborada, se propone como un razonamiento objetivo y convincente, exento de posibles contradicciones. Si bien existen diversas técnicas de demostración para abordar distintos tipos de problemas (e incluso múltiples formas de probar una misma proposición), a continuación se presentan las estrategias más fundamentales y de uso más extendido. El material de esta sección fue extraído principalmente de \cite[Part I, Chapter 3]{eccles2013introduction} y \cite[Part I, Chapter 4]{eccles2013introduction}.
+
+\subsection{Demostración directa}
+\noindent
+Muchos teoremas son de la forma $P\implies Q$, o bien, \textit{si se cumple $P$ entonces sabemos que $Q$}. Para demostrar una afirmación del tipo $P\implies Q$ debemos primero asumir que P es verdadero, por lo que nos fijaremos solo en las dos primeras filas de la Tabla~\ref{tab:tabla_vdd_implicancia}.\\
+
+\begin{exampleenv}
+Tomemos la proposición: \textit{Para números reales positivos a y b, $a<b\implies a^2<b^2$}. Lo que queremos es mostrar que a partir de asumir que $a<b$ podemos concluir a través de implicancias que $a^2<b^2$ para $a$ y $b$ positivos.\\
+
+De la hipótesis $a<b$ deducimos: 
+\begin{align*}
+    a<b\implies a^2<ab\\
+    a<b\implies ab<b^2.
+\end{align*}
+
+Como encontramos dos desigualdades que involucran $ab$ podemos decir que
+
+    $$a^2<ab<b^2\implies a^2<b^2.$$
+
+En otras palabras $((a^2<ab)\wedge(ab<b^2))\implies a^2<b^2$.\\
+
+La demostración más estructurada sería: 
+
+Dados los números reales positivos $a$ y $b$, supongamos que $a<b$. Luego $a^2<ab$ (multiplicando por $a>0$ a ambos lados) y $ab<b^2$ (multiplicando por $b>0$ a ambos lados). Por lo tanto, $a^2<b^2$. Se sigue que $a<b\implies a^2<b^2$. \qed \\
+\end{exampleenv}
+\noindent
+El cuadrado al final de la demostración se puede leer \textit{quod erat demonstrandum} (QED), que en latín significa \textit{Lo que se quería demostrar}. Se suele agregar para marcar el final de la demostración.
+
+\begin{exampleenv}
+Demuestre la proposición: $x \text{ impar} \implies x^2 \text{ impar}$.\\
+
+Tomemos la definición de impar como $x \text{ impar} \iff x=2n+1,n$ donde $n$ es un número entero.\\
+
+Supongamos $x \text{ impar}$,\\
+
+$x=2n+1 \implies x^2=(2n+1)^2 \implies x^2 = 4n^2+4n+1 \implies x^2=2 \cdot (2n^2+2n)+1$. \\
+
+Ahora podemos reescribir $n^*=2n^2+2n$, donde $n^*$ es un número natural. Por lo que es claro que $x^2$ puede ser escrito de la forma $2n^*+1$ y por lo tanto $x^2\quad impar$. Se sigue que $x \text{ impar} \implies x^2 \text{ impar}$. \qed
+\end{exampleenv}
+
+\subsection{Demostración por contradicción}
+\noindent
+Cuando hablamos de \textit{contradicción} nos referimos a una afirmación del tipo $P\wedge \neg P$, algo que es falso siempre, algo absurdo. El método consiste en asumir lo contrario a lo que se quiere probar, para obtener una contradicción, de esta manera la única opción posible es la contraria a la que probamos falsa.
+
+Esta técnica puede ser especialmente conveniente cuando queremos probar negaciones de afirmaciones.
+
+\begin{exampleenv}
+Demuestre la proposición: \textit{No existen enteros $m$ y $n$ tales que $14m+20n=101$}.\\
+
+Esta proposición sería bastante difícil de demostrar a través de una serie de implicancias directas. Notemos lo simple que se vuelve la demostración cuando intentamos mostrar que sí existen esos enteros $m$ y $n$.
+
+\textit{Demostración} Supongamos por contradicción que $m$ y $n$ son enteros tales que $14m+20n=101$. Luego, como 14 es par y 20 es par, $101=14m+20n=2(7m+10n)$ también es par. Pero esto no es cierto ya que $101$ es impar. Por lo tanto, tales enteros $m$ y $n$ no pueden existir. \qed \\
+\end{exampleenv}
+
+Podemos hacer una plantilla o molde para escribir demostraciones por contradicción de la forma:
+
+\begin{tcolorbox}
+    \textit{Demostración} Supongamos, por contradicción, que la afirmación P es falsa. Luego, (\textit{Se presenta algún argumento que lleve a una contradicción de algún tipo}). Por lo tanto, nuestra asunción de que P es falso debe ser falsa. Así, P es verdadera. \qed
+\end{tcolorbox}
+
+Si queremos probar una implicancia, también podemos hacerlo por contradicción. Por ejemplo, para demostrar $P\implies Q$ sabemos que el único caso en la Tabla~\ref{tab:tabla_vdd_implicancia} en que $P\implies Q$ es falso, es cuando $P$ es verdadero y $Q$ es falso, así que para probar la implicancia sólo debemos mostrar que obtenemos una contradicción para $P$ verdadero y $Q$ falso. Veamos esto con un ejemplo.
+
+\begin{exampleenv}
+    Demostrar que si $a,b,c$ son enteros tales que $a<b$, entonces
+    \[
+    ac\leq bc\implies c\leq 0.
+    \]
+    Si quisiéramos demostrar esto de forma directa se complicaría el uso de las leyes de las desigualdades ya que el camino a seguir dependería del signo de $c$.
+
+    Para generar la contradicción vamos a suponer las hipótesis iniciales de que $a,b,c$ son enteros con $a>b$. Y además, que estamos en el único caso en que la implicancia $P\implies Q$ es falsa, es decir, cuando $ac\leq bc$ y $c>0$. La demostración nos queda de la siguiente forma.\\
+
+    \textit{Demostración} Para enteros $a, b, c$, con $a>b$, supongamos que $ac\leq bc$ pero, por contradicción, que $c>0$. Sabemos que $a>b$ implica $ac>bc$, contradiciendo la hipótesis $ac\leq bc$. Por lo tanto, nuestra asunción de que $c>0$ debe ser falsa y $ac\leq bc\implies c\leq 0$. \qed 
+        
+\end{exampleenv}
+
+\subsection{Demostración por contrapositivo}
+\noindent
+También llamado demostración por el \textit{contrarrecíproco}, este método consiste en que, cuando queremos probar $P\implies Q$ y resulta difícil hacerlo de manera directa, podemos probar su contrarrecíproco \hyperref[tab:tabla_vdd_contrapos]{$\neg Q\implies \neg P$} que es equivalente. Es decir, sus tablas de verdad son idénticas y $(P\implies Q) \iff(\neg Q\implies \neg P)$.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cc|c}
+        P & Q & $\neg Q\implies \neg P$ \\
+        \hline
+        \VV   & \VV   & \VV   \\
+        \VV   & \FF   & \FF   \\
+        \FF   & \VV   & \VV   \\
+        \FF  & \FF  & \VV \\
+    \end{tabular}
+    \caption{Tabla de verdad $\neg Q\implies \neg P$}
+    \label{tab:tabla_vdd_contrapos}
+\end{table}
+
+Podemos hacer el ejemplo anterior con este método.
+
+\begin{exampleenv}
+Demuestre que si $a,b,c$ enteros tales que $a>b$, luego $ac\leq bc \implies c\leq 0$.\\
+
+La afirmación $P$ sería $ac\leq bc$,
+
+La afirmación $Q$ sería $c\leq 0$.\\
+
+Así, el contrapositivo $(\neg Q\implies \neg P)$ se lee
+\[
+c>0\implies ac>bc.
+\]
+Por las leyes de las desigualdades, tenemos
+\[
+a>b\implies ac>bc;\quad c>0.
+\]
+Por lo que la contrarrecíproca es verdadera, y, por lo tanto $ac\leq bc \implies c\leq 0$. \qed
+\end{exampleenv}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Principio de Inducción}
+\noindent
+Los números naturales son los que se pueden construir de manera más intuitiva. Son aquellos números con los que contamos: $1, 2, 3, 4,\dots$ . La propiedad más fundamental de estos números es que tienen un sucesor que se define para todo $n$ como $n+1$.
+
+El principio de inducción es un axioma o propiedad de los números enteros positivos que nos permite demostrar distintas proposiciones que involucren a los números naturales o conjuntos indexables. El contenido de esta sección fue extraído principalmente de \cite[Part I, Chapter 5]{eccles2013introduction}.
+
+\subsection{Inducción matemática}\label{sec:induccion}
+\noindent
+La idea central de este principio es que si algo se cumple para un número $n$ y también para su sucesor $n+1$, entonces podemos extender esto al sucesor del sucesor $n+2$, y luego al sucesor de este último, y así hasta cubrir todos los números naturales.
+
+\begin{axiomenv}
+    \textbf{Principio de inducción matemática}
+    Supongamos una afirmación $P(n)$ que depende de un entero n. Esta afirmación es cierta para todo entero positivo $n$ si las siguientes afirmaciones son ciertas:
+    \begin{itemize}
+        \item $P(1)$ es cierto,
+        \item $P(k)\implies P(k+1)$ es cierto $\forall \quad k \in \mathbb{N}$.
+    \end{itemize}
+\end{axiomenv}
+
+Muchas veces al primer punto de esta definición se le llama \textit{caso base} y al segundo \textit{paso inductivo}. Además, a la primera parte de la proposición $P(k) \implies P(k+1)$ se le suele llamar hipótesis inductiva, ya que debemos asumir esta para poder probar la segunda parte.\\
+
+\begin{exampleenv}
+Demuestre que $n\leq2^n,\forall\quad n\in\mathbb{N}$ .\\
+
+\begin{itemize}
+    \item Caso base: Verificamos $n\leq 2 ^n$ para $n=1$,
+        \[
+            1\leq2^1.
+        \]
+    \item Hipótesis inductiva: $k\leq 2^k,\forall\quad k\in\mathbb{N}$
+    \item Paso inductivo:
+        \begin{align*}
+            k\leq 2^k\\
+            \implies& k+1\leq 2^k+1\leq 2^k\cdot2\\
+            \implies& k+1\leq 2^{k+1}.
+        \end{align*}
+\end{itemize}
+
+Por lo tanto, por inducción $n\leq2^n$ es cierto para todos los enteros positivos.\qed \\\\
+\end{exampleenv}
+
+En general, todas las demostraciones por inducción siguen una estructura parecida a la planteada en este ejemplo.\\
+
+\begin{obsenv}
+    En la definición se muestra el caso base como $P(1)$, sin embargo, \textit{el caso base podría ser cualquier $P(n_0)$ desde el que queramos demostrar una afirmación}, así probaríamos una afirmación para todo $n\geq n_0$, donde $n_0$ puede ser positivo, negativo o cero!
+\end{obsenv}
+
+
+Veamos un ejemplo donde es necesario cambiar el caso base.\\
+
+\begin{exampleenv}
+    Demostrar que para todo entero $n$ tal que $n\ge 4$, tenemos la desigualdad $n^2\leq 2^n$.
+    \begin{itemize}
+    \item Caso base: Para $n=4$ tenemos,
+        \begin{align*}
+            16&\leq 2^4\\
+            16&\leq 32
+        \end{align*}
+    \item Hipótesis inductiva: $k^2\leq 2^k,\forall\quad k\ge 4$
+    \item Paso inductivo:
+        Si multiplicamos por 2 a ambos lados de la hipótesis obtenemos
+        \[
+            2k^2\leq 2^{k+1}
+        \]
+        Ahora solo faltaría demostrar que $(k+1)^2\leq 2k^2$, usamos lo siguiente.
+        \begin{align*}
+            (k+1)^2&\leq 2k^2\leq 2^{k+1}\\
+            k^2+2k+1&\leq 2k^2\leq 2^{k+1}\\
+            2k+1&\leq k^2\leq 2^{k+1}
+        \end{align*}
+        Esto último es cierto para $k\ge 4$. Finalmente, $k^2\leq 2^k\implies (k+1)^2\leq 2^{k+1}$. Así que, por inducción, $n^2\leq 2^n$ para todo $n\ge 4$
+\end{itemize}
+    
+\end{exampleenv}
+
+\begin{obsenv}
+    También existen casos en los que la demostración puede requerir múltiples casos base. Por ejemplo, podría ser que solo puedas demostrar el paso inductivo para un $n\ge k$. En este caso necesitarías los casos base $P(1),\dots,P(k)$, para que la demostración sea válida.
+\end{obsenv}
+
+\subsection{Definiciones por inducción}
+\noindent
+Existen muchas operaciones que se definen en los números naturales gracias al principio de inducción. Algunos ejemplos son:
+
+\begin{itemize}
+    \item $\sum_{i=1}^na_i$
+    \item $x^n$
+    \item $x!$
+    \item $\prod_{i=1}^na_i$
+\end{itemize}
+
+Detengámonos en el ejemplo de las potencias. 
+\begin{definitionenv}\label{def:potencia}
+    Para todo número real $x$, las potencias \conceptE{x^n} para enteros positivos $n$ son definidas inductivamente por:
+    \begin{itemize}
+        \item $x^0=1,$
+        \item $x^{k+1}=x\cdot x^k$ para enteros positivos $k$.
+    \end{itemize}
+\end{definitionenv}
+
+El factorial es otro concepto que se suele definir por inducción.
+
+\begin{definitionenv}
+    Para enteros no negativos $n$, el factorial de $n$ escrito \conceptE{n!} es definido por inducción según
+    \begin{itemize}
+        \item $0!=1$,
+        \item $(k+1)!=(k+1)\cdot k!$.
+    \end{itemize}
+\end{definitionenv}
+
+\subsection{Inducción fuerte}
+\noindent
+Existe una variante de la inducción que es útil en algunos casos. Algunas veces podríamos descubrir que $P(k+1)$ no es implicado por $P(k)$ solo, pero si es implicado por la verdad de $P(k)$ junto con algunos o todos los $P(1),P(2),\dots,P(k-1)$. En este caso trabajamos con la siguiente versión de la inducción.
+
+\begin{axiomenv}
+    \textbf{Principio de inducción fuerte}
+    Supongamos una afirmación $P(n)$ que depende de un número natural n. Esta afirmación es cierta para todo entero positivo $n$ si:
+    \begin{itemize}
+        \item $P(1)$ es cierto,
+        \item $[P(n)$ vale para todos los naturales $n\leq k] \implies P(k+1)$ es cierto para todo natural k.
+    \end{itemize}
+\end{axiomenv}
+\noindent
+Realmente este principio es equivalente al visto en la Sección~\ref{sec:induccion}. Simplemente tomamos una hipótesis inductiva más fuerte. Nuevamente, podemos cambiar el caso base a cualquier $n_0$ a partir del que queramos demostrar la afirmación. Además, al trabajar con inducción fuerte suele ser bastante común tener que hacer varios casos base. La cantidad de casos base que debamos hacer dependerá de la hipótesis inductiva  que usemos.
+
+\begin{exampleenv}
+    Para ilustrar esta variante de la inducción introducimos la sucesión de Fibonacci. Para todo entero positivo $n$ definimos el número $u_n$ como
+    \begin{align*}
+        u_1&=1,\\
+        u_2&=1,\\
+        u_{n+1}&=u_{n-1}+u_n \quad\text{para }n\ge2.
+    \end{align*}
+    Notemos que cada $n\ge 2$, $u_n$ está determinado por los dos números anteriores, por lo que para el caso base debemos considerar dos números.\\
+
+    Ahora, demuestre que los números de Fibonacci están dados por la fórmula de Binet:
+    \[
+    u_n=\frac{(\alpha^n-\beta^n)}{\sqrt{5}},
+    \]
+    donde $\alpha=\frac{1+\sqrt{5}}{2}$\footnote{El número $\alpha$ se conoce como número áureo (\textit{golden ratio}), y se suele representar con la letra $\phi=\frac{1+\sqrt{5}}{2}\approx1,6180339$.} y $\beta=\frac{1-\sqrt{5}}{2}$. Notemos que $\alpha$ y $\beta$ son las raíces de la ecuación $x^2-x-1=0$ y por lo tanto, $\alpha^2=\alpha+1$ y $\beta^2=\beta +1$.
+    \begin{itemize}
+        \item Casos base: Aquí es necesario explicitar dos casos base, ya que luego en la hipótesis inductiva usaremos el hecho de que ya existen dos casos anteriores en que la fórmula es cierta. Así, para $n=1$, de la fórmula obtenemos $\frac{\alpha-\beta}{\sqrt{5}}=\frac{2\sqrt{5}}{2\sqrt{5}}=1=u_1$.\\ Y para $n=2$, tenemos $\frac{\alpha^2-\beta^2}{\sqrt{5}}=\frac{4\sqrt{5}}{4\sqrt{5}}=1=u_2.$
+        \item Paso inductivo: Ahora supongamos como hipótesis de inducción que la fórmula funciona para todo entero positivo $n$ tal que $n\leq k$, para $k$ algún entero positivo. Entonces
+        \begin{align*}
+            u_{k+1}&=u_{k-1}+u_k\\
+            &=((\alpha^{k-1}-\beta^{k-1})+(\alpha^k-\beta^k))/\sqrt{5}\\
+            &=(\alpha^{k-1}(1+\alpha)-\beta^{k-1}(1+\beta))/\sqrt{5}\\
+            &=(\alpha^{k-1}\cdot\alpha^2-\beta^{k-1}\cdot\beta^2)/\sqrt{5}\quad\text{(usando que $\alpha^2=\alpha+1$ y $\beta^2=\beta+1$)}.\\
+            &=(\alpha^{k+1}-\beta^{k+1})/\sqrt{5}.
+        \end{align*}
+        Tal como se requería para probar la formula para $n=k+1$. Por lo tanto, por inducción, la fórmula funciona para todos los enteros positivos.\qed
+    \end{itemize}
+\end{exampleenv}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Conjuntos y funciones}
+\noindent
+En este capítulo nos aproximaremos a los conceptos más estudiados aún a día de hoy en matemáticas, que además son centrales para entender cursos de análisis más tarde. El material de este capítulo también está extraído principalmente de \cite{eccles2013introduction}.
+
+Los contenidos de este capítulo son usados en prácticamente todas las áreas de las matemáticas e incluso fuera de ellas, como en computación y física. La idea de coleccionar objetos bajo ciertos criterios (conjuntos) y establecer relaciones precisas entre ellos (funciones) aparece continuamente en el pensamiento matemático.
+
+Primero entenderemos qué es un conjunto, cómo lo definimos y cuáles son las operaciones que se pueden hacer con ellos. Luego introduciremos los cuantificadores, que nos permiten hacer afirmaciones precisas y claras sobre los conjuntos, simplificando bastante la notación. Finalmente, definiremos las funciones de manera general y estudiaremos las propiedades que requiere una función para que nos permita definir su función inversa.
+
+\section{El lenguaje de la teoría de conjuntos}
+\noindent
+A un nivel introductorio es suficiente entregar una definición intuitiva de lo que es un conjunto. Podríamos decir que un conjunto es una \textit{colección bien definida de elementos}. Definir con más rigurosidad este concepto se vuelve sorprendentemente complejo.\footnote{La idea detrás de formalizar los conjuntos es mucho más profunda, ya que la teoría de conjuntos pretende unificar las matemáticas bajo una misma teoría. La más aceptada hoy en día es la teoría axiomática de conjuntos de Zermelo-Fraenkel (ZFC).}
+
+Por lo general, se usa una letra para denotar un conjunto. Algunos conjuntos ya usados con anterioridad tienen símbolos especiales y reservados para ellos, por ejemplo, los números enteros ($\mathbb{Z}$), los enteros positivos ($\mathbb{Z^+}$), los reales ($\mathbb{R}$), o los complejos ($\mathbb{C}$).\\
+
+Los objetos en un conjunto se llaman \textit{elementos}, \textit{miembros}, o \textit{puntos} del conjunto. Usamos $x\in E$, para denotar que el objeto $x$ es un elemento del conjunto $E$. La negación de la pertenencia se escribe $\notin$, por lo que $\sqrt{2}\notin \mathbb{Q}$ se lee \textit{$\sqrt{2}$ no es un número racional}. El contenido de esta sección se extrajo principalmente de \cite[Part II, Chapter 6]{eccles2013introduction}.
+
+\subsection{Caracterización de un conjunto}
+\noindent
+Existen básicamente tres formas de definir un conjunto: podemos dar una lista de los elementos, especificar una condición para la pertenencia, o dar una fórmula o algoritmo que construya los elementos del conjunto. A continuación se presentan algunos ejemplos.\\
+
+
+\textbf{Definición directa}
+
+Usamos paréntesis de corchete para denotar un conjunto y separamos los elementos por comas.
+
+\begin{itemize}
+    \item $A=\{1,3,7,\pi,-14\}$.
+    \item $\mathbb{Z^+}=\{1,2,3,4,\dots\}$.
+    \item $B=\{(1,1),(1,2),(2,1)\}$.
+\end{itemize}
+
+Nótese que no importa el orden en que se pongan los elementos, ni si estos se repiten, es decir, $\{3,\pi,-17\}=\{-17,\pi,\pi,-17,\pi,3\}$.\\
+
+\textbf{Definición condicional}
+
+\begin{itemize}
+    \item $C=\{n\in\mathbb{Z}\mid 0<n<6\}$.\\
+    Aquí el conjunto son todos los $n$ enteros tales que el predicado $0<n<6$ es una proposición verdadera.
+    \item $\mathbb{P}=\{\mathbf{x}\in\mathbb{R}^2 \mid \|\mathbf{x}\|\leq2\}$.
+\end{itemize}
+
+Aquí `$\mid$' se lee \textit{tal que}, opciones alternativas para este son `$:$' o `$;$'.\\
+
+\textbf{Definición constructiva}
+
+\begin{itemize}
+    \item $\{n^2\mid n\in\mathbb{Z}\} = \{0,1,4,9,16,\dots\}$.
+    \item $\mathbb{Q}=\{a/b\mid a,b\in\mathbb{Z},b \neq0\}$.
+\end{itemize}
+
+\subsection{Operaciones}\label{sec:operaciones_conj}
+\noindent
+Podemos establecer diversas relaciones entre conjuntos, e incluso obtener nuevos conjuntos a partir de los ya definidos.
+
+\begin{itemize}
+    \item Dos conjuntos son \conceptT{iguales} si \textit{tienen precisamente los mismo elementos}, es decir, 
+    \[A=B \text{ significa que } (x\in A \iff x\in B)\]
+    \item El \conceptT{conjunto vacío} es un conjunto único que \textit{no tiene ningún elemento}, y se denota por $\varnothing$.
+    \item Dados dos conjuntos $A$ y $B$, decimos que $A$ es un \conceptT{subconjunto} de $B$ si \textit{todos los elementos de $A$ son elementos de $B$}, es decir, si para todo $x$
+    \[x\in A \implies x\in B\]
+    y escribimos $A\subseteq B$. Si, además $A$ y $B$ son conjuntos distintos, entonces $A$ es un subconjunto propio de $B$, y escribimos $A\subset B$.
+    \item Podemos definir la \conceptT{intersección} de dos conjuntos como 
+    \[A\cap B=\{x\mid x\in A \wedge x\in B\}.\] 
+    Se dice que dos conjuntos son \textit{disjuntos} si $A\cap B=\varnothing$.
+    \item Llamamos la \conceptT{unión} de $A$ y $B$ al conjunto de los elementos que están en $A$ o en $B$, escribimos 
+    \[A\cup B=\{x\mid x\in A \vee x\in B\}.\]
+    \item Definimos la \conceptT{diferencia} de dos conjuntos $A$ y $B$ como el conjunto de \textit{elementos que están en $A$ pero no en $B$}, escribimos\footnote{Se suele preferir la notación $A\setminus B$ ya que $A-B$ se puede definir como el conjunto de todas las diferencias $A-B=\{a-b\mid a\in A, b\in B\}$.}
+    \[A-B=A\setminus B=\{x\mid x\in A \wedge x\notin B\}.\]
+    \item El \conceptT{conjunto potencia} de $A$ denotado por $\mathcal{P}(A)$ es el conjunto de todos los subconjuntos de $A$. De esta forma, decir $X\in\mathcal{P}(A)$ es lo mismo que decir $X\subseteq A$.
+    \item Muchas veces se considera que los conjuntos son todos subconjuntos de alguna \textit{conjunto universal}\footnote{Cuando aquí hablamos de conjunto universal $U$, nos referimos a que todo los conjuntos \emph{con los que vamos a trabajar} son subconjunto de $U$, no a que todos los conjuntos que existen son subconjunto de $U$. De hecho, es posible demostrar que no existe tal conjunto que los contiene a todos (inténtelo). Para más sobre el tema investigar sobre la Paradoja de Russel.} (o ambiente) fijo, como por ejemplo los números reales. Así, dado un conjunto universal $U$ tal que $A\subseteq U$, podemos definir el \conceptT{complemento} de $A$ como la diferencia entre $U$ y $A$, escrito
+    \[A^c=U\setminus A=\{x\in U \mid x\notin A\}.\]
+    \item  Por ultimo, el \conceptT{producto cartesiano} denota todos los pares ordenados $(a,b)$ que forman dos conjuntos $A$ y $B$. 
+    \[A\times B=\{(a,b)\mid a\in A, b\in B\}.\] 
+    Si tenemos $A=B$, podemos escribir $A\times A=A^2.$\\
+\end{itemize}
+
+\begin{exampleenv}
+    Demostrar que $\{x\in \mathbb{R}\mid x^2-x-2=0\}=\{-1,2\}$.
+
+    Ahora podemos pensar el problema de encontrar las raíces de una ecuación cuadrática como el problema de demostrar que estos conjuntos son iguales, o explicitar los elementos del conjunto $\{x\in \mathbb{R}\mid x^2-x-2=0\}$.
+
+    En este caso, solo tenemos que mostrar que para $x\in \mathbb{R}$
+    \[
+    x^2-x-2=0\iff x=-1\vee x=2.
+    \]
+    Así, tenemos
+    \begin{align*}
+        &x^2-x-2=0\\
+        &\iff(x-2)(x+1)=0\\
+        &\iff (x-2=0)\vee(x-1=0)\\
+        &\iff x=-1\vee x=2.
+    \end{align*}\qed
+\end{exampleenv}
+
+\begin{exampleenv}
+    Consideremos los conjuntos $A=\{1,2\}$, $B=\{4,2\}$ y $C=\{3,4,5\}$, y sea el conjunto universal $U=\{n\in\mathbb{Z}\mid 0<n<10\}$. Podemos construir los siguientes conjuntos.
+    \begin{itemize}
+        \item $A\cap B=\{2\}.$
+        \item $A\cap C=\varnothing.$ $A$ y $C$ son conjuntos disjuntos.
+        \item $A\cup C=\{1,2,3,4,5\}$
+        \item $A\cup B=\{1,2,4\}$
+        \item $\mathcal{P}(C)=\{\{3\},\{4\},\{5\},\{3,4\},\{4,5\},\{3,5\},\{3,4,5\},\varnothing\}$ El conjunto potencia es el conjunto de todos los subconjuntos posibles e incluye el conjunto vacío.
+        \item $B\times C=\{(4,3),(4,4),(4,5),(2,3),(2,4),(2,5)\}$
+        \item $B^c=\{x\in U\mid x\notin B\}=\{1,3,5,6,7,8,9\}$
+        \item $A\times (C^c\setminus A)$\\
+        Para este caso encontramos primero $C^c=\{1,2,6,7,8,9\}$, luego $C^c\setminus A=\{6,7,8,9\}$ y finalmente\\
+        $A\times (C^c\setminus A)=\{(1,6),(1,7),(1,8),(1,9),(2,6),(2,7),(2,8),(2,9)\}$.\\
+    \end{itemize}
+\end{exampleenv}
+
+\begin{theoremenv}
+     Sean $A,B,C$ subconjuntos de algún conjunto universal $U$. Se tienen las siguientes identidades.
+    \begin{itemize}
+        \item \textit{Asociatividad}: $A\cup (B\cup C)=(A\cup B)\cup C,\quad A\cap(B\cap C)=(A\cap B)\cap C$.
+        \item \textit{Conmutatividad}: $A\cup B =B\cup A, \quad A\cap B=B\cap A$.
+        \item \textit{Distributividad}: $A\cup(B\cap C)=(A\cup B)\cap (A\cup C), \quad A\cap (B\cup C)=(A\cap B)\cup(A\cap C)$.
+        \item \textit{Leyes de De Morgan}: $(A\cup B)^c=A^c\cap B^c,\quad (A\cap B)^c=A^c\cup B^c$.
+        \item \textit{Complementos}: $A\cup A^c=U,\quad A\cap A^c=\varnothing$.
+        \item \textit{Doble complemento}: $(A^c)^c=A$.
+    \end{itemize}
+\end{theoremenv}
+
+Las relaciones establecidas en este teorema se pueden demostrar por tablas de verdad, diagramas de Venn, o a través de argumentos lógicos a partir de las definiciones.
+
+\begin{proofenv}
+    $A\cap (B\cup C)=(A\cap B)\cup (A\cap C).$\\
+    
+    Para demostrar una igualdad de conjuntos $X$ e $Y$, como es este caso, es conveniente demostrar que $X\subseteq Y$ y que $Y\subseteq X$, ya que $(X\subseteq Y\wedge Y\subseteq X)\implies X=Y.$\\
+    
+    Demostración de `$\subseteq$': Supongamos que $x\in A\cap (B\cup C).$ Entonces $x\in A\wedge x\in (B\cup C).$ Como $x\in B\cup C,\  x\in B\vee x\in C$. Si $x\in B$, como también $x\in A$, tenemos $x\in A\cap B$, por lo que $x\in (A\cap B)\cup (A\cap C)$, como se requería. Por otro lado, si $x\notin B$ debemos tener que $x\in C$, como también tenemos $x\in A$, tenemos que $x\in (A\cap C)$, concluyendo que $x\in (A\cap B)\cup (A\cap C).$\\
+
+    Demostración de `$\supseteq$': Ahora supongamos que $x\in (A\cap B)\cup (A\cap C).$ Luego tenemos $(x\in A\cap B)\vee (x\in A\cap C)$. Si $x\in A\cap B$, entonces $x\in A\wedge x\in B$ de tal forma que $x\in B\cup C$, lo cual resulta en que $x\in A\cap (B\cup C)$. Por otro lado, si $x\notin A\cap B$, entonces $x\in A\cap C$ y nuevamente obtenemos $x\in A\cap (B\cup C).$
+\end{proofenv}
+
+\section{Cuantificadores}
+\noindent
+En la Sección~\ref{sec:proposiciones} vimos que existen predicados que solo se pueden adquirir un valor de verdadero o falso cuando se le asignan valores a la o las variables libres que tiene. A veces nos gustaría mantener una notación general usando variables, pero asegurándonos de que nos limitamos a los valores para los cuales dicha proposición es verdad. 
+
+Algunas veces podríamos querer asegurar que existe algún número que hace que la afirmación sea verdad, o que, de hecho, la afirmación es cierta para todos los valores en un subconjunto $A$. Los cuantificadores nos permiten obtener una notación más clara (para estos casos) que la que hemos visto hasta ahora en teoría de conjuntos. Esta sección está basada principalmente en \cite[Part II, Chapter 7]{eccles2013introduction}.
+
+\subsection{Cuantificadores universales}
+
+La notación \conceptE{\forall a\in A, P(a)} es una manera equivalente de escribir
+\[
+\{a\in A \mid P(a)\}=A,
+\]
+y se lee: \textit{para cada elemento $a$ en el conjunto $A$, la proposición $P(a)$ es verdad}. O bien: \textit{para todo $a$ en $A$, tenemos que $P(a)$}.
+
+El símbolo $\forall$ es el \textit{símbolo cuantificador universal} y se suele leer: \textit{para todo}, \textit{para cada} o \textit{para cualquier}.
+
+\begin{exampleenv}
+    Un ejemplo de uso del cuantificador universal es
+    \[
+        \forall a\in (\mathbb{R}-\{0\}), a^2>0.
+    \]
+    Que se lee \textit{para todo número real distinto de 0, el número al cuadrado es mayor a 0}. Equivalentemente nos estamos refiriendo al conjunto $\{a\in\mathbb{R}\setminus\{0\}\mid a^2>0\}=\mathbb{R}\setminus \{0\}.$
+\end{exampleenv}
+
+\subsection{Cuantificadores existenciales}
+\noindent
+Muchas veces, cuando queremos demostrar que una afirmación universal es falsa, basta con encontrar \textit{un caso} en que la afirmación es falsa. En estos casos es útil el uso del \textit{cuantificador existencial} $\exists$, que se lee \textit{existe} o más precisamente \textit{there exists} en inglés.\\
+
+La notación \conceptE{\exists a \in A, P(a)} es equivalente a escribir
+\[
+\{a\in A\mid P(a)\}\neq \varnothing.
+\]
+Se lee: \textit{Para algún elemento $a$ en $A$, la proposición $P(a)$ es cierta}, o \textit{existe un $a$ en $A$ tal que $P(a)$}. A veces, se usa también $\exists! \ a\in A, P(a)$, para denotar que \textit{existe un único} $a$ en $A$ tal que $P(a)$.
+
+\begin{exampleenv}
+    Un ejemplo del uso del cuantificador existencial es
+    \[
+    \exists x \in \mathbb{R}, x^2-x=0.
+    \]
+    Esta es una proposición verdadera, ya que $x = 0$ y $x = 1$ cumplen con la igualdad.
+    Por otro lado, la proposición
+    \[
+    \exists!\ x \in \mathbb{R}, x^2-x=0
+    \]
+    no sería cierta, ya que hay 2 números distintos que cumplen la igualdad.
+\end{exampleenv}
+
+\subsection{Notación y relación entre cuantificadores}
+\noindent
+Cuando tenemos predicados que involucran dos o más variables libres es común abreviar el uso de cuantificadores, por ejemplo:
+
+\begin{itemize}
+    \item $\forall a\in A, \forall b\in A, P(a,b) \iff \forall a,b \in A, P(a,b)$.
+    \item $\exists a \in A, \exists b \in A, P(a,b) \iff \exists a,b \in A, P(a,b)$.
+\end{itemize}
+
+La propiedad más importante de los cuantificadores es que estos son opuestos, es decir, la negación de uno es el otro. 
+
+\begin{itemize}
+    \item $\neg (\forall x \in A, P(x))\iff\exists x \in A, \neg P(x)$.
+    \item $\neg (\exists x\in A, P(x))\iff\forall x\in A,\neg P(x)$.
+\end{itemize}
+
+Estas equivalencias son especialmente útiles en algunas demostraciones, ya que muchas veces es más fácil mostrar una que la otra.
+
+\begin{exampleenv}
+    Demuestre que la afirmación $\forall x\in \mathbb{R}, x^2>2$ es falsa.
+
+    Aquí, la forma más sencilla de demostrar que la afirmación no es cierta, es dando un contra-ejemplo. Esto es porque cuando queremos refutar una afirmación, lo que hacemos es demostrar la negación de la afirmación. Así, lo que queremos demostrar es
+    \[
+    \neg(\forall x\in \mathbb{R}, x^2>2) \iff\exists x\in \mathbb{R}, \neg (x^2 >2)\iff\exists x\in \mathbb{R}, x^2\leq 2.
+    \]
+    Ahora transformamos el problema en encontrar un real cuyo cuadrado sea menor que 2. Tomemos $x=1$. Como $x^2=1$ hemos demostrado que la afirmación es falsa.\qed
+\end{exampleenv}
+
+
+
+\begin{exampleenv}
+    Demostrar que no existe un número real $x$ tal que $x^2=-1$.\\
+
+    Según lo que vimos antes, demostrar esta afirmación es lo mismo que demostrar que todo número real $x$, cumple que $x^2\neq1$. Es decir
+    \[
+    (\not\exists x\in \mathbb{R}, x^2=-1)\iff (\forall x\in \mathbb{R}, x^2\neq1).
+    \]
+    Como sabemos que $\forall x\in \mathbb{R}, x^2\ge 0$, es imposible que $x^2=-1$. Por lo tanto $\not\exists x\in \mathbb{R}, x^2=-1$.\qed
+\end{exampleenv}
+
+\section{Funciones}\label{sec:funciones}
+\noindent
+Las funciones son uno de los elementos más fundamentales y más estudiados de las matemáticas. Esta sección está basada en \cite[Part II, Chapter 8]{eccles2013introduction}.
+
+\begin{definitionenv}
+    Dados dos conjuntos $X$ e $Y$, una \conceptT{función} de $X$ a $Y$ es la asignación de un único elemento en $Y$ para cada elemento en $X$. Si $f$ es una función de $X$ a $Y$, lo escribimos con
+    \[
+        f:X\rightarrow Y
+    \]
+    donde el conjunto $X$ es llamado el \textit{dominio} de la función $f$ y el conjunto $Y$ \textit{codominio}. El valor del codominio asignado a algún $x\in X$ se denota $f(x)$, y también podemos escribir la función como $x\mapsto f(x)$. 
+\end{definitionenv}
+
+Esta definición es lo suficientemente general para que siga siendo útil más adelante.
+
+Cuando definimos el concepto de conjunto nunca especificamos que los elementos del conjunto deben ser números, de hecho, no tienen por qué serlo. Ahora mismo resulta difícil imaginar que otro tipo de objetos podrían haber al interior de un conjunto además de números, no obstante, ya hemos visto en la Seccion~\ref{sec:operaciones_conj} que podemos definir un conjunto de conjuntos. Hasta antes del Capítulo~\ref{cap:4} seguiremos trabajando con conjuntos numéricos, pero a partir de allí descubriremos qué otro tipo de conjuntos podemos definir.
+
+También hay objetos matemáticos que no esperaríamos que fueran funciones. Por ejemplo, un vector en $\mathbb{R}^n$ es una función $v:\{1\dots n\}\to \mathbb{R}$ que le asigna a cada elemento de $\{1,\dots,n\}$ un número. O una matriz $\mathbf{A}$ de $m\times n$ es en realidad una función $A:\{1,\dots,m\}\times \{1,\dots,n\}\to \mathbb{R}$ que le asigna a cada elemento del conjunto $\{1,\dots,m\}\times \{1,\dots,n\}$ un número real. Tanto para los vectores, como para las matrices, se suele adoptar la notación $v_i=v(i)$ y $A_{ij}=A(i,j)$. 
+
+\subsection{Definir una función}
+\noindent
+Existen muchas formas de definir una función, la forma más fácil de hacerlo es escribiendo su dominio y su codominio como conjuntos.
+\begin{exampleenv}
+     Sea $X=\{x_1,x_2,x_3,x_4\}$ e $Y=\{y_1,y_2,y_3,y_4,y_5\}$ La siguiente tabla determina la función $f:X\rightarrow Y$.
+     \begin{table}[H]
+    \centering
+    \begin{tabular}{c|c}
+        \toprule
+        $x$ & $f(x)$ \\
+        \midrule
+        $x_1$   & $y_1$  \\
+        \hline
+        $x_2$   & $y_1$   \\
+        \hline
+        $x_3$  & $y_3$   \\
+        \hline
+        $x_4$  & $y_5$  \\
+        \bottomrule
+    \end{tabular}
+    \caption{Definición de una función $f$}
+    \label{tab:def_funcion}
+    \end{table}
+
+    Notemos que cada elemento de $X$ se repite una sola vez en la tabla, mientras que los elementos del codominio $Y$, pueden ocurrir una vez, varias veces, o no aparecer en absoluto.
+\end{exampleenv}
+
+Otra forma de definir funciones, que es útil para cuando se usan conjuntos infinitos, es dando una fórmula de la forma $f=f(x)$. La idea es mostrar una expresión general que entrega los valores de la función dado cierto elemento en el dominio.
+
+\begin{exampleenv}
+Consideremos las siguientes funciones:
+
+
+\begin{itemize}
+    \item $f_1:\mathbb{R}\rightarrow \mathbb{R}$ dada por $f_1(x) = x^2$.
+    \item $f_2:\mathbb{R}^+_0\rightarrow \mathbb{R}$ dada por $f_2(x) = x^2$.
+    \item $f_3:\mathbb{R}\rightarrow \mathbb{R}^+_0$ dada por $f_3(x) = x^2$.
+    \item $f_4:\mathbb{R}^+_0\rightarrow \mathbb{R}^+_0$ dada por $f_4(x) = x^2$.\\
+\end{itemize}
+
+Las cuatro funciones están dadas por la misma fórmula, sin embargo, se consideran funciones distintas, ya que el dominio y codominio también son parte de lo que define una función.
+
+\end{exampleenv}
+
+Decimos que una \textit{función está bien definida}, si tiene alguna definición coherente para cada uno de los elementos de su dominio. La función $f$ presentada anteriormente está bien definida para cada elemento de $X$.
+
+\begin{exampleenv}
+Si definimos $g:[0,\infty)\rightarrow \mathbb{R}$, $g(x)=1/x$, la función no está bien definida para todos los elementos en su dominio, ya que se indefine en $x=0$. Un ejemplo de esta función bien definida sería:
+
+\[
+g(x) =
+\begin{cases}
+    1/x, &  x \in (0,\infty) \\
+    0, & x = 0
+\end{cases}.
+\]
+Esto es lo que llamamos una función definida \textit{por tramos}.
+\end{exampleenv}
+
+Una función útil que se define por tramos es el \emph{valor absoluto}:
+
+\begin{definitionenv}
+    El valor absoluto es una función $|\cdot|:\mathbb{R\to\mathbb{R}}$, dada por
+    \[
+    |x|=
+    \begin{cases}
+        x,&x\ge 0\\
+        -x, &x<0
+    \end{cases}.
+    \]
+\end{definitionenv}
+
+\subsection{Notaciones y operaciones con funciones}\label{sec:operaciones_fun}
+
+\begin{itemize}
+    \item Dos funciones $f:X\rightarrow Y$ y $g:X\rightarrow Y$ son \conceptT{iguales}, escrito $f=g$, si toman el mismo valor en todo punto del dominio, es decir,
+    \[(f=g)\iff (f(x)=g(x),\forall x\in X).\]
+    Es importante recalcar que para que dos funciones sean iguales deben tener el mismo dominio y el mismo codominio.
+    \item Sea $f:X\rightarrow Y$ una función, y $A\subseteq X$, luego podemos definir la función
+    \[f|_A:A\rightarrow Y \text{ con } f|_A(x)=f(x),\forall x \in A.\]
+    Esta función \conceptE{f|_A} es la \conceptT{restricción de $f$ a $A$}.
+    \item Sean dos funciones $f:X\rightarrow Y$ y $g:Y\rightarrow Z$, llamamos $g\circ f: X\rightarrow Z$ la \conceptT{composición} de $f$ y $g$, dada por
+    \[(g\circ f)(x)=g(f(x)).\]
+    \item Una función $f:\mathbb{Z}^+\rightarrow A$ es llamada una \conceptT{sucesión} en el conjunto $A$.
+    \item Una función $f:B\to A$, tal que $A\subset B$ se llama \conceptT{restricción}.
+    \item Una función $f:A\to B$, tal que $A\subset B$ se llama \conceptT{inclusión}.
+    \item La función $I_x:X\rightarrow X$ dada por $I_x(x) = x$ se llama \conceptT{identidad}. Es aquella función, que para cada elemento que se le entrega devuelve el mismo elemento.
+    \item Una función no tiene por qué tomar todos los valores de su codominio. Dada una función $f:X\rightarrow Y$, el subconjunto de su codominio $Y$, que consiste de los elementos que son valores que toma $f$, es llamado la \conceptT{imagen} de $f$, y se denota $Im(f)$. Esto quiere decir que,
+    \[Im(f)=\{f(x),x\in X\}.\]
+    \item El \conceptT{grafo} de $f:X\rightarrow Y$ es el subconjunto del producto cartesiano $X\times Y$ dado por
+    \[G_f=\{(x,y)\in X\times Y \mid y=f(x)\}=\{(x,f(x))\mid x\in X\}.\]
+\end{itemize}
+
+\begin{exampleenv}
+    Un ejemplo de dos funciones iguales es la función $f:\mathbb{R\to\mathbb{R}}$ dada por
+    \[
+    f(x)=
+    \begin{cases}
+        \frac{x^2+3x+2}{x+2}, \quad &x\neq-2\\
+        -1,\quad &x=2
+    \end{cases}
+    \]
+    y la función $g:\mathbb{R}\to \mathbb{R}$ dada por $g(x)=x+1$. Así, podemos decir que $f=g$ ya que $f(x)=g(x)$.
+
+    Sea $h:\mathbb{R}\setminus\{-2\}\to \mathbb{R}$ dada por $h(x)=\frac{x^2+3x+2}{x+2}$ notemos que sería un error decir que $h$ y $g$ son iguales, a pesar de que en teoría podríamos factorizar la expresión algebraica $\frac{x^2+3x+2}{x+2}$ y obtener $\frac{(x+1)(x+2)}{x+2}=x+1$. Es un error ya que los dominios son distintos, y esa simplificación la hicimos asumiendo que $x\neq-2.$
+\end{exampleenv}
+\begin{exampleenv}
+    Sean las funciones $f:[0,2\pi]\to\mathbb{R}$ dada por $f(x)=\sin(\sqrt{x})$ y $g:(0,1]\to \mathbb{R}$ dada por $g(x)=\ln(x)$. Podemos decir varias cosas de ellas.\\
+
+    La composición $g\circ f:(0,1]\to\mathbb{R}$ está dada por $(g\circ f)(x)=\ln(\sin(\sqrt{x}))$, su imagen es el conjunto $\{x\in\mathbb{R}: x<\ln(\sin(\sqrt{1}))\}$ y su grafo es el conjunto $\{(x,\ln(\sin(\sqrt{x})), x\in (0,1]\}$ que podemos representar según la siguiente figura:
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/gráfico ejemplo sec 2.3.png}
+    \caption{Gráfico de $g\circ f$.}
+    \label{fig:graf_ejemplo_sec2.3}
+    \end{figure}
+    
+    Es imposible representar precisamente el grafo mediante el gráfico de la Figura~\ref{fig:graf_ejemplo_sec2.3}, ya que a medida que nos acercamos a 0, la función se acerca al infinito negativo. Esto es algo que conceptualmente abordaremos en el Capitulo~\ref{cap:3}.
+\end{exampleenv}
+
+\section{Inyección, Sobreyección y Biyección}
+\noindent
+En la sección anterior definimos que, para una función $f:X\rightarrow Y$, un elemento de $Y$ podría estar dado por varios elementos en $X$ sin problema, o que una función no tenía por qué llegar a todo su codominio. No obstante, el restringir algunas de estas características puede dar lugar a funciones con propiedades interesantes y útiles. El contenido de esta sección está extraído de \cite[Part II, Chapter 9]{eccles2013introduction}.
+
+\subsection{Inyectividad}
+
+\begin{definitionenv}
+    Una función $f:X\rightarrow Y$ es \conceptT{inyectiva} si ningún elemento del conjunto $Y$ es asignado por más de un elemento del conjunto $X$, es decir, la función toma valores distintos para cada punto en su dominio.\\ Esto es
+    \[
+        \forall x_1,x_2 \in X, (x_1 \neq x_2\implies f(x_1)\neq f(x_2)).
+    \]
+    O equivalentemente, por su contrapositiva
+    \[
+        \forall x_1,x_2 \in X, (f(x_1)=f(x_1)\implies x_1=x_2).
+    \]
+\end{definitionenv}
+
+A las funciones inyectivas también se les llama \textit{uno a uno} o \textit{inyecciones}.\\
+
+\begin{exampleenv}
+Demuestre que $f:\mathbb{R}^+\rightarrow\mathbb{R}$ dada por $f(x)=x^2$ es inyectiva.\\
+
+Sean $x_a,x_b\in \mathbb{R}^+$, tenemos que
+\begin{align*}
+    f(x_a)=x_a^2.\\
+    f(x_b)=x_b^2.
+\end{align*}
+
+Luego,
+\[
+    f(x_a)=f(x_b)\implies x_a^2=x_b^2    .
+\]
+
+Como $x_a,x_b>0$ entonces
+\[
+    x_a^2=x_b^2\implies x_a=x_b.
+\]
+
+Por la definición, se concluye que $f$ es una inyección.\qed
+\end{exampleenv}
+
+\subsection{Sobreyectividad}
+
+\begin{definitionenv}
+     Una función $f:X\rightarrow Y$ es \conceptT{sobreyectiva} si cada elemento de $Y$ es asignado a algún elemento de $X$, es decir, cada elemento del codominio es un valor de la función:
+    \[
+        \forall y\in Y, \exists x\in X, y=f(x).
+    \]
+\end{definitionenv}
+
+Si $f$ es sobreyectiva, también se dice que es una \textit{sobreyección}.\\
+
+\begin{exampleenv}
+Demuestre que $f:\mathbb{R}\rightarrow \mathbb{R}^+$, dada por $f(x)=e^x$ es sobreyectiva.\\
+
+Sea $y\in \mathbb{R}^+$, queremos encontrar algún $x\in R$ tal que $f(x)=y$. Consideremos
+
+\begin{align*}
+    e^x&=y,\\
+    x&=\ln(y).
+\end{align*}
+
+Si luego reemplazamos en $f(x)$, tenemos
+
+\begin{align*}
+    f(x)&=e^x,\\
+    f(x)&=e^{\ln(y)}=y.
+\end{align*}
+
+
+Como $x=\ln(y)$ es un número real, comprobamos que $y=f(x)$ para cualquier $y\in \mathbb{R}^+$ y algún $x\in \mathbb{R}$. \qed
+\end{exampleenv}
+Notemos que en la demostración anterior usamos el logaritmo. El uso de esta información, i.e. aprovechar que conocemos la función inversa, fue fundamental en la demostración y es algo que no siempre se tiene. De hecho, demostrar sobreyectividad suele ser más difícil.
+
+\subsection{Biyectividad, Pre-imagen y Funciones Inversas}
+\noindent
+La inyectividad y la sobreyectividad son propiedades que nos aseguran que la función se comporta ´bien' de alguna manera, pero ¿bien para qué? La respuesta es que queremos que se comporte bien para poder definir su operación inversa. Y para llegar a poder hacerlo, definiremos algunos conceptos que nos permitirán hablar un lenguaje más claro.
+
+\begin{definitionenv}
+     Una función $f$ es \conceptT{biyectiva} si es inyectiva y sobreyectiva.
+\end{definitionenv}
+
+
+
+\begin{definitionenv}
+     Dada una función $f:X\rightarrow Y$, dado un elemento $y\in Y$ una \conceptT{pre-imagen} de $y$ es un elemento $x\in X$ tal que $y=f(x)$. Cuando no presente ambigüedad, nos referiremos a la pre-imagen de $y$ como el conjunto 
+        $$ f^{-1}(y) = \{x \in X: f(x)=y\}.$$
+\end{definitionenv}
+
+\begin{exampleenv}
+    Para la función $f:\mathbb{R}\to\mathbb{R^+}$ dada por $f(x)=x^2$, tomemos $36\in \mathbb{R}^+$ un elemento del codominio. Una pre-imagen de $36$ es $6$ ya que $f(6)=36$. De hecho, $-6$ también es pre-imagen de $36$ ya que $f(-6)=36$.
+\end{exampleenv}
+
+Podemos reformular los conceptos anteriores usando la noción de pre-imagen.
+
+\begin{itemize}
+    \item $f$ es inyectiva si y sólo si la pre-imagen de cada elemento en $Y$ contiene \textit{a lo más} un elemento.
+    \item $f$ es sobreyectiva si y sólo si la pre-imagen de cada elemento en $Y$ contiene \textit{al menos} un elemento.
+    \item $f$ es biyectiva si y sólo si la pre-imagen de cada elemento en $Y$ contiene \textit{exactamente} un elemento.
+\end{itemize}
+
+Estas definiciones pueden facilitar la comprensión de las propiedades y la relación con las funciones inversas que definiremos a continuación.
+
+\begin{definitionenv}
+     Una función $f:X\rightarrow Y$ es llamada \conceptT{invertible} si y sólo si existe una función $g:Y\rightarrow X$ tal que
+    \[
+        y=f(x)\iff x=g(y), \forall x\in X, \forall y\in Y.
+    \]
+    Llamamos a $g$ la \textit{inversa} de $f$ y escribimos $g=f^{-1}$.
+\end{definitionenv}
+
+Nótese que la simetría de esta definición permite afirmar que $g$ también es invertible, y que $f$ es su inversa.
+
+\begin{exampleenv}
+    Encuentre la función inversa de $f:\mathbb{R}\to \mathbb{R}$, $f(x)=x^3+1$.\\
+    Podemos pensar esta función como $f(x)=y$, de forma que $x^3+1=y$. Ahora solo tenemos que encontrar la función de $y$ que nos de $x$ para cada $y\in \mathbb{R}$. Eso es despejar $x$ de la ecuación.
+    \begin{align*}
+        y &= x^3+1\\
+        x^3&=y-1\\
+        x&=\sqrt[3]{y-1}
+    \end{align*}
+    Así, concluimos que la función inversa de $f$ es $f^{-1}:\mathbb{R}\to\mathbb{R}$ dada por $f^{-1}(x)=\sqrt[3]{x-1}.$
+\end{exampleenv}
+
+Es claro que en este ejemplo no tuvimos problemas para encontrar la inversa, sin embargo, para la mayoría de las funciones, si intentamos este procedimiento, no nos será tan sencillo encontrarla, es más, no tenemos ninguna garantía de que podremos encontrarla. Las condiciones que debe cumplir una función para ser invertible se resumen en todo lo que hemos visto.
+
+\begin{theoremenv}\label{teo:2}
+    Sea $f:X\to Y$. Luego, $f$ es invertible si y sólo si es biyectiva. Además, si es invertible, su función inversa es única.
+\end{theoremenv}
+
+\begin{proofenv}
+
+Si queremos demostrar la equivalencia $f \text{ es invertible} \iff f \text{ es inyectiva}$, tenemos que demostrar la implicancia en ambos sentidos por separado ya que como vimos antes, $P\Leftrightarrow Q$ es equivalente a $P\Rightarrow Q \wedge P\Leftarrow Q$.\\
+
+Para $f$ es invertible $\implies f$ es biyectiva,\\
+
+Supongamos que $f:X\to Y$ es invertible, eso significa que existe una función $g:Y\to X$, tal que
+\[
+    y=f(x)\iff x=g(y), \forall x\in X, \forall y\in Y.
+\]
+
+Ahora para concluir que $f$ es biyectiva, debemos demostrar que $f$ es sobreyectiva e inyectiva.\\
+
+Para la inyectividad, sean $x_1, x_2\in X$ tales que $y_0=f(x_1)=f(x_2)$ debemos mostrar que $x_1=x_2$. Luego, por la definición de inversa, tenemos $y_0=f(x_1)\implies g(y_0)=x_1$, pero además, $y_0=f(x_2)\implies g(y_0)=x_2$. Por lo tanto, tenemos $g(y_0)=x_1=x_2$, y se concluye que $f$ es una inyección.
+
+Para la sobreyectividad, sea $y_0\in Y$, queremos encontrar un $x_0\in X$ tal que $y_0=f(x_0)$. Escogemos $x_0=g(y_0)$, y como $g$ es la inversa de $f$ tenemos por la definición que $f(x_0)=y_0$, concluyendo que $f$ es una sobreyección.\\
+
+Para $f$ es biyectiva $\implies f$ es invertible,\\
+
+Supongamos que $f$ es una biyección. Queremos contruir una función $g:Y\to X$ tal que sea la inversa de $f$. Supongamos $y_0\in Y$, como $f$ es biyectiva, $y_0$ tiene exactamente una preimagen en $X$, digamos $x_0\in X$ tal que $f(x_0)=y_0$. Por lo tanto es posible definir una función tal que para cada elemento en $Y$, $g(y_0)$ es el único elemento en $X$, tal que $f(x)=y$.\\
+
+Finalmente como $(f \text{ invertible } \implies f \text{ biyectiva }) \wedge (f \text{ biyectiva } \implies f\text{ invertible })$, entonces $f \text{ biyectiva } \iff f\text{ invertible} $.\\
+
+Para $f$ invertible $\implies f$ tiene una única inversa,\\
+
+Supongamos $g_1:Y\to X$ y $g_2:Y\to X$ dos funciones inversas de $f$. Queremos demostrar que $g_1=g_2$, eso es que $g_1(y)=g_2(y), \forall y\in Y$. Sea $y_0\in Y$. Luego, digamos $x_1=g_1(y_0)$ y $x_2=g_2(y_0)$, de forma que requerimos mostrar que $x_1=x_2$. Pero como $x_1=g_1(y_0)\implies f(x_1)=y_0$, y $g_2(y_0)=x_2\implies f(x_2)=y_0$, tenemos que $y_0=f(x_1)=f(x_2)$. Pero notemos que como $f$ es invertible, también es biyectiva, y en particular inyectiva, por lo qeu $f(x_1)=f(x_2)\implies x_1=x_2$, lo que se quería demostrar.
+\end{proofenv}
+
+\begin{exampleenv}
+    Gracias al Teorema \ref{teo:2} podemos asegurarnos de que la función del ejemplo anterior $f:\mathbb{R}\to\mathbb{R}$, $f(x)=x^3+1$ es invertible. Primero veamos si es inyectiva.\\
+
+    Sean $x_a,x_b\in\mathbb{R}$, tenemos que $f(x_a)=x_a^3+1$ y $f(x_b)=x_b^3+1$. Luego, imponemos $f(x_a)=f(x_b)\implies x_a^3+1=x_b^3+1\implies x_a^3=x_b^3\implies x_a=x_b.$ Por lo que $f$ es inyectiva.\\
+
+    Ahora para la sobreyectividad, consideremos $f(x)=y$, es decir, $x^3+1=y$. Despejando obtenemos, $x=\sqrt[3]{y-1}$, como la raíz cúbica existe para cada número real, podemos concluir que para todo $y\in\mathbb{R}$ existe su pre-imagen, y la función es sobreyectiva.\\
+
+    Ahora, como la función es biyectiva, concluimos que la función es efectivamente invertible.
+\end{exampleenv}
+
+\begin{exampleenv}
+    Sea $g:\mathbb{R}\to\mathbb{R}$, $g(x)=x^2$.\\
+
+    Es fácil mostrar que esta función no es invertible en este dominio, ya que, sean $x_a,x_b\in\mathbb{R}$, tenemos $f(x_a)=x_a^2, f(x_b)=x_b^2$, luego imponemos $f(x_a)=f(x_b)\implies x_a^2=x_b^2$, y esto último no implica que $x_a=x_b$ para ambos números reales. Por lo tanto, $f$ no es inyectiva, por ende no es biyectiva ni invertible.
+\end{exampleenv}
+
+\chapter{Procesos de aproximación}\label{cap:3}
+\noindent
+A veces, las certezas en matemáticas no vienen de igualdades absolutas, sino de desigualdades arbitrarias. En este capítulo se tratarán superficialmente algunos conceptos básicos del análisis real. Usaremos las desigualdades para definir los conceptos de cota, supremo, límites y la continuidad, que nos permitirán acercarnos a entender el infinito como un crecimiento arbitrario. Los contenidos de este capítulo fueron extraídos principalmente de \cite{Notasuchile}, con adicionales de \cite{abbott2015understanding}, \cite{tao2006analysis}, y \cite{spivak2006calculus}.
+
+\section{Cotas y Axioma del Supremo}
+\noindent
+En esta sección hablaremos de conceptos que son útiles a la hora de construir los números reales, que, como veremos más adelante, no son tan sencillos de definir como los conjuntos de los enteros o los racionales. El contenido de esta sección se complementa con \cite[Chapter 1, Section 1.3]{abbott2015understanding}, \cite[Chapter 5]{tao2006analysis}, y \cite[Chapter 8]{spivak2006calculus}.
+
+\subsection{Acotamiento}
+\noindent
+Es claro que algunos conjuntos tienen elementos finitos y otros elementos infinitos. Por ejemplo podríamos decir que el segmento de la recta real $(5, 17)$ tiene infinitos elementos entre $5$ y $17$, pero al mismo tiempo podemos decir que sí tiene una frontera, que está \textit{acotado}, a pesar de no ser un intervalo cerrado.
+
+\begin{definitionenv}
+    Decimos que $A\subset\mathbb{R}$ es un conjunto superiormente acotado si se cumple que
+    \begin{align*}
+        \exists M\in \mathbb{R},\forall x \in A, x\leq M.
+    \end{align*}
+    Llamamos a $M$ la \conceptT{cota superior} de $A$.
+\end{definitionenv}
+
+\begin{exampleenv}
+    Consideremos el conjunto $(-\infty,2)$ un intervalo en la recta real.\\
+    Una cota superior del conjunto es $M=46$, ya que se cumple la definición y $\forall x\in (-\infty,2)$, $x\leq 46$. Sin embargo, la cota más obvia puede ser $M=2$.
+\end{exampleenv}
+
+
+\begin{definitionenv}
+     Decimos que $A\subset \mathbb{R}$ es un conjunto inferiormente acotado si se cumple que
+    \begin{align*}
+        \exists M\in \mathbb{R},\forall x \in A, x\ge M.
+    \end{align*}
+    Llamamos a $M$ la \conceptT{cota inferior} de $A$.
+\end{definitionenv}
+
+\begin{exampleenv}
+    El conjunto visto anteriormente como ejemplo $(-\infty,2)$ no está acotado inferiormente. Esto es sencillo de demostrar, simplemente tomamos la negación de la definición $\neg(\exists M\in \mathbb{R},\forall x \in (-\infty,2), x\ge M)\iff\forall M\in\mathbb{R},\exists x\in (-\infty,2), x< M$. Esta afirmación es cierta ya que, si elegimos cualquier $y<2$, basta con tomar $y-1$ y notamos que sigue estando dentro del intervalo, por lo que el conjunto no está inferiormente acotado.
+\end{exampleenv}
+
+\begin{exampleenv}
+    Algunos ejemplos, que sí están inferiormente acotados son el intervalo $(1,2)$ con cota $M=1$ o el conjunto $\{2,\frac{5}{2},7,76\}$ con $M=2$.
+\end{exampleenv}
+
+\begin{definitionenv}
+    Decimos que $A$ tiene un \conceptT{máximo}, si y sólo si posee una cota superior que pertenece a $A$, escribimos $M=\max(A)$. Y decimos que $A$ tiene un \conceptT{mínimo}, si y sólo si, posee una cota inferior que pertenece a $A$ y escribimos $m=\min(A)$. 
+\end{definitionenv}
+
+\begin{exampleenv}
+    Para el conjunto $A = \{1,5,-3,2\}$ tenemos $\max(A)=5$ y $\min(A)=-1$, mientras que para el conjunto $\mathbb{N}_0$ los naturales incluyendo al cero, tenemos $\min(\mathbb{N}_0)=0$ mientras que el máximo no existe.
+\end{exampleenv}
+
+\begin{definitionenv}
+     Decimos que $A\subset \mathbb{R}$ es un conjunto \conceptT{acotado} si se cumple que
+    \begin{align*}
+        \exists M\in \mathbb{R},\forall x \in A, |x|\leq M.
+    \end{align*}
+\end{definitionenv}
+
+A partir de esta definición un resultado bastante esperable es el siguiente teorema.
+
+\begin{theoremenv}
+    Un conjunto está acotado si y solo si está acotado superiormente y está acotado inferiormente.
+\end{theoremenv}
+\begin{proofenv}
+    Es necesario demostrar la implicancia hacia ambos lados.\\
+    
+    Demostración acotado $\implies$ acotado inf y acotado sup. Si $A$ es un conjunto acotado tenemos $\forall x\in A, |x|\leq M$. Sabemos que $x\leq|x|,\forall x\in\mathbb{R}$, por lo que para todo $x$ en $A$ tenemos $x\leq|x|\leq M\implies x\leq M$, por lo tanto $A$ es superiormente acotado. Por otro lado, también sabemos que $x\ge - |x|,\forall x\in\mathbb{R}$, además, $|x|\leq M\implies -M\leq -|x|$, por lo que tenemos $-M\leq -|x|\leq x\implies -M\leq x$ para todo $x$ en $A$, concluyendo que $A$ también está inferiormente acotado.\\
+
+    Demostración acotado inf y acotado sup $\implies$ acotado. Si el conjunto es acotado superiormente e inferiormente tenemos $L\leq x\leq N$ para $x\in A$, donde $L$ es cota inferior y $N$ cota superior, luego elegimos $M:=\max(|L|,|N|)$, de manera que ahora $-M\leq x\leq M\implies |x|\leq M$, concluyendo que $A$ está acotado.
+\end{proofenv}
+
+\subsection{Supremo e ínfimo}
+
+Notemos que lo más natural a la hora de elegir una cota superior de un conjunto, es elegir la más pequeña posible. Veremos que está mínima cota superior es especialmente relevante.
+\noindent
+\begin{definitionenv}
+    Dado $A\subset \mathbb{R}$, $M$ es el \conceptT{supremo} de $A$, denotado $sup(A)$, si
+    \begin{itemize}
+        \item $M$ es cota superior de $A$,
+        \item $s >M$ para cualquier otra cota superior $s$ de $A$.
+    \end{itemize}
+    Es decir, el supremo es la \textit{mínima cota superior} de $A$.
+\end{definitionenv}
+
+\begin{exampleenv}
+    Consideremos el intervalo $I=(0,1)$.
+    Podemos dar muchas cotas superiores, $M=3$, $N=5$, pero la menor cota superior es el supremo $s=\sup(I)=1$. Asimismo notemos que el conjunto $I$ posee supremo, mas no posee máximo, ya que, como se definió anteriormente, el máximo debe estar dentro del conjunto. Si el intervalo fuera cerrado como $I'=[0,1]$, podemos decir que $\max(I')=\sup(I')=1$.
+\end{exampleenv}
+
+Análogamente podemos definir el ínfimo, que en general veremos como menos relevante.
+
+\begin{definitionenv}
+     Dado $A\subset \mathbb{R}$, $m$ es el \conceptT{ínfimo} de $A$, denotado $\inf(A)$, si
+    \begin{itemize}
+        \item $m$ es cota inferior de $A$,
+        \item $s < m$ para cualquier otra cota inferior $s$ de $A$.
+    \end{itemize}
+    Es decir, el ínfimo es la \textit{mayor cota inferior} de $A$.
+\end{definitionenv}
+
+Dados $A,B\in \mathbb{R}$, definimos
+\begin{align*}
+    A+B&=\{x+y: x\in A, y\in B\},\\
+    A\cdot B&=\{x\cdot y:x\in A, y\in B\}.
+\end{align*}
+
+Algunas \textbf{propiedades} del supremo son:
+\begin{itemize}
+    \item $\sup(A+B)=\sup(A)+\sup(B)$.
+    \item $\sup(A\cdot B)=\sup(A)\cdot \sup(B)$ si $A,B\subset \mathbb{R}$.
+\end{itemize}
+
+La existencia del supremo no se deduce del resto de propiedades de los números reales, por lo que se plantea el siguiente axioma.
+
+\begin{axiomenv}
+    \textbf{Axioma del supremo}\\
+    Todo conjunto no vacío y acotado superiormente posee un supremo.
+\end{axiomenv}
+
+No necesitamos un axioma del ínfimo ya que la existencia del supremo implica que $\inf(A)=-\sup(-A)$, donde $-A=\{ -a:a\in A\}$. Una aplicación en la que se usa este axioma es para construir el significado de la raíz cuadrada de un número real. Por ejemplo, en $\mathbb{Z}$ es claro que $r^2=a\implies |r|=\sqrt{a}, \quad a,r\in \mathbb{Z}$. Y en $\mathbb{Q}$, es claro que la raíz de una razón de enteros es la razón de las raíces de los enteros. Sin embargo, en $\mathbb{R}$ es mucho menos trivial.\\
+
+\begin{exampleenv}
+
+A continuación, demostraremos que $\sqrt{2}$ existe y es un número real:
+
+Queremos demostrar que existe un $a\in \mathbb{R}$ tal que $a^2=2$.
+
+Consideremos el conjunto $A=\{r\in \mathbb{R}:r^2\leq 2\}$, sabemos que este es un conjunto acotado por $2$ ya que $\forall r\in A, |r|\leq 2$. Por lo tanto, por el axioma del supremo, $A$ debe tener un supremo, que definiremos como $s=\sup(A)$.\\
+
+Ahora queremos mostrar que $s^2=2$.\\
+
+Supongamos por contradicción que $s^2<2$, esto significa que $(s+\epsilon)^2<2$ para algún $\epsilon>0$, lo que implicaría $(s+\epsilon)\in A$, pero esto contradice que $s$ es el supremo de $A$, por lo que la asunción debe ser falsa, y $s^2\ge 2$.
+
+Análogamente, supongamos por contradicción que $s^2>2$, esto significa que $(s-\epsilon)^2>2$, para algún $\epsilon>0$, esto implicaría que $(s-\epsilon)\notin A$, pero eso significaría que hay una cota superior más pequeña que $s$ para $A$, lo cual contradice el hecho de que $s$ es el supremo de $A$, por lo que la asunción debe ser falsa, y $s^2\leq 2$.\\
+
+Por lo tanto, como $s^2\leq2 \wedge s^2\ge 2$, entonces $s^2=2$. Por lo tanto, como $s=\sup(A)\in \mathbb{R}$, $s=\sqrt{2}$. \qed
+\end{exampleenv}
+
+\section{Procesos Límite}
+\noindent
+La idea de límite es mucho más poderosa de lo que parece en primera instancia, estudiaremos los límites en sucesiones tal como las introdujimos en la Sección~\ref{sec:operaciones_fun}, estudiaremos el límite de una función en un punto, sentando la base de los conceptos de derivada e integral así como para entender otro tipo de operadores. El material de está sección fue extraído principalmente de \cite[Chapter 2]{abbott2015understanding}, \cite[Chapter 4]{abbott2015understanding}, \cite[Chapter 6]{tao2006analysis}, y \cite[Chapter 5]{spivak2006calculus}.
+
+\subsection{Límites de sucesiones}
+
+Una sucesión en los reales se define como $a:\mathbb{N}\rightarrow\mathbb{R}$, y la podemos escribir como $a(n)$, sin embargo, se suele distinguir de la funciones arbitrarias escribiendo $a_n$.\\
+
+Podemos escribir una fórmula para cada n-ésimo término de una sucesión, como
+
+\[
+a_n=\frac{n}{n+1}=\left\{\frac{1}{2},\frac{2}{3},\frac{3}{4},\dots\right\}.
+\]
+
+O también podemos definir una sucesión recursivamente, por ejemplo
+
+\[
+    a_{n+1}=a_n+1;\quad a_1=0.
+\]
+
+Si bien muchas sucesiones crecen hasta el infinito como $a_n=n^2$ o $b_n=\frac{3n+1}{4}$, otras podrían acercarse a un valor en particular a medida que $n$ crece, esto es que la sucesión converja a un valor.
+
+\begin{definitionenv}
+    \textbf{Límite de una sucesión}\\
+    Se dice que una sucesión $a_n$ converge a $L$ si se cumple que
+    \[
+        \forall \epsilon >0,\exists n_0\in \mathbb{N}, \forall n\ge n_0, |a_n-L|<\epsilon,
+    \]
+    y escribimos $\lim\limits_{n\to\infty}a_n=L$.
+\end{definitionenv}
+
+Al intervalo $(L-\epsilon, L+\epsilon)$ le llamamos \textit{vecindad} de $L$.\\
+
+Podemos entender esta definición como que para todo $\epsilon$ (por pequeño que sea), podemos encontrar un $n_0$ a partir del cual todos los términos de la sucesión se encuentren en la vecindad de $L$ dada por $\epsilon$.\\
+
+\begin{exampleenv}
+Demostración de $\lim\limits_{n\to\infty}\frac{1}{n}=0$
+
+Primero, notemos que intuitivamente si tomamos $n$ muy grande el número $a_n=\frac{1}{n}$ se hace cada vez más pequeño, por lo que aparentemente la sucesión sí podría converger a 0.
+
+Luego, sea $\epsilon >0$, la desigualdad de la definición es 
+
+\begin{align*}
+    |a_n-L|<\epsilon
+    \implies \left|\frac{1}{n} \right| <\epsilon
+    \implies \frac{1}{n}<\epsilon.
+\end{align*}
+
+Luego, queremos que $\forall n\ge n_0, |a_n-L|<\epsilon$
+
+Elegimos $n>\frac{1}{\epsilon}$, $\therefore n_0=\lceil \frac{1}{\epsilon} \rceil$.\footnote{Aquí esta notación representa la función techo, definida como $\lceil x\rceil=\min\{k\in \mathbb{Z}|x\leq k\}$.}\\
+
+Así, encontramos $n_0 =n_0(\epsilon)$ tal que $|a_n-L|<\epsilon, \forall n\ge n_0$. Por lo tanto, $\lim\limits_{n\to\infty}\frac{1}{n}=0$.\qed
+\end{exampleenv}
+
+Podemos demostrar que un límite no existe usando la negación. Así, decimos que una sucesión no tiene límite si se tiene que 
+
+\begin{align*}
+    \neg(\forall \epsilon >0, \exists n_0 \in \mathbb{N}, \forall n>n_0, |a_n-L|<\epsilon)\\
+    =\exists\epsilon>0, \forall n_0  \in \mathbb{N}, \exists n>n_0, |a_n-L|\ge\epsilon.
+\end{align*}
+
+\begin{exampleenv}
+
+Demostrar que $a_n=(-1)^n$ no tiene límite.
+
+Queremos mostrar que $\exists\epsilon>0, \forall n_0  \in \mathbb{N}, \exists n>n_0, |(-1)^n-L|\ge\epsilon$.\\
+
+Queremos encontrar $n$ tal que $|(-1)^n-L|\ge \epsilon$\\
+
+Si $L>0$, $a_n=-1$ para todo $n$ impar, por lo tanto
+
+\[
+n =
+\begin{cases}
+    n_0, &  n_0 \text{ es impar} \\
+    n_0+1, & n_0 \text{es par}
+\end{cases}.
+\]
+
+$\implies |a_n-L|=|-1-L|=1+L\ge1=\epsilon$
+
+$\therefore$ encontramos $\epsilon$ y $n$ dado cualquier $n_0$
+
+Si $L<0$, $a_n=1$ para todo $n$ par, por lo tanto
+
+\[
+n =
+\begin{cases}
+    n_0, &  n_0 \ es \ par \\
+    n_0+1, & n_0 \ es \ impar
+\end{cases}.
+\]
+
+$\implies |a_n-L|=|1-L|=1-L\ge 1=\epsilon$
+
+$\therefore$ encontramos $\epsilon$ y $n$ dado cualquier $n_0$
+
+Por último, si $L=0$,
+
+$|a_n-L|=|(-1)^n|=1\ge \epsilon$\\
+
+Por lo tanto, el límite no es ni mayor, ni menor, ni igual a 0. Concluimos que el límite no existe. \qed
+\end{exampleenv}
+
+Esta demostración podría no parecer suficiente para algunos, ya que separamos los casos de manera conveniente. Por ejemplo, para $L>0$, sólo tomamos los $n$ impares, ya que esto nos permite asegurar lo que está al interior del valor absoluto en la desigualdad es negativo. Pasa algo parecido para el caso de $L<0$. La verdad es que esto es suficiente para la demostración, ya que basta con demostrar que la desigualdad $|a_n-L|\ge \epsilon$ es verdadera para \textit{alguna} sub-sucesión infinita de $a_n$, como la que tiene los $n$ impares.
+
+\subsection{Sucesiones monótonas}
+\noindent
+No siempre es tan evidente la convergencia de un sucesión, por lo que nos gustaría tener algún criterio para determinarla, un criterio para esto se presenta en el Teorema~\ref{teo:monotona}.
+
+\begin{definitionenv}
+     Decimos que una sucesión $a_n$ es \textit{creciente} si $a_{n}<a_{n+1}$ para toda $n\ge 1$. Si $a_n>a_{n+1}$ para toda $n\ge 1$ entonces la sucesión es \textit{decreciente}. Una sucesión es \textit{monótona}, si es creciente o decreciente.
+\end{definitionenv}
+
+\begin{theoremenv}\label{teo:monotona}
+    \textbf{Teorema de la sucesión monótona}
+    \begin{itemize}
+        \item Si $a_n$ es una sucesión monótona creciente y acotada superiormente, entonces es convergente y
+        \begin{align*}
+            \lim\limits_{n\to\infty}a_n=\sup\limits_n(a_n).
+        \end{align*}
+        \item Si $a_n$ es una sucesión monótona decreciente y acotada inferiormente, entonces es convergente y
+        \begin{align*}
+            \lim\limits_{n\to\infty}a_n=\inf\limits_n(a_n).
+        \end{align*}
+    \end{itemize}
+\end{theoremenv}
+
+\begin{proofenv}
+
+Haremos la demostración de la primera parte para sucesiones crecientes.\\
+
+Supongamos $a_n$ es una sucesión acotada superiormente y monótona creciente. Como es acotada por axioma del supremo existe $s=\sup (a_n)$.
+
+Luego $s$ es nuestro candidato a límite, por lo que queremos demostrar $\lim\limits_{n\to\infty}a_n=s$.
+
+Buscamos $n_0$ tal que $|a_n-s|<\epsilon$ para todo $\epsilon$ mayor que 0. Como $s$ es supremo, entonces $s-\epsilon$ no es cota superior. Con esto existe $n_0$ tal que
+\begin{align*}
+    a_{n_0}>s-\epsilon
+\end{align*}
+
+La sucesión es creciente, luego
+\begin{align*}
+    s-\epsilon<a_{n_0}\leq a_n\leq s<s+\epsilon
+\end{align*}
+
+Concluimos que $\forall \epsilon>0$, hay un $n_0$ a partir del cual $a_n$ está en una vecindad de $s$, es decir, $|a_n-s|<\epsilon$.
+\end{proofenv}
+
+\subsection{Límites superior e inferior}
+
+Definir los límites superior e inferior nos permite describir el comportamiento de las sucesiones aún cuando no convergen a un valor. También nos proporcionan otro criterio para la convergencia.
+\noindent
+\begin{definitionenv}
+    Dada la sucesión $a_n$
+    \begin{itemize}
+        \item \textbf{Límite superior}
+            \begin{align*}
+                \limsup\limits_{n\to \infty}a_n=\lim\limits_{n\to \infty}   (\sup\limits_{k\ge n}a_k).
+            \end{align*}
+        \item \textbf{Límite inferior}
+            \begin{align*}
+                \liminf\limits_{n\to \infty}a_n=\lim\limits_{n\to \infty}   (\inf\limits_{k\ge n}a_k).
+            \end{align*}
+    \end{itemize}
+\end{definitionenv}
+
+\begin{exampleenv}
+Encuentre el límite superior e inferior de $a_n=(-1)^n$.
+
+Calculamos primero el límite superior, por su definición tenemos
+\[
+    \limsup\limits_{n\to\infty}(-1)^n=\lim\limits_{n\to\infty}(\sup_{k\ge n}(-1)^k).\\
+\]
+Como $\sup(-1)^n=1$, tenemos
+\[
+    \limsup\limits_{n\to\infty}(-1)^n=\lim\limits_{n\to\infty}1=1.
+\]
+Luego, por la definición de límite inferior, tenemos
+\[
+    \liminf\limits_{n\to\infty}(-1)^n=\lim\limits_{n\to\infty}(\inf_{k\ge n}(-1)^k).\\
+\]
+Como $\inf(-1)^n=-1$, nos queda que
+\[
+    \liminf\limits_{n\to\infty}(-1)^n=\lim\limits_{n\to\infty}-1=-1.
+\]
+\end{exampleenv}
+
+\textbf{Propiedades:}
+\begin{itemize}
+    \item $\liminf\limits_{n\to\infty}a_n\leq \limsup\limits_{n\to\infty}a_n$
+    \item Relación entre límites\\
+    $\limsup\limits_{n\to\infty}a_n=L=\liminf\limits_{n\to\infty}a_n\iff\lim\limits_{n\to\infty}a_n=L$
+\end{itemize}
+
+Esta última propiedad es particularmente importante, ya que si podemos mostrar que los límites superior e inferior existen y son iguales, conocemos automáticamente el límite y viceversa.
+
+\begin{theoremenv}
+    Toda sucesión acotada posee límite superior y límite inferior.
+\end{theoremenv}
+
+\begin{proofenv}
+
+Sea $a_n$ una sucesión acotada, es decir, $\exists M>0:|a_n|\leq M, \forall n$, definimos la sucesión $s_n$ dada por $s_n=\sup\limits_{k\ge n} a_k$. Queremos mostrar que $s_n$ es una sucesión monótona y acotada. 
+
+Notemos que como $|a_n|\leq M$, $-M<a_n<M$, tenemos
+\begin{align*}
+    s_n&=\sup\limits_{k\ge n} a_k \ge M\\
+    s_n&\ge \inf\limits_{k\ge n}a_k\ge-M.
+\end{align*}
+
+Por lo que $s$ es acotada, $-M\leq s_n\leq M$.
+
+Notemos que a medida que $n$ aumenta, el conjunto $\{a_k:k\ge n\}$ se hace más pequeño, ya que aumenta la restricción, es decir,
+\[
+    \{a_k:k\ge n+1\}\subseteq \{a_k:k\ge n\}\implies s_{n+1}\ge s_n.
+\]
+
+Por lo que $s_n$ es monótona decreciente.
+
+Así, como $s_n$ es monótona y acotada, por el teorema de la sucesión monótona concluimos que $\lim\limits_{n\to\infty}s_n=\lim\limits_{n\to\infty}(\sup\limits_{k\ge n} a_n)=\limsup\limits_{n\to \infty}a_n$ es convergente.
+\end{proofenv}
+
+\subsection{Límites de funciones y continuidad}
+\noindent
+El límite de una función en un punto $a$ lo podemos entender como el valor al cual la función se acerca a medida que hacemos tender $x$ a $a$. Formalmente, la definición más clásica se escribe en el lenguaje de epsilon-delta.
+
+\begin{definitionenv}\label{def:limit_1}
+    \textbf{Límite de una función}\\
+    Sea $f:D\to \mathbb{R}$, decimos que el límite de $f(x)$ cuando $x$ tiende a $a$ es $L$ si
+    \begin{align*}
+        \forall \epsilon >0, \exists \delta>0,\forall x\in D,(0<|x-a|<\delta\implies |f(x)-L|<\epsilon).
+    \end{align*}
+    y escribimos $\lim\limits_{x\to a}f(x)=L$.
+\end{definitionenv}
+
+También existe otra definición para el límite de una función que es equivalente a esta pero suele ser útil para demostrar que un límite no existe o que no es un valor en particular.
+
+\begin{definitionenv}\label{def:limit_2}
+    \textbf{Límite de una función (sucesiones)}\\
+    Sea $f:D\to \mathbb{R}$, decimos que el límite de $f(x)$ cuando $x$ tiende a $a$ es $L$ si
+    \[
+        \forall (x_n)\in D\setminus \{a\}: \lim\limits_{n\to \infty}x_n=a, \quad\lim\limits_{n\to\infty}f(x_n)=L.
+    \]
+    y escribimos $\lim\limits_{x\to a}f(x)=L$.
+\end{definitionenv}
+
+Conceptualmente podemos entender esta definición como: \textit{podemos tomar cualquier sucesión en el dominio de la función tal que converga a $a$, y observar como $f(x_n)$ se acerca a $L$}. Se puede además demostrar (por favor inténtelo) que ambas definiciones son equivalentes.
+
+\begin{exampleenv}
+    Demostrar que $\lim\limits_{x\to 0} x^2=0$, por la Definición~\ref{def:limit_1}.\\
+    Queremos demostrar que $\forall \epsilon>0,\exists\delta>0,\forall x\in D, (|x-0|<\delta\implies |x^2-0|<\epsilon).$
+    La implicancia nos queda
+    \[
+    |x|<\delta\implies x^2<\epsilon
+    \]
+    Por lo que, podemos elegir $\delta = \sqrt{\epsilon}$.\\
+
+    Luego, sea $\epsilon>0$ y eligiendo $\delta=\sqrt{\epsilon}$, tenemos
+    \[
+    |x|<\delta\implies|x|<\sqrt{\epsilon}\implies x^2<\epsilon
+    \]
+    Por lo que concluimos que $\lim\limits_{x\to0}x^2=0.$\qed
+\end{exampleenv}
+
+\begin{exampleenv}
+    Demostrar que $\lim\limits_{x\to 0} x^2=0$, por la Definición~\ref{def:limit_2}.\\
+
+    Aquí es necesario una propiedad que se puede demostrar por definición, pero que no lo haremos ahora, y es que $\lim\limits_{x\to a} (f(x)^2)=(\lim\limits_{x\to a} f(x))^2$.
+
+    Ahora, según la Definición~\ref{def:limit_2}, sea $x_n$ una sucesión arbitraría en $D\setminus \{0\}$ tal que $\lim\limits_{n\to\infty}x_n=0$, tenemos que demostrar que $\lim\limits_{n\to\infty}f(x_n)=\lim\limits_{n\to\infty}x_n^2=0$. Entonces,
+    \[
+    \lim\limits_{n\to\infty}x_n=0\implies \lim\limits_{n\to\infty}x_n^2=0^2=0.
+    \]
+    Por lo tanto concluimos que $\lim\limits_{x\to 0} x^2=0$.\qed
+\end{exampleenv}
+
+\begin{exampleenv}
+Demuestre $\lim\limits_{x\to 0}\sin(\frac{1}{x})$ no existe.
+
+Podemos demostrar esto usando la Definición~\ref{def:limit_2} del límite de una función con sucesiones. 
+
+Definimos $f:\mathbb{R}\to\mathbb{R}$, dada por $f(x)=\sin(\frac{1}{x})$. Luego queremos encontrar dos sucesiones $a_n$ y $b_n$ en $\mathbb{R}$ que converjan a $0$, pero que $f(a_n)$ y $f(b_n)$ converjan a distintos valores.
+
+Si elegimos $a_n=\frac{1}{2\pi n}$, notamos que 
+\[
+    \lim\limits_{n\to\infty}a_n=\lim\limits_{n\to\infty}\frac{1}{2\pi n}=0.
+\]
+También notemos que $f(a_n)=\sin(2\pi n)$, y como el seno es periódico tenemos $f(a_n)=\sin(2\pi n)=0$. Por lo que
+\begin{align*}
+    \lim\limits_{n\to\infty}f(a_n)=\lim\limits_{n\to\infty}\sin(2\pi n)=\lim\limits_{n\to\infty}0=0
+\end{align*}
+Luego podemos elegir $b_n=\frac{1}{2\pi n+\frac{\pi}{6}}$, tenemos
+\begin{align*}
+    \lim\limits_{n\to\infty}b_n=\lim\limits_{n\to\infty}\frac{1}{2\pi n+\frac{\pi}{6}}=0.
+\end{align*}
+
+Luego, notemos que $f(b_n)=\sin(2\pi n+\frac{\pi}{6})=\frac{1}{2}$ ya que el seno es periódico y si tiene como argumento $2n+\frac{\pi}{6}$ siempre será $\frac{1}{2}$. Así,
+\begin{align*}
+    \lim\limits_{n\to\infty}f(b_n)=\lim\limits_{n\to\infty}\sin(2\pi n+\frac{\pi}{6})=\lim\limits_{n\to\infty}\frac{1}{2}=\frac{1}{2}.
+\end{align*}
+
+Por lo que, encontramos dos sucesiones que convergen a $0$ pero que al evaluarlas en la función, hacen que converja a dos valores distintos. Concluimos que el límite no existe, ya que oscila entre más de un valor.\qed
+\end{exampleenv}
+
+A partir de la definición de límite, es natural definir la continuidad de una función en un punto.
+
+\begin{definitionenv}
+    Decimos que \conceptT{$f$ es continua en $a$} si $\lim\limits_{x\to a}f(x)=f(a)$.
+\end{definitionenv}
+
+\begin{exampleenv}
+    Demostrar que la función $f(x)=4x-5$ es continua en $x=3$.\\
+
+    Para esto, necesitamos que $\lim\limits_{x\to3}4x-5=f(3)=7$. Analizamos la implicancia según la Definición~\ref{def:limit_1}.
+    \[
+    |x-3|<\delta\implies |4x-5-7|<\epsilon.
+    \]
+    Que podemos escribir como
+    \[
+    |x-3|<\delta\implies |4x-12|<\epsilon
+    \]
+    Tenemos que $|4x-12|<\epsilon \iff 4|x-3|<\epsilon\iff |x-3|<\epsilon/4$, por lo que podemos elegir $\delta =\epsilon/4$.\\
+
+    Luego, sea $\epsilon >0$, elegimos $\delta =\frac{\epsilon}{4}$, tenemos que $|x-3|<\epsilon/4\implies 4|x-3|<\epsilon\implies |4x-12|<\epsilon$, que es a lo que queríamos llegar. Por lo tanto $\lim\limits_{x\to3}4x-5=7=f(3)$, y concluimos que $f$ es continua en $x=3$.\qed
+\end{exampleenv}
+
+\begin{exampleenv}
+    Consideremos la función indicatriz de $A\subset U$, $I:U\to \{0,1\}$, dada por
+    \[
+    I_A(x)=
+    \begin{cases}
+        1, &x\in A\\
+        0, &x\notin A
+    \end{cases}
+    \]
+    Ahora, consideremos $A=(-5,5)$, demostrar que la función $I$ no es continua en $x=5$.\\
+
+    Notemos que $I_A(5)=0$ ya que $5\notin A$. Entonces queremos demostrar que $\lim\limits_{x\to 5} I_A(x)\neq 0$. Consideremos la Definición~\ref{def:limit_2} y consideremos la sucesión $(x_n=5-\frac{1}{n})\in U\setminus\{5\}$ tal que $\lim\limits_{n\to\infty} x_n=5$. Según la definición, para que $\lim\limits_{x\to 5}I_A(x)=0$, la función evaluada en la sucesión debe converger a $0$ también, sin embargo, tenemos que $I_A(x_n)=I_A(5-\frac{1}{n})=1$, ya que para todo $n$ $x_n\in A$, luego $\lim\limits_{n\to\infty} I_A(x_n)=\lim\limits_{n\to\infty} 1=1\neq0$. Por lo que concluimos que $\lim\limits_{x\to 5} I_A(x)\neq I_A(5)$, por lo tanto la función no es continua en $x=5$.\qed
+\end{exampleenv}
+
+\chapter{Espacios abstractos}\label{cap:4}
+\noindent
+Desde ahora en adelante nos empezaremos a alejar de el conjunto de los números reales, para  acercarnos a otro tipo de espacios. A pesar de que a partir de aquí los contenidos son más abstractos, eso no significa que tengan menos aplicaciones, de hecho, esta capacidad de abstracción es clave para modelar problemas complejos en ingeniería. Expandiremos el concepto de espacio vectorial y entenderemos como medir objetos dentro de estos. Ampliaremos lo ya visto en funciones y límites para espacios más generales e incluso lo relacionaremos con elementos del cálculo. Finalmente entenderemos el problema de encontrar puntos fijos en una función y terminaremos relacionando la teoría de los espacios de Hilbert y series de Fourier con el análisis de señales. El material para este capítulo fue sacado principalmente de \cite{lay2007algebra}, \cite{kreyszig1991introductory}, \cite{kreyszig2007advanced} y \cite{Tao2016-qy}.
+
+\section{Espacios vectoriales y espacios normados}
+\noindent
+ En esta sección en particular se revisa y se extiende un poco más el concepto de espacio vectorial visto en álgebra lineal y llegaremos a entender como podemos medir cosas en cualquier espacio. Los contenidos de esta sección se pueden encontrar principalmente en \cite[Capítulo 4, Sección 4.1]{lay2007algebra}, \cite[Chapter 2, Section 2.1]{kreyszig1991introductory} y \cite[Chapter 2, Section 2.2]{kreyszig1991introductory}.
+
+\subsection{Espacios y subespacios vectoriales}
+
+\begin{definitionenv}
+    Un \textit{espacio vectorial} (real) es un conjunto no vacío $V$ de objetos llamados vectores, en el cual están definidas una operación suma $+:V\times V\to V$ y multiplicación por escalar $\cdot:\mathbb{R}\times V\to V$. Donde el escalar es un número real. Estas operaciones están sujetas a $10$ axiomas listados a continuación. Estos axiomas son válidos para todos los vectores $\mathbf{u},\mathbf{v},\mathbf{w}$ y todos los escalares $c,d$.
+    \begin{enumerate}
+        \item La suma de $\mathbf{u}$ y $\mathbf{v}$, denotada por $\mathbf{u}+\mathbf{v}$ está en $V$.
+        \item $\mathbf{u}+\mathbf{v}=\mathbf{v}+\mathbf{u}$.
+        \item $(\mathbf{u}+\mathbf{v})+\mathbf{w}=\mathbf{u}+(\mathbf{v}+\mathbf{w})$.
+        \item Hay un vector $\mathbf{0}$ en $V$ tal que $\mathbf{u}+\mathbf{0}=\mathbf{u}$.
+        \item Existe un vector $-\mathbf{u}$ en $V$ tal que $\mathbf{u}+(-\mathbf{u})=\mathbf{0}$.
+        \item El múltiplo escalar de $\mathbf{u}$ por $c$, es denotado por $c\mathbf{u}$ y está en $V$.
+        \item $c(\mathbf{u}+\mathbf{v})=c\mathbf{u}+c\mathbf{v}$.
+        \item $(c+d)\mathbf{u}=c\mathbf{u}+d\mathbf{u}$.
+        \item $c(d\mathbf{u})=(cd)\mathbf{u}$.
+        \item $1\mathbf{u}=\mathbf{u}$.
+    \end{enumerate}
+\end{definitionenv}
+
+Si bien definimos $V$ como un espacio vectorial real, no es demasiado distinto para espacios vectoriales complejos (donde los escalares son números complejos).
+
+A la propiedad 1 se le llama cerradura bajo la suma, y a la propiedad 6 cerradura bajo la multiplicación por escalar.
+
+Notemos que para un espacio vectorial están definidos el neutro aditivo, neutro multiplicativo y el inverso aditivo. Sin embargo, no se define un inverso multiplicativo.
+
+Algunos ejemplos de espacios vectoriales son: vectores en $\mathbb{R}^n$, matrices en $\mathbb{R}^{n\times m}$, funciones continuas y las sucesiones $a:\mathbb{N}\to\mathbb{R}$.\\
+
+\begin{exampleenv}
+
+Defina la suma y el producto para los siguientes espacios:
+\begin{itemize}
+    \item Vectores en $\mathbb{R}^n$.
+    \item Matrices en $\mathbb{R}^{n\times m}$.
+    \item Sucesiones $a:\mathbb{N}\to\mathbb{R}$.
+\end{itemize}
+
+Sean $\mathbf{u}, \mathbf{v}\in \mathbb{R}^n$, y $u_j$ su $i$-ésima componente. Definimos la suma como
+
+\[+(\mathbf{u},\mathbf{v})=\mathbf{u}+\mathbf{v}=\mathbf{w},\] 
+
+donde $w_i=u_i+v_i$.\\
+
+Definimos el producto por escalar como
+
+\[\cdot(c,\mathbf{u})=c\mathbf{u},\]
+
+donde $(cu)_i=c(u_i)$. \\
+
+Sean $\mathbf{A},\mathbf{B}\in \mathbb{R}^{n\times m}$. Definimos la suma como
+
+\[+(\mathbf{A},\mathbf{B})=\mathbf{A}+\mathbf{B}=\mathbf{C},\]
+
+donde $C_{ij}=A_{ij}+B_{ij}.$\\
+
+Definimos el producto por escalar como
+\[\cdot(c,\mathbf{A})=c\mathbf{A},\]
+donde $(cA)_{ij}=c(A_{ij})$. \\
+
+Sean $a:\mathbb{N}\to\mathbb{R},b:\mathbb{N}\to\mathbb{R}$ sucesiones, definimos la suma como
+
+\[+(a,b)=a_n+b_n=c_n,\forall n\in \mathbb{N}.\]
+
+Y definimos el producto por escalar como
+\[\cdot(d,a)=d\cdot a_n, \forall n\in\mathbb{N}\] 
+\end{exampleenv}
+
+\begin{exampleenv}
+Demuestre que el espacio vectorial de sucesiones convergentes es cerrado bajo la suma y el producto por escalar. 
+
+\paragraph{Cerrado bajo suma:}
+
+Para $a_n$ y $b_n$ sucesiones convergentes nos gustaría demostrar que la sucesión $a_n+b_n$ también es convergente. Entonces, si $\lim\limits_{n\to\infty}a_n=L_1$ y $\lim\limits_{n\to\infty}b_n=L_2$, entonces queremos mostrar que $\lim\limits_{n\to\infty}a_n+b_n=L_1+L_2$.
+
+Sea $\epsilon>0$, buscamos $n_0$ tal que $|a_n+b_n-L_1-L_2|<\epsilon, \forall n\ge n_0$. Usamos la desigualdad triangular
+\[
+    |a_n+b_n-L_1-L_2|=|(a_n-L_1)+(b_n-L_2)|\leq |a_n-L_1|+|b_n-L_2|.
+\]
+
+Como ambas sucesiones convergen por separado existen $n_{0_1}, n_{0_2}$ tales que $|a_{n}-L_1|<\frac{\epsilon}{2}$ para todo $n\ge n_{0_1}$, y $|b_{n}-L_2|<\frac{\epsilon}{2}$, para todo $n\ge n_{0_2}$. (En este caso elegimos $\frac{\epsilon}{2}$ ya que vale para todo $\epsilon$).
+
+Y luego sea $n_0:=\max(n_{0_1},n_{0_2})$
+
+tenemos que $|a_n+b_n-L_1-L_2|<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$.
+
+Como $a_n+b_n$ es convergente a $L_1+L_2$, concluimos que la suma de sucesiones convergentes también esta en el espacio de sucesiones convergentes.
+
+\paragraph{Cerradura bajo el producto por escalar:}
+Queremos demostrar que si $\alpha\in \mathbb{R}$ y $a_n$ es una sucesión que converge a $L$, entonces $\lim\limits_{n\to\infty}\alpha a_n=\alpha L$.
+
+Así, sea $\epsilon>0$ queremos mostrar que $|\alpha a_n-\alpha L|<\epsilon$ para todo $n\ge n_0$. Notemos que si $\alpha \neq0$
+\[
+    |\alpha a_n-\alpha L|<\epsilon\iff |\alpha||a_n-L|<\epsilon \iff |a_n-L|<\frac{\epsilon}{|\alpha|}.
+\]
+
+La última desigualdad es cierta ya que $a_n$ converge a $L$ para algún $\epsilon_1=\frac{\epsilon}{|\alpha|}>0$. Así si $\alpha\neq0$, entonces $\lim\limits_{n\to\infty} \alpha a_n=\alpha L$.
+
+Si $\alpha=0$, entonces trivialmente $|(0)a_n-(0)L|<\epsilon \implies 0<\epsilon$, lo cual es cierto para todo $\epsilon$ positivo. Concluimos que $\lim\limits_{n\to\infty} \alpha a_n=\alpha L$ para cada $\alpha \in \mathbb{R}$. Y el producto escalar de una sucesión convergente también es convergente. \qed
+\end{exampleenv}
+
+Muchas veces se presentan espacios vectoriales que son un subconjunto adecuado de otro espacio vectorial más grande. En estos casos, solo es necesario verificar tres axiomas que, si se cumplen, automáticamente se cumplen los 10 de la definición general.
+\begin{definitionenv}
+    Un subespacio de un espacio vectorial $V$ es un subconjunto $H$ de $V$ que tiene tres propiedades:
+    \begin{enumerate}[label=\alph*)]
+        \item El vector cero de $V$ está en $H$.
+        \item $H$ es cerrado bajo la suma de vectores.
+        \item $H$ es cerrado bajo la multiplicación por escalares.
+    \end{enumerate}
+\end{definitionenv}
+
+Además, sea $H$ un subespacio vectorial de $V$, si desplazamos cada elemento de $H$ por un vector $v_0$ obtenemos un nuevo conjunto $A=v_0+H=\{v_0+h:h\in H\}$. Este nuevo conjunto no puede ser un subespacio vectorial ya que el vector cero no está en $A$. Esto es lo que se llama un \textit{espacio afín}, que tiene el origen desplazado a $v_0$.
+
+\begin{exampleenv}
+    Sea $\mathbb{M}_n$ el espacio de matrices de $n\times n$. Definimos la \conceptT{traza} de una matriz cuadrada como la suma de las entradas de su diagonal principal
+    \[
+    tr(A)=\sum_{i=1}^n a_{ii}
+    \]
+    Demuestre que el espacio $W=\{A\in \mathbb{M}_n: tr(A)=0\}$ de las matrices de $n\times n$ cuya traza es 0, es un subespacio vectorial de $\mathbb{M}_n$.
+
+    \begin{itemize}
+        \item Primero, es claro que la matriz cero $\mathbf{0}$ pertenece a $W$, ya que $tr(\mathbf{0})=0$
+        \item Para la cerradura bajo la suma, sean $A,B\in W$, tenemos que
+            \[
+                tr(A+B)=\sum_{i=1}^n a_{ii}+b_{ii}=\sum_{i=1}^na_{ii}+\sum_{i=1}^nb_{ii}=tr(A)+tr(B).
+            \]
+            Como $A,B\in W$, $tr(A)=tr(B)=0$ y 
+            \[
+                tr(A+B)=tr(A)+tr(B)=0.
+            \]
+            Por lo tanto $A+B\in W$\\
+        \item Luego, para la cerrado bajo el producto por escalar, sea $\lambda\in\mathbb{R}$, tenemos
+            \[
+            tr(\lambda A)=\sum_{i=1}^n \lambda a_{ii}=\lambda\sum_{i=1}^n a_{ii}=\lambda tr(A)=\lambda\cdot 0=0.
+            \]
+            Por lo tanto, $\lambda A\in W$.
+    \end{itemize}
+Concluimos que $W$ es un subespacio vectorial de $\mathbb{M}_n$.\qed\\
+    Aquí, de paso también demostramos que la traza es una función lineal.
+\end{exampleenv}
+
+\subsection{Espacios vectoriales normados}
+\noindent
+Los conceptos de `medida' o `distancia', nos son bastante familiares en la vida diaria. Si llevamos esto a la recta real, es claro que la distancia entre dos números es el valor absoluto de su diferencia. Por otro lado, en $\mathbb{R}^2$ es claro que podemos medir un vector según la norma euclidiana dada por el teorema de Pitágoras. Ahora nos gustaría extender estos conceptos a espacios más generales, con otro tipo de `medidas' y otro tipo de vectores.
+
+\begin{definitionenv}
+    Un espacio normado en un espacio vectorial $V$ que está dotado de una función norma $||\cdot||:V\to\mathbb{R}$, y cumple con las siguientes propiedades. Sean $\mathbf{x},\mathbf{y}\in V$ y $\lambda\in \mathbb{R}$.
+    \begin{enumerate}
+        \item Es no-negativa: $|\mathbf{x}|\ge 0$.
+        \item Es definida positiva: $||\mathbf{x}||=0\iff \mathbf{x}=0$.
+        \item Es absolutamente homogénea: $||\lambda\mathbf{x}||=|\lambda|\cdot ||\mathbf{x}||$.
+        \item Cumple la desigualdad triangular: $||\mathbf{x}+\mathbf{y}||\leq ||\mathbf{x}||+||\mathbf{y}||$.
+    \end{enumerate}
+\end{definitionenv}
+
+En general, entendemos una norma como una manera de medir un vector.
+
+Una norma también nos define una \textit{métrica} o función distancia en el espacio, de forma que si $\mathbf{x}, \mathbf{y}\in V$, tenemos
+\begin{align*}
+    d(\mathbf{x},\mathbf{y}):=||\mathbf{x}-\mathbf{y}||
+\end{align*}
+Esta es la métrica inducida por la norma. Al definir un espacio normado $V$ con norma $||\cdot||$ solemos escribir $(V,||\cdot||)$.\\
+
+\begin{exampleenv}
+
+Demuestre la desigualdad triangular para $\mathbb{R}$ con el valor absoluto como norma.
+
+El valor absoluto se define 
+\[
+|x| =
+\begin{cases}
+    x, &  x\ge0 \\
+    -x, & x<0
+\end{cases}.
+\]
+
+Sean $x,y\in \mathbb{R}$,
+\begin{align*}
+    |x+y|^2&=(x+y)(x+y)\\
+    &=x^2+2xy+y^2\\
+    &\leq x^2+2|x||y|+y^2\\
+    &=|x^2|+|y^2|+2|x||y|\\
+    &=(|x|+|y|)^2.
+\end{align*}
+
+Por lo que
+\begin{align*}
+    (|x+y|)^2\leq(|x|+|y|)^2\implies |x+y|\leq |x|+|y|.
+\end{align*}
+\qed 
+\end{exampleenv}
+
+Para vectores en $\mathbb{R}^n$ se suele definir de forma generalizada la norma-p. Para un entero $p\ge 1$ y un vector $\mathbf{v}$.
+\[
+    ||\mathbf{v}||_p=(\sum_{i=1}^{n}|v_i|^p)^{1/p}
+\]
+
+Las siguientes son las normas-p más comunes:
+\begin{itemize}
+    \item $p=1$ norma-1 también conocida como norma \textit{manhattan} o \textit{taxicab},
+    \[
+        ||\mathbf{v}||_1=\sum_{i=1}^{n}|v_i|.
+    \]
+    \item $p=2$ norma-2 o norma \textit{euclidiana},
+    \[
+        ||\mathbf{v}||_2=\sqrt{\sum_{i=1}^{n}|v_i|^2}=\sqrt{\mathbf{v}\cdot \mathbf{v}}.
+    \]
+    \item $p=\infty$ norma infinito,
+    \[
+        ||\mathbf{v}||_\infty=\max_i|v_i|.
+    \]
+\end{itemize}
+
+\begin{exampleenv}
+    Demuestre que la norma-2 es una norma de $\mathbb{R}^n$.
+
+    Como se mostró antes, la norma-2 o norma euclidiana se define por
+    \[
+    ||\mathbf{v}||_2=\sqrt{v_1^2+v_2^2+\dots +v_n^2}=\sqrt{\mathbf{v}\cdot \mathbf{v}}.
+    \]
+    Sea $\mathbf{v}\in\mathbb{R}^n$, tenemos $||\mathbf{v}||_2\ge0$, ya que la raíz cuadrada es siempre mayor o igual a 0.\\
+
+    También tenemos
+    \[
+    ||\mathbf{v}||_2=0\iff \sqrt{v_1^2+v_2^2+\dots +v_n^2}=0\iff v_1^2+v_2^2+\dots v_n^2=0\iff \mathbf{v}=\mathbf{0}.
+    \]
+    Por lo tanto, la norma es definida positiva.\\
+
+    Luego, sea $\lambda\in\mathbb{R}$,
+    \[
+    ||\lambda\mathbf{v}||_2=\sqrt{(\lambda v_1)^2+(\lambda v_2^2)+\dots+(\lambda v_n)^2}=\sqrt{\lambda^2\cdot(v_1^2+v_2^2+\dots+v_n^2)}=|\lambda|\cdot||\mathbf{v}||_2
+    \]
+    Por lo tanto, es absolutamente homogénea.
+    Finalmente, tenemos que demostrar la desigualdad triangular. Sean $\mathbf{x},\mathbf{y}\in\mathbb{R}$, consideremos la desigualdad de Cauchy-Schwarz
+    \[
+    |\mathbf{x}\cdot\mathbf{y}|\leq ||\mathbf{x}||_2||\mathbf{y}||_2
+    \]
+    Queremos verificar que
+    \[
+    ||\mathbf{x+\mathbf{y}}||_2\leq||\mathbf{x}||_2+||\mathbf{y}||_2
+    \]
+    Para esto elevamos ambos lados al cuadrado, obteniendo
+    \begin{align*}
+        ||\mathbf{x+\mathbf{y}}||_2^2&\leq(||\mathbf{x}||_2+||\mathbf{y}||_2)^2\\
+        (\mathbf{x}+\mathbf{y})\cdot(\mathbf{x}+\mathbf{y})&\leq||\mathbf{x}||_2^2+2||\mathbf{x}||_2||\mathbf{y}||_2+||\mathbf{y}||_2^2\\
+        ||\mathbf{x}||_2^2+2(\mathbf{x}\cdot\mathbf{y})+||\mathbf{y}||_2^2&\leq||\mathbf{x}||_2^2+2||\mathbf{x}||_2||\mathbf{y}||_2+||\mathbf{y}||_2^2\\
+        \mathbf{x}\cdot\mathbf{y}&\leq||\mathbf{x}||_2||\mathbf{y}||_2
+    \end{align*}
+    Esta última desigualdad es cierta, gracias a la desigualdad de Cauchy-Schwarz. Por lo que la desigualdad triangular es cierta y concluimos que la norma euclidiana es un norma para el espacio $\mathbb{R}^n$.\qed
+\end{exampleenv}
+
+\begin{exampleenv}
+
+Demuestre que el espacio vectorial de funciones continuas y acotadas de $\mathbb{R}$ a $\mathbb{R}$ denotado por $C_b(\mathbb{R},\mathbb{R})$ con norma $||f||_{C_b(\mathbb{R},\mathbb{R})}=\sup\limits_{x\in\mathbb{R}} |f(x)|$ es un espacio normado.\\
+
+Notemos que en la norma $||f||_\infty=\sup\limits_{x\in\mathbb{R}} |f(x)|$, se está tomando el supremo de algo en valor absoluto, y siempre se cumple que $|f(x)|\ge0$, por lo tanto, siempre $||f||_\infty=\sup\limits_{x\in\mathbb{R}} |f(x)|\ge0$.\\
+
+Supongamos que $||f||=0$, esto es que $\sup\limits_{x\in\mathbb{R}} |f(x)|=0$, pero como el valor absoluto es siempre mayor o igual a cero tenemos $|f(x)|\ge0$. Además si el supremo es igual a cero, necesariamente $|f(x)|\leq 0$. Por lo tanto nos queda
+\[
+    0\leq |f(x)|\leq0 \iff |f(x)|=0\iff f(x)=0,\ \forall x\in \mathbb{R} \iff f=0.
+\]
+Por lo que $||f||_\infty$ es definida positiva.\\
+
+Luego, sea $\alpha\in \mathbb{R}$, $||\alpha f||_\infty=\sup\limits_{x\in\mathbb{R}} |\alpha f(x)|=\sup\limits_{x\in\mathbb{R}} |\alpha||f(x)|=|\alpha|\sup\limits_{x\in\mathbb{R}} |f(x)|=|\alpha|||f||_\infty$. Por lo que $||f||_\infty$ es absolutamente homogénea.
+
+Finalmente sean $f,g\in C_b(\mathbb{R}, \mathbb{R})$, tenemos
+\[
+    ||f+g||_\infty=\sup\limits_{x\in\mathbb{R}} |f(x)+g(x)|\leq \sup\limits_{x\in\mathbb{R}} (|f(x)|+|g(x)|)=\sup\limits_{x\in\mathbb{R}} |f(x)|+\sup\limits_{x\in\mathbb{R}} |g(x)|=||f||_\infty+||g||_\infty
+\]
+
+Concluimos que, ya que se cumplen todas las propiedades, $C_b(\mathbb{R},\mathbb{R})$ es un espacio normado.\qed
+\end{exampleenv}
+
+Por último, definiremos brevemente el concepto de \textit{bola}. Este concepto es fundamental en topología, y es parte de algo aún más básico que un espacio vectorial normado: un \textit{espacio métrico}. Ahora no definiremos rigurosamente qué es un espacio métrico, pero en términos simples, es un conjunto (no necesariamente un espacio vectorial) en el que está definida una función distancia. Por lo que podemos decir que todo espacio vectorial normado es un espacio métrico, pero no todo espacio métrico es un espacio normado. Así, definiremos las bolas particularmente para espacios normados.
+
+\begin{definitionenv}
+    Sea $(V,||\cdot||)$ un espacio normado con la métrica $d$ inducida por la norma. Sea $\mathbf{x_0}\in V$ y $r>0$. Definimos la bola abierta $B(\mathbf{x_0},r)$ de radio $r$ en $V$ centrada en $\mathbf{x_0}$ como el conjunto
+    \begin{align*}
+        B(\mathbf{x_0},r):=\{x\in V:d(\mathbf{x},\mathbf{x_0})<r\}.
+    \end{align*}
+    Y la bola cerrada como
+    \begin{align*}
+        \overline{B}(\mathbf{x_0},r):=\{x\in V:d(\mathbf{x},\mathbf{x_0})\leq r\}.
+    \end{align*}
+\end{definitionenv}
+
+Notemos que la `forma' de la bola en un espacio como $\mathbb{R}^2$ o $\mathbb{R}^3$ dependerá de la norma que se use. Si usamos la norma euclidiana en $\mathbb{R}^2$ la bola será un círculo de radio $r$, si usamos la norma-1, será un rombo, y si usamos la norma infinito será un cuadrado. Para más sobre espacios métricos y bolas revisar \cite[Chapter 1]{Tao2016-qy} o \cite[Chapter 1]{kreyszig1991introductory}.
+
+\section{Funcionales, operadores y espacios de funciones}
+\noindent
+Los conceptos que se revisan en esta sección son fundamentales en el estudio del análisis funcional. Algunos conceptos se pasan muy por encima ya que en cursos de análisis funcional se suelen asumir conocimientos del análisis real y teoría de la integración. Los contenidos de esta sección se pueden encontrar en \cite[Chapter 2, Section 2.2]{kreyszig1991introductory} y en \cite[Chapters 1,2,3]{Tao2016-qy}. 
+
+Es común en el cálculo estudiar cómo optimizar una función. Encontrar cuál es el punto donde esta se maximiza o se minimiza. Pero a veces, el problema puede ser aun mayor: ¿Cómo encuentro la función que mejor se adapta al problema que estoy intentando modelar? Cuál es la función óptima, la que mejor se ajusta al problema, la que minimiza la distribución de temperatura en un área dada, o maximiza la producción de algo.
+
+\subsection{Espacios de funciones}
+\noindent
+Un espacio de funciones es simplemente un conjunto de objetos llamados funciones. Por lo general, los espacios de funciones estudiados en el análisis son espacios vectoriales, es decir, que los vectores son funciones (tal como las vimos en la Sección~\ref{sec:funciones}), sobre los cuales se definen operaciones entre ellas, la suma y la multiplicación por escalar. Estos espacios también se suelen definir en conjunto con una norma, es decir, son espacios normados. A continuación, se presentan algunos ejemplos destacables.
+
+\begin{itemize}
+    \item $\ell^p$: Espacio de \textit{sucesiones $p$-sumables}, es decir, todas la sucesiones $a_n$ tales que
+    \[
+        \sum_{n=1}^\infty |a_n|^p<\infty. 
+    \]
+    En otras palabras, es el conjunto de sucesiones $a_n$ tales que la serie infinita de su valor absoluto elevado a $p$ es convergente. Notemos que una sucesión es simplemente una función $a:\mathbb N \to \mathbb R$.
+
+    Se suele definir con la norma-p
+    \[
+        ||a||_p=\left(\sum_{n=1}^{\infty}|a_n|^p\right)^{1/p}.
+    \]
+
+    \item $C([a,b])$: Espacio de \textit{funciones continuas en el intervalo $[a,b]$}, se pude definir una norma con la norma del supremo.
+    \[
+        ||f||_\infty = \sup_{x\in[a,b]}|f(x)|.
+    \]
+    
+    \item $C^1([a,b])$: Espacio de \textit{funciones una vez diferenciables con derivadas continuas en $[a,b]$}.
+
+    \item $C^2([a,b]$: Espacio de \textit{funciones dos veces diferenciables con primeras 2 derivadas continuas en $[a,b]$}.
+
+    \item $C ^k([a,b]$: Espacio de \textit{funciones $k$ veces diferenciables con primeras $k$ derivadas continuas en $[a,b]$}.
+
+    \item $L^p([a.b])$: Espacio de \textit{Funciones $p$-integrables en $[a.b]$}. Funciones medibles tales que
+    \[
+        \int_a^b |f(x)|^pdx <\infty.
+    \]
+    Donde el conjunto $[a,b]$ podría ser no acotado.
+
+    Se suele definir con la norma-$p$
+    \[
+        ||f||_p=\left(\int_a^b |f(x)|^pdx\right)^{1/p}.
+    \]
+\end{itemize}
+
+También se suele hablar de \textit{clases de funciones} como sinónimo de espacio de funciones. Podemos decir que una función $f$ es de clase $C^1$ cuando es continua y diferenciable con primera derivada continua. Es común encontrarse también con una notación mas estilizada como $\mathscr{C}^k$. Todos estos espacios, con las normas definidas, son espacios normados. Aquí nos limitamos a listar estos espacios y sus normas, sin embargo las demostraciones de estos resultados suelen ser bastante técnicas, así que por ahora nos bastará ver los objetos que se pueden definir y jugar un poco con ellos. 
+
+\subsection{Funcionales}
+\noindent
+Los funcionales son simplemente funciones $F:\mathcal{X} \to \mathbb{R}$ (también puede ir a los complejos), tales que $\mathcal{X}$ es un espacio de funciones. Es decir, es una función a la que se le entrega una función y devuelve un número.\\
+
+\begin{exampleenv}
+
+El ejemplo de funcional más clásico es la integral definida, por ejemplo, sea $F:L^2([0,5],\mathbb{R})\to \mathbb{R}$ dada por
+\[
+    I[f]=\int_0^5 f(x)dx
+\]
+
+Esta función recibe una función cuadrado integrable y devuelve un número que corresponde a la integral definida entre 0 y 5 de la función. Por ejemplo, para $f(x)=xe^{-x}$ tenemos
+
+\[
+    I[f]=I[xe^{-x}]=\int_0^5 xe^{-x} dx = 1-\frac{6}{e^5}
+\]
+\end{exampleenv}
+
+Se suelen usar corchetes en vez de paréntesis redondos cuando se evalúa una función en un funcional, para distinguir de funciones que reciben valores reales. Esta notación se repetirá para operadores.
+
+Notemos que las normas en espacios funcionales también son funcionales, ya que reciben una función y entregan un número que representa la norma de la función.\\
+
+\begin{exampleenv}
+
+Sea el espacio normado $(L^2([0,1],\mathbb{R)},||\cdot ||_{L^2(\Omega)})$, donde $||\cdot||_{L^2(\Omega)}=(\int_\Omega |\cdot|^2\,dx)^{1/2}$. Calcule $||x^2||_{L^2(\Omega)}$.
+
+\[
+    ||x^2||_{L^2(\Omega)}=\left(\int_0^1 |x^2|^2\right)^{1/2}=\left(\int_0^1 x^4\right)^{1/2} = \sqrt{\frac{1}{5}}.
+\]
+
+Este valor representa el tamaño de la función dada esta norma.
+\end{exampleenv}
+
+\subsection{Operadores}
+\noindent
+Un operador es una función $Q:\mathcal{X}\to \mathcal{Y}$ donde tanto $\mathcal{X}$ como $\mathcal{Y}$ son espacios de funciones. Es decir, un operador recibe una función y entrega otra función.\\
+
+\textbf{Ejemplos}
+
+\begin{itemize}
+    \item Elevar una función al cuadrado. Sea $Q:C(\mathbb{R},\mathbb{R})\to C(\mathbb{R},\mathbb{R})$ dada por
+    \begin{align*}
+        Q[f] = f^2,\quad Q[f](x) = f^2(x).
+    \end{align*}
+    Por ejemplo para $f(x) = e^x$
+    \[
+        Q[f](x)=e^{2x}.
+    \]
+    \item La derivada $D:C^k(\mathbb{R}^n,\mathbb{R})\to C^{k-1}(\mathbb{R}^n,\mathbb{R}^n)$. Es un operador que recibe una función $f:\mathbb{R}^n\to\mathbb{R}$, Dado por
+    \[
+        D[f]:=\nabla f,\quad D[f]_i(\mathbf{x}) = \frac{\partial f}{\partial x_i}(\mathbf{x}).
+    \]
+
+    Por ejemplo sea $f(x,y)=e^{-(x ^2+y^2)}\sin(x)$,
+
+    \begin{align*}
+        D[f](x,y)=\begin{pmatrix}
+           \frac{\partial f}{\partial x_1}(x,y) \\ \frac{\partial f}{x_2}(x,y) 
+        \end{pmatrix} =  \begin{pmatrix}  e^{-(x^2+y^2)}\cos(x)-2e^{-(x^2+y^2)}x\sin(x)\\ -2e^{-(x^2+y^2)}y\sin(x) \end{pmatrix}
+    \end{align*}
+
+    Donde el gradiente es otra función, en este caso un campo vectorial.
+\end{itemize}
+
+\subsection{Límites abstractos}
+\noindent
+Es posible extender la definición de límite para funciones u operadores mucho más generales. Ahora nos basta con que las funciones cuyos límites estudiaremos vayan desde un espacio normado a otro.
+
+\begin{definitionenv}
+    Sean $\mathcal{X}, \mathcal{Y}$ dos espacios vectoriales normados y una función $T:\mathcal{X}\to \mathcal{Y}$. Decimos que \textit{el límite de T cuando $x\in \mathcal{X} $ tiende a $\overline{x}\in \mathcal{X}$ es $L\in \mathcal{Y}$, si:}
+    \[
+        \forall \epsilon>0,\exists \delta >0:||x-\overline{x}||_\mathcal{X}<\delta \implies ||T(x)-L||_\mathcal{Y}<\epsilon.
+    \]
+\end{definitionenv}
+
+Notemos que en esta definición, la función $T$ puede ser cualquier función tanto de valores reales, como de valores vectoriales, funcionales u operadores. Por tanto, la definición es idéntica a la definición de límite que vimos inicialmente, y cambian solo las normas usadas. 
+
+\begin{exampleenv}
+
+Demuestre que dado el operador $T[f]=f^2$ y dadas $f, g\in C(\mathbb{R},\mathbb{R})$, $T[f]\to g^2$ cuando $f\to g$. Donde definimos $C(\mathbb{R},\mathbb{R})$ como un espacio normado por $||f||_\infty =\sup |f(x)|$.
+
+Queremos demostrar que 
+\[
+    \forall \epsilon>0,\exists\delta>0:||f-g||_\infty <\delta\implies ||f^2-g^2||_\infty <\epsilon.
+\]
+
+La desigualdad de la derecha se debe cumplir para todo epsilon, por lo que buscamos delta a partir de esta. Sea $\epsilon >0$, hacemos primero el caso en que $f\neq-g$
+\begin{align*}
+    ||f^2-g^2||_\infty <\epsilon \implies \sup_{x\in \mathbb{R}}|f^2(x)-g^2(x)|<\epsilon &\implies \sup_{x\in \mathbb{R}}|f(x)^2-g(x)^2|<\epsilon\\
+    &\implies\sup_{x\in \mathbb{R}}(|f(x)+g(x)|\cdot|f(x)-g(x)|)<\epsilon\\
+    &\implies \sup_{x\in \mathbb{R}}|f(x)+g(x)|\cdot \sup_{x\in\mathbb{R}}|f(x)-g(x)|<\epsilon\\
+    &\implies ||f+g||_\infty \cdot ||f-g||_\infty <\epsilon\\
+    &\implies ||f-g||_\infty <\frac{\epsilon}{||f+g||_\infty}:=\delta.
+\end{align*}
+
+Por lo tanto, si elegimos $\delta = \frac{\epsilon}{||f+g||_\infty}$, podemos decir que el límite de $T$ cuando $f\to g$ es $g^2$, si $f\neq-g$.
+
+En el caso en que $f=-g$, tenemos
+\begin{align*}
+    \forall \epsilon>0,\exists\delta>0:||2f||_\infty <\delta&\implies ||f^2-f^2||_\infty <\epsilon\\
+    ||2f||_\infty <\delta &\implies ||0||_\infty<\epsilon.
+\end{align*}
+
+Notemos que esta última desigualdad se cumple trivialmente, por lo que concluimos que el límite se cumple en ambos casos.\qed\\
+\end{exampleenv}
+
+Una manera de medir continuidad para espacios más abstractos es por la \textit{continuidad Lipschitz}.
+
+\begin{definitionenv}
+    Sean dos espacios normados $\mathcal{X}, \mathcal{Y}$ y la función $T:\mathcal{X}\to \mathcal{Y}$ es Lipschitz si existe $L>0$ tal que
+    \[
+        ||T(x)-T(y)||_\mathcal{Y} \leq L||x-y||_\mathcal{X}, \quad \forall x,y\in \mathcal{X}.
+    \]
+\end{definitionenv}
+
+Si $L<1$ decimos que $T$ es una contracción.\\
+
+La verdad es que ser Lipschitz, es una condición más fuerte que la continuidad. Toda función que es Lipschitz es continua, pero no toda función continua es Lipschitz. Podemos pensar que ser Lipschitz es un estado intermedio entre ser continua y ser diferenciable en todos los puntos.
+
+Cabe recalcar que la definición de Lipschitz involucra todo el dominio de la función ya que se define para cada $x$ e $y$ en $\mathcal{X}$.
+
+\begin{theoremenv}\label{teo:cota_lipschitz}
+    Sea $f:A\subseteq\mathbb{R}\to \mathbb{R}$, si $f$ tiene derivada acotada, es decir, $|f'(x)|<M,\quad \forall x\in A$, entonces $f$ es Lipschitz.
+\end{theoremenv}
+
+Este teorema se puede extender para funciones de varias variables de valores reales, y luego en análisis más avanzado para toda función que vaya desde un espacio normado a otro.
+
+Notemos que no existe una única constante de Lipschitz L, sino que pueden haber varias. Por esto, para asegurarnos de que algo es una contracción o no deberíamos tomar siempre la menor posible, es decir, el supremo.\\
+
+\begin{proofenv}
+Usaremos el teorema de valor medio. Este teorema dice que sea $f\in C([a.b])$, entonces existe $c\in [a,b]$ tal que
+\[
+    f(b)-f(a)=f'(c)(b-a)
+\]
+
+A partir de esto tenemos que, sean $x,y\in A$, y $\xi\in [x,y]$
+\[
+    |f(x)-f(y)|=|f'(\xi)(x-y)|\leq |f'(\xi)||x-y|\leq M|x-y|.
+\]
+\end{proofenv}
+
+Entonces, además podemos decir que un posible valor para la constante de Lipschitz es $L=M$, donde $M$ es alguna cota de $f'(x)$.\\
+
+\section{Problemas de punto fijo}
+\noindent
+Esta sección es una adaptación de los métodos mencionados en \cite{quarteroni2006numerical}. Los llamados puntos fijos aparecen constantemente en problemas de ingeniería y ciencias para distintos tipos de funciones, y encontrarlos no siempre es tan sencillo como aparenta.
+
+\begin{definitionenv}
+    Sea $f:X\to X$. Decimos que $x\in X$ es un \conceptT{punto fijo} de $f$ si
+    \[
+        f(x) = x.
+    \]
+\end{definitionenv}
+
+Esto quiere decir que un punto fijo de algún operador (o función) es aquel valor que, al evaluarlo en la función, devuelve el mismo valor.
+
+\begin{theoremenv}\label{teo:banach}
+    \textbf{Teorema del punto fijo de Banach}\\
+    Sea $X$ un espacio normado \textit{completo}\footnote{Completo en un sentido que no definiremos pero que tiene que ver con la métrica inducida por la norma. Para más información sobre espacios métricos y completitud revisar \cite[Chapter 1, Section 1.4]{kreyszig1991introductory}.} y sea  $T:X\to X$ una contracción, entonces $T$ tiene un único punto fijo.
+\end{theoremenv}
+
+\begin{exampleenv}
+Sea $f:\mathbb{R}\to\mathbb{R}$ dada por $f(x)=\omega\sin(x)$ con $\omega<1$, entonces $x =0$ es un punto fijo ya que
+\[
+    f(0)=\omega\sin(0)=\omega\cdot0=0.
+\]
+
+Notamos que $f'(x)=\omega\cos(x)$, y $|\omega\cos(x)|\leq\omega$, por lo que $f'(x)$ está acotada por $\omega$, de hecho, $\omega$ es la mínima cota superior de $f'(x)$, por lo que, por el Teorema~\ref{teo:cota_lipschitz}, $f$ es Lipschitz, y tenemos
+\[
+||f(x_1)-f(x_2)||\leq \omega||x_1-x_2||.
+\]
+Además, $f$ es una contracción, ya que $\omega <1$, por lo tanto, por el Teorema del Punto Fijo de Banach, podemos asegurar que el punto fijo que encontramos $x=0$ es el único punto fijo de $f$.\\
+
+Notemos que si $\omega=1$ tenemos $f(x)=\sin(x)$, y en este caso, la función no es una contracción por lo que no podemos usar el Teorema~\ref{teo:banach} para asegurar que tenemos un único punto fijo.\\\\
+\end{exampleenv}
+
+Ahora consideremos el problema de encontrar el punto fijo de algún $T:X\to X$, es decir, el punto tal que
+\[
+    x=T(x),
+\]
+si tal $x$ existe. Notemos que podemos equiparar este problema al problema de encontrar las raíces de algún operador $T:X\to X$, es decir, hallar $x$ tal que
+\[
+    T(x)=0.
+\]
+
+\begin{exampleenv}
+Demostrar que el problema de encontrar un punto fijo es equivalente al de encontrar las raíces de un operador.
+
+Dado el problema del punto fijo $T(x)=x$ podemos reescribirlo como
+\[
+    T(x)-x=0.
+\]
+
+Luego, definiendo una nueva función $F(x)=T(x)-x$, notamos que resolver el problema del punto fijo para $T$ es lo mismo que resolver el problema de la raíz de $F(x)=0$.
+
+Por otro lado, dado el problema de encontrar las raíces de $T(x)=x$, podemos definir una nueva función $G$
+\[
+    G(x)=T(x)+x.
+\]
+
+Entonces resolver el problema $G(x)=x$ es equivalente a resolver $T(x)=0$.\qed\\
+\end{exampleenv}
+
+\subsection{Iteraciones de punto fijo}
+\noindent
+Encontrar puntos fijos para funciones como $f(x)=x^2$ es sencillo, ya que la ecuación $x=x^2$ no es difícil de resolver. Sin embargo, consideremos el problema de encontrar el punto fijo de $f(x)=e^{-x}$, o del operador derivada $Df=f'$, o de $g(x)=\sin(x)\cos(75x)+e^{\tan(x^2)}$. Resulta que en la mayoría de los casos no es fácil determinar algún punto fijo de una función si es que lo tiene. Es aquí que es más útil recurrir a un programa computacional.
+
+\begin{definitionenv}
+    Dado un operador $T:X\to X$, y un punto inicial $x_0$, definimos una iteración de punto fijo como la sucesión dada por:
+    \[
+        x_{k+1}=T(x_k).
+    \]
+    Si la sucesión converge, entonces converge a un punto fijo de $T$. Este método se conoce también como \emph{iteración de Picard}.
+\end{definitionenv}
+
+\begin{exampleenv}
+    Encontrar un punto fijo de $f(x)=\cos(x)$ a través de iteraciones.\\
+    Para esto construimos la sucesión de la iteración, elegimos un $x_0$. Por ejemplo $x_0=0,\quad x_{n+1}=\cos(x_n)$.
+    Así obtenemos
+    \begin{align*}
+        x_1&=0,5403023058681398\\
+        x_2&=0.8575532158463933\\
+        x_3&=0.6542897904977792\\
+        &\vdots\\
+        x_8&=0.7504177617637605\\
+        x_9&=0.7314040424225098\\
+        &\vdots\\
+        x_{19}&=0.7389377567153446\\
+        x_{20}&=0.7391843997714936.
+    \end{align*}
+    La iteración también se muestra en la Figura~\ref{fig:graf_iteración_1}.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/iteración_1.png}
+    \caption{Gráfico de iteración de punto fijo de $f(x)=\cos(x)$}
+    \label{fig:graf_iteración_1}
+    \end{figure}
+
+    De esta manera podemos aproximar un punto fijo, con tantas iteraciones como queramos, esto es con tan poco error como queramos, por ejemplo, para 100 iteraciones, tenemos que un punto fijo de $f$ es aproximadamente $x^*=0.7390851332151607$, ya que $f(x^*)\approx x^*$.
+\end{exampleenv}
+
+\section{Espacios de Hilbert, Series de Fourier y Análisis de señales}
+\noindent
+Una aplicación importante de la matemática en la ingeniería es el análisis de señales. Existen diversos contextos en los que puede ser necesario analizar una señal, por ejemplo, las que reciba un satélite, una antena, un micrófono. Una señal, por lo general, se representa como una onda, es decir, una combinación lineal de senos y cosenos, sin embargo, en la vida real, las señales vienen con `ruido', o suciedad. En teoría, si conocemos cómo representar el ruido, podríamos `restarselo' a la señal y obtener la señal limpia. En esta sección se estudian conceptos fundamentales en el análisis de señales. Los contenidos de este capítulo se pueden encontrar en \cite[Chapter 3]{kreyszig1991introductory} y \cite[Part C, Chapter 11]{kreyszig2007advanced}.\\
+
+Podemos traducir varios de los conceptos de análisis de señales en conceptos simples que ya conocemos. 
+
+\begin{itemize}
+    \item Una señal es un `punto' en algún espacio de funciones.
+    \[
+        f_1(x)=\sin(x).
+    \]
+    \item Las señales se pueden \textit{superponer} (es decir, sumar).
+    \[
+        f_1(x)=\sin(x),\quad f_2(x)=\cos(x),\implies(f_1+f_2)(x)=\sin(x)+\cos(x).
+    \]
+    \item Las señales se pueden \textit{modular} (producto por escalar).
+    \[
+        f_1(x)=\sin(x) \implies (\alpha f)(x)=\alpha \sin(x).
+    \]
+\end{itemize}
+
+Notemos que si un espacio de funciones es un espacio vectorial, entonces podemos determinar alguna base para el espacio. Recordemos que para que un conjunto sea una base, los vectores que lo componen deben ser linealmente independientes y generar todo el espacio. A continuación, recordamos la definición de dependencia lineal.
+
+\begin{definitionenv}
+    Un conjunto $\{\mathbf{v}_1,\dots,\mathbf{v}_n\}$ indexado de vectores en un espacio vectorial $V$, se dice \conceptT{linealmente dependiente} si existen constantes $c_1,\dots,c_n$ no todas cero tales que:
+    \[
+        c_1\mathbf{v}_1+c_2\mathbf{v_2}+\dots+c_n\mathbf{v_n}=0.
+    \]
+    Por otro lado, el conjunto es \conceptT{linealmente independiente} si la única solución para la ecuación es la trivial $c_1=c_2=\dots=c_n=0$.
+\end{definitionenv}
+
+Si los vectores de un espacio son funciones (funciones `regulares', en un sentido que no definiremos formalmente) esta definición también aplica. Esto muestra el valor de trabajar en espacios más abstractos, ya que todo lo que podamos concluir para espacios vectoriales aplica también para el caso de espacios de señales. Por ejemplo, si tenemos la base $\{\sin(k\pi x),\cos(k\pi x),1\}$, podemos escribir cualquier función de su espacio generado como:
+
+\[
+    f(x)=a_0+\sum_k \alpha_k \sin(k\pi x) + \beta_k cos(k\pi x).
+\]
+Mostraremos los elementos que permiten entender esta igualdad en la próxima sección. Naturalmente, no es trivial demostrar que esas funciones efectivamente son una base.
+
+\subsection{Espacios de Hilbert y producto interno}
+\noindent
+Nos gustaría poder generalizar el producto punto en $\mathbb{R}^n$ para espacios vectoriales más generales, ya que las herramientas de las proyecciones y la ortogonalidad pueden ser útiles en muchos contextos. A continuación, se introduce el concepto de espacio de Hilbert como un caso particular de los espacios de producto interno.
+
+\begin{definitionenv}
+    Un \textit{espacio de producto interno} es un espacio vectorial $X$, con un operación producto interno $\langle\cdot,\cdot\rangle:X\times X\to\mathbb{R}$ definida en $X$. Un \conceptT{espacio de Hilbert} es un espacio de producto interno \textit{completo}\footnote{Completo en la métrica definida por el producto interno. Nuevamente para profundizar en el significado de completitud revisar \cite[Chapter 1, Section 1.4]{kreyszig1991introductory}}. El producto interno debe cumplir lo siguiente para todo $x,y\in X$ y $a,b\in\mathbb{R}$:
+    \begin{enumerate}
+        \item Simetría $\langle x,y\rangle=\langle y,x\rangle$
+        \item Linealidad en el primer argumento $\langle ax+by,z\rangle= a\langle x,z\rangle + b\langle y,z\rangle$
+        \item Definido positivo $\langle x,x\rangle \ge 0,\quad (\langle x,x\rangle =0\iff x=0)$
+    \end{enumerate}
+    Además, el producto interno define una norma en $X$ dada por:
+    \begin{align*}
+        ||x||=\sqrt{\langle x,x\rangle},
+    \end{align*}
+    y por lo tanto una métrica, dada por:
+    \begin{align*}
+        d(x,y)=||x-y||=\sqrt{\langle x-y,x-y\rangle}
+    \end{align*}
+\end{definitionenv}
+
+\begin{exampleenv}
+
+Comprobar que el producto punto en $\mathbb{R}^n$ cumple con las propiedades de la definición.
+
+Sean $\mathbf{x},\mathbf{y}\in\mathbb{R}^n$ El producto punto en $\mathbb{R}^n$ se define como $\langle \mathbf{x},\mathbf{y}\rangle=\mathbf{x}\cdot \mathbf{y}=\sum\limits_{i=1}^n x_iy_i$. Así tenemos,
+\[
+    \langle\mathbf{x},\mathbf{y}\rangle = \sum\limits_{i=1}^n x_iy_i= \sum\limits_{i=1}^n y_ix_i=\langle \mathbf{y},\mathbf{x}\rangle.
+\]
+Por lo que el producto punto es simétrico, luego sean $\alpha,\beta \in\mathbb{R}$ y $\mathbf{z}\in\mathbb{R}^n$,
+\[
+    \langle \alpha \mathbf{x}+\beta \mathbf{y},\mathbf{z}\rangle = \sum\limits_{i=1}^n (\alpha x_i+\beta y_i)z_i=\sum\limits_{i=1}^n \alpha x_iz_i+\beta y_iz_i=\alpha\sum\limits_{i=1}^n  x_iz_i+\beta\sum\limits_{i=1}^n y_iz_i=\alpha\langle \mathbf{x},\mathbf{z}\rangle+\beta \langle\mathbf{y},\mathbf{z\rangle}.
+\]
+Cumpliéndose la segunda propiedad, por último tenemos,
+\[
+    x_ix_i=x_i^2 \ge 0\implies \sum\limits_{i=1}^n x_ix_i=\sum\limits_{i=1}^n x_i^2 \ge 0.
+\]
+
+Ahora, supongamos que $\langle \mathbf{x},\mathbf{x}
+\rangle=0$,
+\[
+    \langle \mathbf{x},\mathbf{x}\rangle=0 \implies \sum\limits_{i=1}^n x_i^2=0\implies x_i^2=0, \forall i\implies x_i=0, \forall i \implies \mathbf{x}=0.
+\]
+Por otro lado, supongamos $\mathbf{x}=0$,
+\[
+    \mathbf{x}=0\implies \langle \mathbf{x},\mathbf{x}\rangle = \sum\limits_{i=1}^n 0\cdot0=0.
+\]
+Por lo tanto, demostramos la tercera propiedad.\qed \\
+\end{exampleenv}
+
+Ahora es conveniente generalizar el concepto de ortogonalidad para espacios de Hilbert.
+
+\begin{definitionenv}
+    Un elemento $x$ de un espacio de Hilbert\footnote{Lo definimos para espacios de Hilbert, pero realmente esta definición funciona también para cualquier espacio de producto interno.} $H$ se dice \conceptT{ortogonal} a otro elemento $y\in H$ si
+    \[
+        \langle x,y\rangle = 0.
+    \]
+    También decimos que $x$ e $y$ son ortogonales, y escribimos $x\perp y$. Similarmente para subconjuntos $A,B\subset H$, escribimos $x\perp A$ si $x\perp a, \ \forall a\in A$. Y escribimos, $A\perp B$ si $a\perp b,\quad \forall a\in A,\forall b\in B$.
+\end{definitionenv}
+
+Ahora, resulta conveniente definir algunas operaciones que involucran el producto interno que son análogas a las ya conocidas para $\mathbb{R}^n$. Sean $x$ e $y$ vectores de algún espacio de Hilbert $H$.
+
+\begin{itemize}
+    \item Normalización:
+    Dado cualquier vector distinto de 0, podemos normalizarlo para obtener un vector unitario, es decir, de norma 1.
+    \[
+        \hat{y}=\frac{y}{||y||}.
+    \]
+    \item Ángulo entre vectores: Si bien está relación se cumple siempre, no siempre es conveniente interpretarlo como un ángulo geométrico.
+    \[
+        \langle x, y\rangle = ||x||||y|| \cos(\theta).
+    \]
+    \item Proyección de $x$ en la dirección de y:
+    \[
+        P_y(x)=\langle x,\hat{y}\rangle \hat{y}=\frac{\langle x, y \rangle}{||y||^2}y.
+    \]
+    \item Ortogonalización de $x$ respecto a $y$: Podemos obtener un vector ortogonal a $y$ a partir de un $x$.
+    \[
+        x^{\perp}=x-P_y(x).
+    \]
+\end{itemize}
+
+Reflexionemos ahora, acerca de cómo se relaciona el teorema del coseno con el producto interno en $\mathbb{R}^2$.
+
+\begin{theoremenv}
+    Sea un triangulo cualquiera (como el de la Figura~\ref{fig:triangulo}) con lados de longitud $a,b$ y $c$. Si $\theta$ es el ángulo opuesto a $c$, se cumple la siguiente relación.
+    \[
+    c^2=a^2+b^2-2ab\cos(\theta)
+    \]
+\end{theoremenv}
+
+Notemos que podemos expresar este teorema de forma vectorial, donde $a=||v||, b=||u||, c=||u-v||$. Así $||u-v||^2=||u||^2-2||v||||u||\cos(\theta)+||v||^2\implies||u-v||^2=||u||^2-2\langle u,v\rangle+||v||^2$. A menudo, el producto interno se define a partir de esta relación, así en $\mathbb{R}^2$ $\langle u,v\rangle := ||u||||v||\cos(\theta)$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/triangulo.png}
+    \caption{Triángulo arbitrario teorema del coseno.}
+    \label{fig:triangulo}
+\end{figure}
+
+Veamos como podemos aplicar esta relación en el siguiente ejemplo.\\
+\begin{exampleenv}
+Dado el espacio de funciones cuadrado integrables entre a y b $L^2([a,b])$ con norma definida por $||f||=(\int_a^bf^2(x)dx)^{1/2}$. Podemos construir un producto interno para este espacio. Supongamos que tenemos el producto interno $\langle \cdot,\cdot \rangle$. Sean $u,v\in L^2[a,b]$.
+
+\begin{align*}
+    \langle(u+v),(u+v)\rangle=||u+v||^2&=\int_a^b (u(x)+v(x))^2dx\\
+    &=\int _a^b u(x)^2dx+2\int_a^b u(x)v(x)dx+\int_a^b v(x)^2dx\\
+    &=||u||^2+2\langle u,v\rangle + ||v||^2.
+\end{align*}
+
+Por lo que definimos 
+\[
+    \langle u,v\rangle =\int_a^b u(x)v(x)dx.
+\]
+\end{exampleenv}
+\subsection{Determinación de coeficientes en series de Fourier}
+\noindent
+Tanto en el análisis de señales como en muchas otras aplicaciones matemáticas puede ser útil representar una función como una combinación lineal de senos y cosenos. Por lo que ahora trabajaremos en un espacio de funciones que pueden ser representadas a través de la base: $\{1,\sin(\pi x),\cos(\pi x), \sin(2\pi x), \cos(2\pi x), \sin(3\pi x),\dots\}$. Es decir, funciones que son de la forma
+\[
+    a_0+a_1\cos(\pi x)+b_1\sin(\pi x)+a_2\cos(2\pi x)+b_2\sin(2\pi x)+a_3\cos(3\pi x)+\dots
+\]
+
+En particular, una serie de Fourier es una función que se puede escribir de la forma
+
+\[
+    f(x)=a_0+\sum_{n=1}^\infty a_n\cos(n\pi x)+b_n\sin(n\pi x).
+\]
+
+Donde $a_0$, $a_n$ y $b_n$ son coeficientes a determinar.\\
+
+Podemos representar cualquier función periódica (que tenga un `buen' comportamiento) como una serie de Fourier. Incluso si la función que queremos representar no es periódica, podemos forzarla para que se vuelva periódica cambiando el dominio.
+
+Podemos obtener los coeficientes $a_0$, $a_n$ y $b_n$, si consideramos el espacio $L^2[a,b]$ con su producto interno que definimos anteriormente. Podemos considerar la base $\{1,\cos(n\pi x), \sin(n\pi x)\}$, con $n\in \mathbb{N}$. Primero, veamos que los elementos de la base son ortogonales, en el sentido que su producto interno es cero.
+\begin{align*}
+    \langle 1,\cos(n\pi x)\rangle&=\int_{-1}^1 1\cos(n\pi x) dx=2\int_0^1 \cos(n\pi x)dx=2 \left[\frac{\sin(n\pi x)}{n\pi}\right]_0^1 =2(0-0)=0.\\
+    \langle 1,\sin(n\pi x)\rangle&=\int_{-1}^1 1\sin(n\pi x) dx=0 \quad\textit{(por la imparidad de la función)}.\\
+    \langle \cos(n\pi x),\sin(n\pi x)\rangle&=\int_{-1}^1 \cos(n\pi x)\sin(n\pi x) dx=\int_{-1}^1\frac{\sin(2n\pi x)}{2}dx=0\quad \textit{(por la imparidad)}.
+\end{align*}
+
+Luego, podemos hacer el producto interno de cada vector (función) base con $f(x)$, que será equivalente a encontrar la proyección de la función $f$ en cada elemento de la base. De hecho, esta operación es común en vectores:
+    $$ \begin{bmatrix} 2 \\ 1 \end{bmatrix}\cdot \begin{bmatrix} 1 \\ 0 \end{bmatrix} = 2.$$
+
+Encontrar la proyección de un vector sobre otro, es equivalente a cuantificar \textit{cuanto de un vector hay en el otro}.
+
+
+Usando la ortogonalidad entre los vectores que acabamos de mostrar obtenemos
+\begin{align*}
+    a_0 \langle 1,1\rangle=\langle f, 1\rangle\implies a_0&=\frac{\langle f, 1\rangle}{\langle 1,1\rangle}.\\
+    a_n\langle f, \cos(n\pi x)\rangle=\langle \cos(n\pi x), \cos(n\pi x)\rangle\implies a_n&= \frac{\langle f, \cos(n\pi x)\rangle}{\langle\cos(n\pi x),\cos(n\pi x)\rangle}.\\
+    b_n\langle\sin(n\pi x),\sin(n\pi x)\rangle=\langle f, \sin(n\pi x)\rangle\implies b_n&= \frac{\langle f, \sin(n\pi x)\rangle}{\langle\sin(n\pi x),\sin(n\pi x)\rangle}.
+\end{align*}
+
+Notemos que el denominador de cada una de las expresiones actúa como una normalización, ya que la base que ocupamos no es una base ortonormal pues los elementos de la base no son de norma 1. Recordemos también que $\langle v,v\rangle=||v||^2$.\\
+
+\begin{exampleenv}
+Sea la función $f:[-1,1]\to\mathbb{R}$ dada por $f=I_{(-1/2,1/2)}$ tenemos,
+\[
+f(x) =
+\begin{cases}
+    1, &  x \in (-1/2,1/2) \\
+    0, & x \not\in (-1/2,1/2)
+\end{cases}.
+\]
+Encuentre los coeficientes de Fourier tales que
+\[
+    f(x)=a_0+\sum_{n=1}^{\infty} \alpha_n\sin(n\pi x)+\beta_n\cos(n\pi x).
+\]
+
+Por los formulas encontradas anteriormente, tenemos
+\[
+    a_0=\frac{\langle f,1\rangle}{\langle 1,1\rangle} =\frac{\int_{-1}^1f(x)dx}{\int_{-1}^1dx}=\frac{2\int_0^1f(x)dx}{2}=\frac{1}{2}
+\]
+
+Ahora pasamos al siguiente,
+
+\begin{align*}
+    \beta_n&=\frac{\langle f,\cos(n\pi x)\rangle}{||\cos(n\pi x)||^2}=\frac{\int_{-1}^1f(x)\cos(n\pi x)dx}{\int_{-1}^1\cos^2(n\pi x)dx}=\frac{2\int_{0}^{1/2}\cos(n\pi x)}{\frac{1}{2}\int_{-1}^11+\cos(2n\pi x)dx}=\frac{\frac{2\sin(\frac{n\pi}{2})}{n\pi}}{1+\frac{\sin(2\pi n)}{2\pi n}}\\
+    &\implies\beta_n=\frac{2\sin(\frac{n\pi}{2})}{n\pi}.
+\end{align*}
+
+Por último, para obtener $\alpha_n$, tenemos
+
+\begin{align*}
+    \alpha_n &= \frac{\langle f,\sin(n\pi x)\rangle}{||\sin(n\pi x)||^2}=\frac{\int_{-1}^1f(x)\sin(n\pi x)dx}{||\sin(n\pi x)||^2}=\frac{\int_{-1/2}^{1/2}\sin(n\pi x)dx}{||\sin(n\pi x)||^2}=\frac{0}{||\sin(n\pi x)||^2}\\
+    &\implies\alpha_n=0.
+\end{align*}
+
+Por lo que la expresión de la serie de Fourier para $f(x)$ nos queda
+
+\[
+        f(x)=\frac{1}{2}+\sum_{n=1}^{\infty} \frac{2\sin(\frac{n\pi}{2})}{n\pi}\cos(n\pi x).
+\]
+
+Podemos graficar esta función $f$ como una serie truncada $f_N$, que en vez de llegar hasta infinito, llegue a un valor $N$.
+
+\[
+        f_N(x)=\frac{1}{2}+\sum_{n=1}^{N} \frac{2\sin(\frac{n\pi}{2})}{n\pi}\cos(n\pi x).
+\]
+
+Mostramos esto en la siguiente figura:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/graficos_fourier.png}
+    \caption{Gráficos serie truncada $f_N$ para distintos valores de $N$.}
+    \label{fig:etiqueta}
+\end{figure}
+
+\end{exampleenv}
+
+\bibliography{main}
+\bibliographystyle{alpha}
+
+
+
+\end{document}

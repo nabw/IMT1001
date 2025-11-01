@@ -1,0 +1,93 @@
+%%%%%% COMANDOS
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}
+\theoremstyle{definition}
+\newtheorem{theorem}{Teorema}
+\newtheorem*{example}{Ejemplo}
+\newtheoremstyle{obsstyle}      % nombre del estilo
+  {}{}                          % espacio arriba y abajo
+  {}                            % cuerpo normal
+  {}                            % indentación
+  {\itshape}                    % encabezado en cursiva
+  {.}                           % puntuación tras el nombre
+  { }                           % espacio tras el encabezado
+  {}                            % especificación del encabezado
+
+\theoremstyle{obsstyle}
+\newtheorem*{obs}{Observación}
+
+% Ejemplo de otro newtheorem normal
+\theoremstyle{plain}
+%\newtheorem*{axiom}{Axioma}
+
+\AtBeginDocument{ \renewcommand{\lim}{\mathop{\operatorname{lim}}} }
+\AtBeginDocument{ \renewcommand{\inf}{\mathop{\operatorname{inf}}} }
+\AtBeginDocument{ \renewcommand{\limsup}{\mathop{\operatorname{limsup}}} }
+\AtBeginDocument{ \renewcommand{\liminf}{\mathop{\operatorname{liminf}}} }
+\AtBeginDocument{ \renewcommand{\max}{\mathop{\operatorname{max}}} }
+
+\newcommand{\conceptT}[1]{\boxed{\textit{#1}}}
+\newcommand{\conceptE}[1]{\boxed{#1}}
+\newcommand{\VV}{\textit{\textsf{V}}}
+\newcommand{\FF}{\textit{\textsf{F}}}
+%%%%%% COMANDOS END
+
+%%%%% AMBIENTES
+\newenvironment{definitionenv}
+    {
+        \begin{tcolorbox}[colback=blue!5!white]
+        \begin{definition}
+    }
+    {
+        \end{definition}
+        \end{tcolorbox}
+    }
+
+\newenvironment{theoremenv}
+    {
+        \begin{tcolorbox}[colback=blue!10!white]
+        \begin{theorem}
+    }
+    {
+        \end{theorem}
+        \end{tcolorbox}
+    }
+
+\newenvironment{proofenv}
+    {
+        \begin{proof}[\textbf{Demostración}]
+    }
+    {
+        \end{proof}
+    }
+
+\newenvironment{exampleenv}
+  {
+    \begin{example}
+    \setlength{\leftskip}{0.8cm}
+    \setlength{\rightskip}{0.8cm}
+  }
+  {
+    \end{example}
+  }
+
+\newenvironment{axiomenv}
+    {
+        \begin{tcolorbox}
+    }
+    {
+        \end{tcolorbox}
+    }
+
+\newenvironment{obsenv}
+    {
+        \begin{tcolorbox}[colback=gray!2!white]
+        \begin{obs}
+    }
+    {
+        \end{obs}
+        \end{tcolorbox}
+    }
+
+%%%%% AMBIENTES END
+
