@@ -1,0 +1,1 @@
+Repositorio para todo el contenido usado en el curso de _Introducción a la Ingeniería Matemática_ (IMT1001) dictado en la Pontificia Universidad Católica de Chile. Todo aporte es bienvenido, pueden escribirme un correo o simplemente armar un *issue* acá para verlo directamente desde Github.
