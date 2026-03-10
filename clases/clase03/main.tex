@@ -65,16 +65,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Ejercicios}
     \begin{center}
+        \idea{$a\in \mathbb R \setminus \{0\}$ implica $a^2 > 0$}
+
         \idea{Si $a,b > 0$, luego $a < b$ implica que $a^2 < b^2$}
 
-        \idea{Si $a\in \mathbb R \setminus \{0\}$, luego $a^2 > 0$}
     \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Demostrar $Q$ por contradicción}
+\begin{frame}[t]{Demostrar $Q$ por contradicción}
     \begin{itemize}
         \item<1-> Suponer que $Q$ es falso
-        \item<2-> Llegar a una contradicción
+        \item<2-> Llegar a una contradicción $(\neg P)$
             \only<2>{
             \begin{flushright}
                 \begin{tabular}{c | c}
@@ -84,32 +85,44 @@
                 \end{tabular}
             \end{flushright}
             }
-        \item<3-> Tabla de verdad (\alert{sup. Q falso}):
+        \item<3-> Tabla de verdad:
     \end{itemize}
-        \only<3>{\begin{center}
-            \begin{tabular}{c c | c}
-                \toprule P & Q & $(\neg Q) \Rightarrow P$\\\midrule
-                V & V & V \\
-                V & F & \alert{V} \\
-                F & V & V \\
-                F & F & \alert{F}  \\ \bottomrule
-            \end{tabular}
-        \end{center}
-        \hfill \alertGreen{Si $\neg P \Rightarrow Q $ es V, como $Q$ es F, luego $P$ es V.}
+        \only<3>{
+            \begin{center}
+                \begin{tabular}{c c | c }
+                    \toprule P & Q & $P \Rightarrow Q$ \\\midrule
+                    V & V & V \\
+                    V & F & \alertGreen{F} \\
+                    F & V & V \\
+                    F & F & V \\ \bottomrule
+                \end{tabular}
+    \end{center}
+    \alert{Si $P\Rightarrow Q$ es F, luego $P$ es $V$ y $Q$ es $F$.}
+
         }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ejemplo}
+\begin{frame}{Ejemplos}
 
     \begin{center}
         \idea{$\sqrt 2$ es irracional}
+
     \end{center}
 
-    \pause A qué números podemos extender esta demostración? 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Contraproposición}
-    Verifiquemos que $P\Rightarrow Q \Leftrightarrow (\neg Q)\Rightarrow (\neg P)$ \pause
+\begin{frame}{Contraproposición / contrarrecíproca}
+    \begin{center}
+        \begin{tabular}{c c | c || c c | c}
+            \toprule P & Q & $P \Rightarrow Q$ & $\neg Q$ & $\neg P$ & $(\neg Q) \Rightarrow (\neg P)$  \\\midrule
+            V & V & V & F & F & \alertGreen{V} \\
+            V & F & F & V & F & \alertGreen{F} \\
+            F & V & V & F & V & \alertGreen{V} \\
+            F & F & V & V & V & \alertGreen{V} \\ \bottomrule
+        \end{tabular}
+    \end{center}
+
+    \pause
     \begin{center}
         \idea{Aplicación: Si $a>b$, luego $ac \leq bc \Rightarrow c\leq 0$}
     \end{center}
