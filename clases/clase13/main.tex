@@ -8,7 +8,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 
-\title[short title]{Clase 13 Espacios normados, límites y puntos fijos}
+\title[short title]{Clase 13 Espacios normados y límites}
 \subtitle{}
 \author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
 \institute[UC|CMM] 
@@ -24,7 +24,7 @@
     \end{flushright}
 }
 
-\date{21/04/2025}
+\date{}
 %\setbeamercovered{transparent}
 
 \begin{document}
@@ -38,7 +38,7 @@
         \item Espacios vectoriales normados
         \item Ejemplos
         \item Límites abstractos
-        \item Clase Lipschitz y operadores de punto fijo
+        \item Clase Lipschitz
     \end{itemize}
 
     \vspace{1cm}
@@ -95,41 +95,6 @@
                         &\leq M |x-y|.
         \end{align*}
     \end{proof}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Puntos fijos}
-    Dada una función $f:X\to X$, decimos que $x$ es punto fijo de $f$ si 
-        $$ x = f(x) $$
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ejemplos}
-    Veamos si las siguientes funciones inducen puntos fijos:
-    \begin{itemize}
-        \item $f(x)=x^p$
-        \item $f(x)=\sin x$
-        \item $f(x) = e^{ax}$
-    \end{itemize}
-\idea{Código}
-
-\idea{Tarea: Demostrar si son contracciones.}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ejemplo notable: Función logística}
-    $$ f(x) = ax (1-x) $$
-    \idea{Código}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Teorema de punto fijo de Banach}
-    \begin{block}{}
-        Sea $T:X\to X$ una contracción continua. Luego, existe un único punto fijo de $T$. 
-    \end{block}
-    \idea{Tarea}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Aplicación importantísima}
-    Si el lado derecho de la siguiente ecuación diferencial es suficientemente suave: 
-        $$ \frac{d f }{dt} = F(t, f), $$
-    entonces existe una única $f$ que satisface la ecuación dada una condición inicial. 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
