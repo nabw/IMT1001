@@ -75,28 +75,6 @@
     \idea{Si $f$ en $C(\R,\R)$ tiende a $g$ en $C(\R,\R)$, luego $T(f)=f^2$ tiende a $g^2$}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Continuidad Lipschitz}
-    \begin{block}{Continuidad Lipschitz}
-        $T:X\to Y$ es Lipschitz si existe $L>0$ tal que
-        $$ \| T(x) - T(y) \|_Y \leq L\|x-y\|_X \quad \forall x,y \in X$$
-    \end{block}
-    Si $L<1$, decimos que $T$ es una \emph{contracción}. 
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ejemplo: Funciones con derivada acotada}
-    Todas las funciones con derivada acotada $|f'(x)|<M$ son Lipschitz.
-    Usaremos Teorema del Valor Medio: Si $f$ es $C^1(\R,\R)$; 
-            $$ \exists \xi \in (a,b): \quad f(b) - f(a) = f'(\xi)(b-a) $$
-    \pause \begin{proof}
-        De la desigualdad de TVM, para todos $x,y$ en $\R$:
-        \begin{align*}
-            |f(x) - f(y)| &= |f'(\xi)(x-y)|, \quad \xi \in (x,y) \\
-                          &\leq |f'(\xi)| |x-y|, \quad \text{derivada acotada} \\
-                        &\leq M |x-y|.
-        \end{align*}
-    \end{proof}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \maketitle
 \end{frame}

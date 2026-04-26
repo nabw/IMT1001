@@ -1,27 +1,30 @@
 \documentclass[9pt]{article}
+%\usepackage[spanish]{babel}
 \usepackage{fullpage}
 \usepackage{todonotes}
 \usepackage{mathpazo}
 \usepackage{amsmath}
-\input{../instrucciones.tex}
+\input{../macros.tex}
 
 
-\newcommand{\note}[1]{\todo[inline,color=gray!20!white]{#1}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\code}[1]{\texttt{#1}}
-\newcommand{\pts}[1]{[{\bf #1 puntos}] }
 \newtheorem{theorem}{Theorem}
 
 \title{Tarea 4}
-\author{}
-\date{}
+\author{Nicolás Barnafi}
+\date{IMT1001}
 
-\usepackage[spanish]{babel}
 \begin{document}
 \maketitle
 \instruccion{12}{16}
 
 \begin{itemize}
+    \item\pts{3} Considere una función $f:X\to X$ definida en un espacio vectorial $X$. Demuestre si que $f$ es Lipschitz continua, entonces también es continua.
+    \item Demuestre las propiedades algebraicas clásicas de la continuidad para funciones $T:X\to Y$ definidas en espacios vectoriales: 
+            \begin{itemize}
+                \item\pts{2} La suma de operadores continuos es un operador continuo. 
+                \item \pts{2} La composición de operadores continuos es un operador continuo.
+            \end{itemize}
     \item\pts{2} Dado un espacio abstracto $X$, decimos que un operador $P:X\to X$ es una proyección si se cumple que $P^2 = P$. Demuestre que dado un vector unitario $\vec v$ en $\R^n$, la proyección a lo largo de $\vec v$ y su complemento ortogonal, dados por
             $$ P_v(\vec x) = \vec v\vec v^T \vec x, \qquad P_v^\perp(\vec x) = (I - P_v)\vec x$$
             son efectivamente proyecciones en el sentido abstracto. 
@@ -47,19 +50,6 @@
                     Muestre que este operador es una contracción para $t$ suficientemente cercano a $0$, i.e. que necesita que $t\leq t^*$ para algún $t^*$. 
             \item\pts{2} A partir de los resultados anteriores, use el Teorema de Punto Fijo de Banach para mostrar que existe un punto fijo de $T$ que resuelve \eqref{eq:edo}. 
         \end{enumerate}
-    \item Considere la función discontinua $f:[-1,1]\to \R$ dada por
-            $$ f(x) = I_{(-1/2,1/2)}(x). $$
-            \begin{itemize}
-                \item\pts{2} Encuentre los coeficientes de Fourier $a_0, \alpha_n, \beta_n$ tales que 
-                    $$ f(x) = a_0 + \sum_{n=1}^\infty \alpha_n \sin(n\pi x) + \beta_n \cos(n\pi x). $$
-                    Para hacerlo, demuestre que las funciones $1,\sin(k\pi x), \cos(k\pi x)$ son ortogonales en $L^2$ y luego calcule el producto entre dichas funciones y $f$.
-                \item\pts{3} Para los coeficientes calculados, considere la serie truncada
-                    $$ f_N(x) = a_0 + \sum_{n=1}^N \alpha_n \sin(n\pi x) + \beta_n \cos(n\pi x). $$
-                    Programe esta serie y grafíquela para los valores $N\in \{1,5,10,50,100\}$.
-                \item\pts{2} Estudie el valor de la serie aproximante en los puntos $\{-1/2,1/2\}$ y comente el resultado en términos de la continuidad de las funciones $f$ y $f_N$. Elija un $N$ grande para que ambas funciones sean parecidas. 
-            \end{itemize}
 \end{itemize} % preguntas
-
-\vspace{1cm}
 
 \end{document}

@@ -41,11 +41,30 @@
     \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Continuidad Lipschitz}
+    \begin{block}{Continuidad Lipschitz}
+        $T:X\to Y$ es Lipschitz si existe $L>0$ tal que
+        $$ \| T(x) - T(y) \|_Y \leq L\|x-y\|_X \quad \forall x,y \in X$$
+    \end{block}
+    Si $L<1$, decimos que $T$ es una \emph{contracción}.
+    \idea{Tarea: Lipschitz continuo implica continuo.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Puntos fijos}
     Dada una función $f:X\to X$, decimos que $x$ es punto fijo de $f$ si 
         $$ x = f(x) $$
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Iteraciones de punto fijo}
+    \begin{block}{}
+        Dado un operador $T:X\to X$ y un punto inicial $x_0$, definimos una iteración de punto fijo como la sucesión dada por
+            $$ x^{k+1} = T(x^k)$$
+    \end{block}
+    Si la sucesión $(x^k)_k = (T(x^{k-1}))_k$ converge, entonces converge a un punto fijo de $T$.
+
+    \pause \alertGreen{Para verificar esto, usamos el Teorema de punto fijo de Banach.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Ejemplos}
     Veamos si las siguientes funciones inducen puntos fijos:
     \begin{itemize}
@@ -58,24 +77,6 @@
 \idea{Tarea: Demostrar si son contracciones. ($|f(x) - f(y)|<\rho|x-y|, \rho<1$)}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ejemplo notable: Función logística}
-    $$ f(x) = ax (1-x) $$
-    \idea{Código}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Teorema de punto fijo de Banach}
-    \begin{block}{}
-        Sea $T:X\to X$ una contracción continua. Luego, existe un único punto fijo de $T$. 
-    \end{block}
-    \idea{Tarea}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Aplicación importantísima}
-    Si el lado derecho de la siguiente ecuación diferencial es suficientemente suave: 
-        $$ \frac{d f }{dt} = F(t, f), $$
-    entonces existe una única $f$ que satisface la ecuación dada una condición inicial. 
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Problemas de punto fijo}
     \begin{block}{Problema de punto fijo}
         Dado $T:X\to X$, hallar $x$ en $X$ tal que
@@ -90,24 +91,38 @@
     \idea{Demostrar que son equivalentes.}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ejemplos}
-    \begin{itemize}
-        \item<+-> Hallar punto fijo de $f(x) = x^2$
-        \item<+-> Hallar punto fijo de $f(x) = e^{-x}$
-        \item<+-> Hallar puntos fijos de operador derivada $D f= f'$
-        \item<+-> Hallar punto fijo de $f(x) = \sin x \cos (75 x) + e^{\tan x^2}$
-    \end{itemize}
-    \pause \idea{Idea: cuando el papel no funciona, probamos el computador.}
+\begin{frame}{Ejemplo notable: Función logística}
+    $$ f(x) = ax (1-x) $$
+    \idea{Código}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Iteraciones de punto fijo}
+\begin{frame}{Ejemplo: Funciones con derivada acotada}
+    Todas las funciones con derivada acotada $|f'(x)|<M$ son Lipschitz.
+    Usaremos Teorema del Valor Medio: Si $f$ es $C^1(\R,\R)$; 
+            $$ \exists \xi \in (a,b): \quad f(b) - f(a) = f'(\xi)(b-a) $$
+    \pause \begin{proof}
+        De la desigualdad de TVM, para todos $x,y$ en $\R$:
+        \begin{align*}
+            |f(x) - f(y)| &= |f'(\xi)(x-y)|, \quad \xi \in (x,y) \\
+                          &\leq |f'(\xi)| |x-y|, \quad \text{derivada acotada} \\
+                        &\leq M |x-y|.
+        \end{align*}
+    \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Teorema de punto fijo de Banach}
     \begin{block}{}
-        Dado un operador $T:X\to X$ y un punto inicial $x_0$, definimos una iteración de punto fijo como la sucesión dada por
-            $$ x^{k+1} = T(x^k)$$
+        Sea $T:X\to X$ una contracción continua. Luego, existe un único punto fijo de $T$. 
     \end{block}
-    Si la sucesión $(x^k)_k = (T(x^{k-1}))_k$ converge, entonces converge a un punto fijo de $T$.
+    \idea{Tarea}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Aplicación importantísima}
+    Si el lado derecho de la siguiente ecuación diferencial es suficientemente suave: 
+        $$ \frac{d f }{dt} = F(t, f), $$
+    entonces existe una única $f$ que satisface la ecuación dada una condición inicial. 
 
-    \pause \alertGreen{Para verificar esto, usamos el Teorema de punto fijo de Banach.}
+    \idea{Tarea}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Ejemplo}
