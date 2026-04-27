@@ -66,7 +66,7 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Ejemplos}
-    Veamos si las siguientes funciones inducen puntos fijos:
+    Veamos si las siguientes funciones inducen iteraciones de punto fijo convergentes:
     \begin{itemize}
         \item $f(x)=x^p$
         \item $f(x)=\sin x$
@@ -91,11 +91,6 @@
     \idea{Demostrar que son equivalentes.}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ejemplo notable: Función logística}
-    $$ f(x) = ax (1-x) $$
-    \idea{Código}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Ejemplo: Funciones con derivada acotada}
     Todas las funciones con derivada acotada $|f'(x)|<M$ son Lipschitz.
     Usaremos Teorema del Valor Medio: Si $f$ es $C^1(\R,\R)$; 
@@ -114,7 +109,7 @@
     \begin{block}{}
         Sea $T:X\to X$ una contracción continua. Luego, existe un único punto fijo de $T$. 
     \end{block}
-    \idea{Tarea}
+    \idea{Demostración: Análisis Real}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Aplicación importantísima}
@@ -138,6 +133,11 @@
     Por lo tanto, es una contracción si $\omega<1$. Por TPF, entonces tiene \emph{un único} punto fijo.  \pause \alert{Y si $\omega\geq1$? }
 
     \pause \idea{Código}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ejemplo notable: Función logística}
+    $$ f(x) = ax (1-x) $$
+    \idea{Código}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
